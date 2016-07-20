@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9afd4decca3042369b2bcd65bcf55e20" Name="Diagram1">
+        <EntityTypeShape EntityType="WebShopModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebShopModel.ProductBranch" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebShopModel.ProductCategory" Width="1.5" PointX="7.125" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebShopModel.ProductManufactory" Width="1.5" PointX="1" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebShopModel.ProductStatu" Width="1.5" PointX="4.125" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="WebShopModel.FK_Product_ProductBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="WebShopModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="WebShopModel.FK_Product_ProductManufactory" ManuallyRouted="false" />
+        <AssociationConnector Association="WebShopModel.FK_Product_ProductStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="WebShopModel.FK_ProductCategory_ProductCategory1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
