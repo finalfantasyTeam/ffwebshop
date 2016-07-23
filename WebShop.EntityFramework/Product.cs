@@ -14,6 +14,13 @@ namespace WebShop
     
     public partial class Product
     {
+        public Product()
+        {
+            this.OrderDetails = new HashSet<OrderDetail>();
+            this.ProductMetas = new HashSet<ProductMeta>();
+            this.InvoiceDetails = new HashSet<InvoiceDetail>();
+        }
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }
@@ -36,5 +43,8 @@ namespace WebShop
         public virtual ProductCategory ProductCategory { get; set; }
         public virtual ProductManufactory ProductManufactory { get; set; }
         public virtual ProductStatu ProductStatu { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<ProductMeta> ProductMetas { get; set; }
+        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

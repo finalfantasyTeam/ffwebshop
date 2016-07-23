@@ -152,9 +152,33 @@
     <Compile Include="aspnet_WebEvent_Events.cs">
       <DependentUpon>WebShopDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ConfigOption.cs">
+      <DependentUpon>WebShopDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>WebShopDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerGroup.cs">
+      <DependentUpon>WebShopDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerOrder.cs">
+      <DependentUpon>WebShopDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerStatu.cs">
+      <DependentUpon>WebShopDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\WebShopDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\WebShopRepositoryBase.cs" />
+    <Compile Include="Invoice.cs">
+      <DependentUpon>WebShopDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceDetail.cs">
+      <DependentUpon>WebShopDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>WebShopDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Product.cs">
       <DependentUpon>WebShopDB.tt</DependentUpon>
     </Compile>
@@ -165,6 +189,9 @@
       <DependentUpon>WebShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductManufactory.cs">
+      <DependentUpon>WebShopDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductMeta.cs">
       <DependentUpon>WebShopDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductStatu.cs">
