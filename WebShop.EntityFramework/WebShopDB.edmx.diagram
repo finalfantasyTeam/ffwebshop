@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9afd4decca3042369b2bcd65bcf55e20" Name="Diagram1">
+        <EntityTypeShape EntityType="WebShopModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebShopModel.ProductBranch" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebShopModel.ProductCategory" Width="1.5" PointX="7.125" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebShopModel.ProductManufactory" Width="1.5" PointX="1" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebShopModel.ProductStatu" Width="1.5" PointX="4.125" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="WebShopModel.FK_Product_ProductBranch" ManuallyRouted="false" />
+        <AssociationConnector Association="WebShopModel.FK_Product_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="WebShopModel.FK_Product_ProductManufactory" ManuallyRouted="false" />
+        <AssociationConnector Association="WebShopModel.FK_Product_ProductStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="WebShopModel.FK_ProductCategory_ProductCategory1" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_Applications" Width="1.5" PointX="6.75" PointY="15.875" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_Membership" Width="1.5" PointX="13.5" PointY="13.875" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_Paths" Width="1.5" PointX="9" PointY="23.75" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="11.25" PointY="27.125" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="13.5" PointY="20.25" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_Profile" Width="1.5" PointX="13.5" PointY="10.375" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_Roles" Width="1.5" PointX="9" PointY="14.375" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_SchemaVersions" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_Users" Width="1.5" PointX="11.25" PointY="14.75" />
+        <EntityTypeShape EntityType="WebShopModel.aspnet_WebEvent_Events" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="WebShopModel.vw_aspnet_Applications" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WebShopModel.vw_aspnet_MembershipUsers" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WebShopModel.vw_aspnet_Profiles" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="WebShopModel.vw_aspnet_Roles" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="WebShopModel.vw_aspnet_Users" Width="1.5" PointX="2.75" PointY="9.75" />
+        <EntityTypeShape EntityType="WebShopModel.vw_aspnet_UsersInRoles" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="WebShopModel.vw_aspnet_WebPartState_Paths" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="WebShopModel.vw_aspnet_WebPartState_Shared" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WebShopModel.vw_aspnet_WebPartState_User" Width="1.5" PointX="11.75" PointY="3.75" />
+        <AssociationConnector Association="WebShopModel.FK__aspnet_Me__Appli__5EBF139D" />
+        <AssociationConnector Association="WebShopModel.FK__aspnet_Pa__Appli__10566F31" />
+        <AssociationConnector Association="WebShopModel.FK__aspnet_Ro__Appli__7D439ABD" />
+        <AssociationConnector Association="WebShopModel.FK__aspnet_Us__Appli__4E88ABD4" />
+        <AssociationConnector Association="WebShopModel.FK__aspnet_Me__UserI__5FB337D6" />
+        <AssociationConnector Association="WebShopModel.FK__aspnet_Pe__PathI__160F4887" />
+        <AssociationConnector Association="WebShopModel.FK__aspnet_Pe__PathI__19DFD96B" />
+        <AssociationConnector Association="WebShopModel.FK__aspnet_Pe__UserI__1AD3FDA4" />
+        <AssociationConnector Association="WebShopModel.FK__aspnet_Pr__UserI__73BA3083" />
+        <AssociationConnector Association="WebShopModel.aspnet_UsersInRoles" />
+        <EntityTypeShape EntityType="WebShopModel.ConfigOption" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="WebShopModel.Customer" Width="1.5" PointX="16.875" PointY="14" />
+        <EntityTypeShape EntityType="WebShopModel.CustomerGroup" Width="1.5" PointX="14.625" PointY="7.125" />
+        <EntityTypeShape EntityType="WebShopModel.CustomerOrder" Width="1.5" PointX="19.125" PointY="13.125" />
+        <EntityTypeShape EntityType="WebShopModel.CustomerStatu" Width="1.5" PointX="14.625" PointY="23.875" />
+        <EntityTypeShape EntityType="WebShopModel.Invoice" Width="1.5" PointX="20.5" PointY="16.5" />
+        <EntityTypeShape EntityType="WebShopModel.OrderDetail" Width="1.5" PointX="21.375" PointY="7.125" />
+        <EntityTypeShape EntityType="WebShopModel.ProductMeta" Width="1.5" PointX="5.625" PointY="19.375" />
+        <AssociationConnector Association="WebShopModel.FK_Customer_aspnet_Users" />
+        <AssociationConnector Association="WebShopModel.FK_Customer_CustomerGroup" />
+        <AssociationConnector Association="WebShopModel.FK_Customer_CustomerStatus" />
+        <AssociationConnector Association="WebShopModel.FK_CustomerOrder_Customer" />
+        <AssociationConnector Association="WebShopModel.FK_Invoice_Customer" />
+        <AssociationConnector Association="WebShopModel.FK_OrderDetail_CustomerOrder" />
+        <AssociationConnector Association="WebShopModel.FK_OrderDetail_Product" />
+        <AssociationConnector Association="WebShopModel.FK_ProductMeta_Product" />
+        <EntityTypeShape EntityType="WebShopModel.InvoiceDetail" Width="1.5" PointX="23.75" PointY="8.625" />
+        <AssociationConnector Association="WebShopModel.FK_InvoiceDetail_Invoice" />
+        <AssociationConnector Association="WebShopModel.FK_InvoiceDetail_Product" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
