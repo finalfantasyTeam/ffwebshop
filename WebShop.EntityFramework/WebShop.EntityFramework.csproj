@@ -167,6 +167,21 @@
     <Compile Include="CustomerStatu.cs">
       <DependentUpon>WebShopDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\Repositories\ProductBranchRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductCategoryRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductMetaRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductStatusRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\UsersRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\OrderDetailRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\OrderRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\InvoiceDetailRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\InvoiceRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\CustomerStatusRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\CustomerOrderRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\CustomerGroupRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\CustomerRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ConfigOptionsRepository.cs" />
+    <Compile Include="EntityFramework\Repositories\ProductRepository.cs" />
     <Compile Include="EntityFramework\Repositories\ProductManufactoryRepository.cs" />
     <Compile Include="EntityFramework\WebShopDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\WebShopRepositoryBase.cs" />

@@ -116,6 +116,23 @@
       <Name>WebShop.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ConfigOptions\" />
+    <Folder Include="CustomerGroup\" />
+    <Folder Include="CustomerOrder\" />
+    <Folder Include="CustomerStatus\" />
+    <Folder Include="Customer\" />
+    <Folder Include="InvoiceDetail\" />
+    <Folder Include="Invoice\" />
+    <Folder Include="OrderDetail\" />
+    <Folder Include="Order\" />
+    <Folder Include="ProductBranch\" />
+    <Folder Include="ProductCategory\" />
+    <Folder Include="ProductMeta\" />
+    <Folder Include="ProductStatus\" />
+    <Folder Include="Product\" />
+    <Folder Include="Users\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
