@@ -90,6 +90,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DtoMapping.cs" />
+    <Compile Include="ProductManufactory\DeleteProdcutManufactoryRs.cs" />
+    <Compile Include="ProductManufactory\CreateProductManufactoryRq.cs" />
+    <Compile Include="ProductManufactory\DeleteProductManufactoryRq.cs" />
+    <Compile Include="ProductManufactory\UpdateProductManufactoryRq.cs" />
+    <Compile Include="ProductManufactory\UpdateProductManufactoryRs.cs" />
+    <Compile Include="ProductManufactory\GetProductManufactoryRq.cs" />
+    <Compile Include="ProductManufactory\CreateProductManufactoryRs.cs" />
+    <Compile Include="ProductManufactory\IProductManufactoryAppService.cs" />
+    <Compile Include="ProductManufactory\GetProductManufactoryRs.cs" />
+    <Compile Include="ProductManufactory\ListProductManufactoryRs.cs" />
+    <Compile Include="ProductManufactory\ProductManufactoryDTO.cs" />
     <Compile Include="WebShopApplicationModule.cs" />
     <Compile Include="WebShopAppServiceBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
