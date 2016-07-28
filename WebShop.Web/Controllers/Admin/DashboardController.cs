@@ -6,7 +6,7 @@ namespace WebShop.Web.Controllers
     {
         public ActionResult Index()
         {
-            return View("Index", "_AdminLayout", null);
+            return View();
         }
     }
 }
