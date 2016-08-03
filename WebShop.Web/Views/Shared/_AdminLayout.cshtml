@@ -17,15 +17,30 @@
   <![endif]-->
 
 </head>
-<body class="skin-blue sidebar-mini">
+<body class="skin-green-light sidebar-mini">
   <div class="wrapper">
-    @Html.Partial("_AdminHeader")
-    @Html.Partial("_AdminSideBar")
-
+    <header class="main-header">
+      @Html.Partial("_AdminHeader")
+    </header>
+    <aside class="main-sidebar">
+      @Html.Partial("_AdminSideBar")
+    </aside>
     <div class="content-wrapper">
-      @RenderBody()
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Dashboard
+          <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+          <li class="active">Dashboard</li>
+        </ol>
+      </section>
+      <section class="content">
+        @RenderBody()
+      </section>
     </div>
-
     @Html.Partial("_AdminFooter")
   </div>
   @Scripts.Render("~/Bundles/vendor/js/bottom")
