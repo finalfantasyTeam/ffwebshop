@@ -58,6 +58,27 @@ namespace WebShop.Web
                     )
                 );
 
+            //ADMIN PAGE RESOURCES
+            //~/Bundles/admin/css
+            bundles.Add(
+                new StyleBundle("~/Bundles/admin/css")
+                    .Include("~/Content/admin/dist/css/AdminLTE.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/admin/dist/css/skins/skin-green-light.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/bootstrap-cosmo.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/font-awesome.min.css", new CssRewriteUrlTransform())
+                );
+
+            //~/Bundles/admin/plugins/css
+            bundles.Add(
+               new StyleBundle("~/Bundles/admin/plugins/css")
+                   .Include("~/Content/admin/plugins/iCheck/flat/blue.css", new CssRewriteUrlTransform())
+                   .Include("~/Content/admin/plugins/morris/morris.css", new CssRewriteUrlTransform())
+                   .Include("~/Content/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css", new CssRewriteUrlTransform())
+                   .Include("~/Content/admin/plugins/datepicker/datepicker3.css", new CssRewriteUrlTransform())
+                   .Include("~/Content/admin/plugins/daterangepicker/daterangepicker-bs3.css", new CssRewriteUrlTransform())
+                   .Include("~/Content/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css", new CssRewriteUrlTransform())
+               );
+
             //APPLICATION RESOURCES
 
             //~/Bundles/css

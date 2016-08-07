@@ -17,11 +17,18 @@ namespace WebShop.Web
                 defaults: new { id = RouteParameter.Optional }
                 );
 
+            //routes.MapRoute(
+            //    name: "Admin",
+            //    url: "Admin/{controller}/{action}/{id}",
+            //    defaults: new { controller = "Dashboard", action = "Index", id = UrlParameter.Optional }
+            //);
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
         }
     }
 }
