@@ -50,6 +50,10 @@
       <HintPath>..\packages\Abp.AutoMapper.0.10.0.1\lib\net452\Abp.AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Abp.EntityFramework, Version=0.10.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\Abp.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Abp.Web, Version=0.10.0.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Abp.Web.0.10.0.1\lib\net452\Abp.Web.dll</HintPath>
       <Private>True</Private>
@@ -215,6 +219,8 @@
     <Content Include="Content\admin\dist\css\AdminLTE.min.css" />
     <Content Include="Content\admin\dist\css\skins\skin-green-light.css" />
     <Content Include="Content\admin\dist\css\skins\skin-green-light.min.css" />
+    <Content Include="Content\admin\dist\css\skins\_all-skins.css" />
+    <Content Include="Content\admin\dist\css\skins\_all-skins.min.css" />
     <Content Include="Content\admin\dist\img\avatar.png" />
     <Content Include="Content\admin\dist\img\avatar04.png" />
     <Content Include="Content\admin\dist\img\avatar2.png" />
@@ -726,40 +732,40 @@
     <Content Include="Content\admin\plugins\daterangepicker\moment.min.js" />
     <Content Include="Content\admin\plugins\fastclick\fastclick.js" />
     <Content Include="Content\admin\plugins\fastclick\fastclick.min.js" />
-    <Content Include="Content\admin\plugins\flot\excanvas.js" />
-    <Content Include="Content\admin\plugins\flot\excanvas.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.colorhelpers.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.colorhelpers.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.canvas.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.canvas.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.categories.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.categories.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.crosshair.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.crosshair.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.errorbars.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.errorbars.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.fillbetween.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.fillbetween.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.image.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.image.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.navigate.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.navigate.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.pie.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.pie.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.resize.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.resize.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.selection.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.selection.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.stack.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.stack.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.symbol.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.symbol.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.threshold.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.threshold.min.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.time.js" />
-    <Content Include="Content\admin\plugins\flot\jquery.flot.time.min.js" />
+    <Content Include="Content\themes\flot\excanvas.js" />
+    <Content Include="Content\themes\flot\excanvas.min.js" />
+    <Content Include="Content\themes\flot\jquery.colorhelpers.js" />
+    <Content Include="Content\themes\flot\jquery.colorhelpers.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.canvas.js" />
+    <Content Include="Content\themes\flot\jquery.flot.canvas.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.categories.js" />
+    <Content Include="Content\themes\flot\jquery.flot.categories.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.crosshair.js" />
+    <Content Include="Content\themes\flot\jquery.flot.crosshair.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.errorbars.js" />
+    <Content Include="Content\themes\flot\jquery.flot.errorbars.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.fillbetween.js" />
+    <Content Include="Content\themes\flot\jquery.flot.fillbetween.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.image.js" />
+    <Content Include="Content\themes\flot\jquery.flot.image.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.js" />
+    <Content Include="Content\themes\flot\jquery.flot.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.navigate.js" />
+    <Content Include="Content\themes\flot\jquery.flot.navigate.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.pie.js" />
+    <Content Include="Content\themes\flot\jquery.flot.pie.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.resize.js" />
+    <Content Include="Content\themes\flot\jquery.flot.resize.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.selection.js" />
+    <Content Include="Content\themes\flot\jquery.flot.selection.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.stack.js" />
+    <Content Include="Content\themes\flot\jquery.flot.stack.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.symbol.js" />
+    <Content Include="Content\themes\flot\jquery.flot.symbol.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.threshold.js" />
+    <Content Include="Content\themes\flot\jquery.flot.threshold.min.js" />
+    <Content Include="Content\themes\flot\jquery.flot.time.js" />
+    <Content Include="Content\themes\flot\jquery.flot.time.min.js" />
     <Content Include="Content\admin\plugins\fullcalendar\fullcalendar.css" />
     <Content Include="Content\admin\plugins\fullcalendar\fullcalendar.js" />
     <Content Include="Content\admin\plugins\fullcalendar\fullcalendar.min.css" />
@@ -1191,9 +1197,12 @@
     <Compile Include="App_Start\WebShopWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\Admin\ProductManagementController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
-    <Compile Include="Controllers\Admin\DashboardController.cs" />
+    <Compile Include="Controllers\Admin\AdminControllerBase.cs" />
+    <Compile Include="Controllers\Admin\ProductManufactoryManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\AdminViewModels\ProductManufactoryViewModel.cs" />
     <Compile Include="Models\Layout\LanguageSelectionViewModel.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\WebShopControllerBase.cs" />
@@ -1201,6 +1210,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Layout\TopMenuViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\WebShopWebViewPageBase.cs" />
     <Compile Include="Views\UrlChecker.cs" />
@@ -1222,6 +1232,10 @@
     <Content Include="Views\Admin\Dashboard.cshtml" />
     <Content Include="Views\Account\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_AccountLayout.cshtml" />
+    <Content Include="Views\ProductManagement\_ViewStart.cshtml" />
+    <Content Include="Views\ProductManufactoryManagement\_ViewStart.cshtml" />
+    <Content Include="Views\ProductManufactoryManagement\List.cshtml" />
+    <Content Include="Views\ProductManagement\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

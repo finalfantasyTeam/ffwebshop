@@ -10,6 +10,6 @@ namespace WebShop.Application
         Task<GetProductManufactoryRs> GetManufactoryByName(GetProductManufactoryRq rq);
         Task<CreateProductManufactoryRs> CreateManufactory(CreateProductManufactoryRq rq);
         Task<UpdateProductManufactoryRs> UpdateManufactory(UpdateProductManufactoryRq rq);
-        Task<DeleteProdcutManufactoryRs> DeleteManufactory(DeleteProductManufactoryRq rq);
+        Task<DeleteProductManufactoryRs> DeleteManufactory(DeleteProductManufactoryRq rq);
     }
 }

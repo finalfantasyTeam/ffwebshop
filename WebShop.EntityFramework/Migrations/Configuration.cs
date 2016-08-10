@@ -7,7 +7,7 @@ namespace WebShop.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "WebShop";
+            ContextKey = "Default";
         }
 
         protected override void Seed(WebShop.EntityFramework.WebShopDbContext context)

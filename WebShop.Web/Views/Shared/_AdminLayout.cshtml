@@ -18,6 +18,7 @@
 
 </head>
 <body class="skin-green-light sidebar-mini">
+  @Scripts.Render("~/Bundles/vendor/js/bottom")
   <div class="wrapper">
     <header class="main-header">
       @Html.Partial("_AdminHeader")
@@ -43,6 +44,6 @@
     </div>
     @Html.Partial("_AdminFooter")
   </div>
-  @Scripts.Render("~/Bundles/vendor/js/bottom")
+  @Scripts.Render("~/Bundles/admin/plugins/js")
 </body>
 </html>

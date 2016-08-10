@@ -62,10 +62,11 @@ namespace WebShop.Web
             //~/Bundles/admin/css
             bundles.Add(
                 new StyleBundle("~/Bundles/admin/css")
-                    .Include("~/Content/admin/dist/css/AdminLTE.min.css", new CssRewriteUrlTransform())
                     .Include("~/Content/admin/dist/css/skins/skin-green-light.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/admin/dist/css/_all-skins.min.css", new CssRewriteUrlTransform())
                     .Include("~/Content/bootstrap-cosmo.min.css", new CssRewriteUrlTransform())
                     .Include("~/Content/font-awesome.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/admin/dist/css/AdminLTE.min.css", new CssRewriteUrlTransform())
                 );
 
             //~/Bundles/admin/plugins/css
@@ -74,10 +75,22 @@ namespace WebShop.Web
                    .Include("~/Content/admin/plugins/iCheck/flat/blue.css", new CssRewriteUrlTransform())
                    .Include("~/Content/admin/plugins/morris/morris.css", new CssRewriteUrlTransform())
                    .Include("~/Content/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css", new CssRewriteUrlTransform())
+                   .Include("~/Content/admin/plugins/datatables/jquery.dataTables.min.css", new CssRewriteUrlTransform())
+                   .Include("~/Content/admin/plugins/datatables/dataTables.bootstrap.css", new CssRewriteUrlTransform())
+                   .Include("~/Content/admin/plugins/datatables/jquery.dataTables_themeroller.css", new CssRewriteUrlTransform())
                    .Include("~/Content/admin/plugins/datepicker/datepicker3.css", new CssRewriteUrlTransform())
                    .Include("~/Content/admin/plugins/daterangepicker/daterangepicker-bs3.css", new CssRewriteUrlTransform())
                    .Include("~/Content/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css", new CssRewriteUrlTransform())
                );
+
+            bundles.Add(
+                new ScriptBundle("~/Bundles/admin/plugins/js")
+                    .Include("~/Content/admin/plugins/iCheck/icheck.min.js")
+                    .Include("~/Content/admin/plugins/datatables/jquery.dataTables.min.js")
+                    .Include("~/Content/admin/plugins/datatables/dataTables.bootstrap.min.js")
+                    .Include("~/Content/admin/plugins/slimScroll/jquery.slimscroll.min.js")
+                    .Include("~/Content/admin/plugins/fastclick/fastclick.min.min.js")
+                );
 
             //APPLICATION RESOURCES
 

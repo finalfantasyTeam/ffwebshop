@@ -173,7 +173,6 @@
     <Compile Include="EntityFramework\Repositories\ProductStatusRepository.cs" />
     <Compile Include="EntityFramework\Repositories\UsersRepository.cs" />
     <Compile Include="EntityFramework\Repositories\OrderDetailRepository.cs" />
-    <Compile Include="EntityFramework\Repositories\OrderRepository.cs" />
     <Compile Include="EntityFramework\Repositories\InvoiceDetailRepository.cs" />
     <Compile Include="EntityFramework\Repositories\InvoiceRepository.cs" />
     <Compile Include="EntityFramework\Repositories\CustomerStatusRepository.cs" />
