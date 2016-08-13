@@ -91,9 +91,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DtoMapping.cs" />
-    <Compile Include="ProductManufactory\DeleteProdcutManufactoryRs.cs" />
+    <Compile Include="ProductManufactory\DeleteProductManufactoryRs.cs" />
     <Compile Include="ProductManufactory\CreateProductManufactoryRq.cs" />
     <Compile Include="ProductManufactory\DeleteProductManufactoryRq.cs" />
+    <Compile Include="ProductManufactory\ProductManufactoryAppService.cs" />
     <Compile Include="ProductManufactory\UpdateProductManufactoryRq.cs" />
     <Compile Include="ProductManufactory\UpdateProductManufactoryRs.cs" />
     <Compile Include="ProductManufactory\GetProductManufactoryRq.cs" />
@@ -125,7 +126,6 @@
     <Folder Include="InvoiceDetail\" />
     <Folder Include="Invoice\" />
     <Folder Include="OrderDetail\" />
-    <Folder Include="Order\" />
     <Folder Include="ProductBranch\" />
     <Folder Include="ProductCategory\" />
     <Folder Include="ProductMeta\" />

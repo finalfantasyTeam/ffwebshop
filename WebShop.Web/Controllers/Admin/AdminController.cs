@@ -2,7 +2,7 @@
 
 namespace WebShop.Web.Controllers
 {
-    public class AdminController : WebShopControllerBase
+    public class AdminController : AdminControllerBase
     {
         public ActionResult Index()
         {
