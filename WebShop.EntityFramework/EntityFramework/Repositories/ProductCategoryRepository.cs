@@ -8,7 +8,10 @@ using WebShop.Core;
 
 namespace WebShop.EntityFramework.Repositories
 {
-    public class ProductCategoryRepository
+    public class ProductCategoryRepository : WebShopRepositoryBase<Core.ProductCategory>, IProductCategoryRepository
     {
+        public ProductCategoryRepository(IDbContextProvider<WebShopDbContext> dbContextProvider) 
+            : base(dbContextProvider)
+        { }
     }
 }

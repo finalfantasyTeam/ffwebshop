@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace WebShop.Core
 {
-    public interface IProductBranchRepository
+    public interface IProductBranchRepository : IRepository<ProductBranch, int>
     {
     }
 }

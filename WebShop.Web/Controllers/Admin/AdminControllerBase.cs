@@ -1,6 +1,6 @@
 ﻿namespace WebShop.Web.Controllers
 {
-    public abstract class AdminControllerBase : WebShopControllerBase
+    public class AdminControllerBase : WebShopControllerBase
     {
     }
 }

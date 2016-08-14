@@ -14,6 +14,7 @@ namespace WebShop
     
     public partial class CustomerStatu
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CustomerStatu()
         {
             this.Customers = new HashSet<Customer>();
@@ -23,6 +24,7 @@ namespace WebShop
         public string Name { get; set; }
         public string Notes { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
     }
 }

@@ -1,13 +1,12 @@
 ﻿using Abp.EntityFramework;
+using System.Data.Entity;
 
 namespace WebShop.EntityFramework
 {
     public class WebShopDbContext : AbpDbContext
     {
-        //TODO: Define an IDbSet for each Entity...
-
-        //Example:
-        //public virtual IDbSet<User> Users { get; set; }
+        //TODO: Define an IDbSet for each Entity
+        public virtual IDbSet<Core.ProductManufactory> ProductManufactories { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -17,7 +16,6 @@ namespace WebShop.EntityFramework
         public WebShopDbContext()
             : base("Default")
         {
-
         }
 
         /* NOTE:

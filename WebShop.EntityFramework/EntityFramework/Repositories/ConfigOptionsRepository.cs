@@ -8,7 +8,10 @@ using WebShop.Core;
 
 namespace WebShop.EntityFramework.Repositories
 {
-    public class ConfigOptionsRepository
+    public class ConfigOptionsRepository : WebShopRepositoryBase<Core.ConfigOptions>, IConfigOptionsRepository
     {
+        public ConfigOptionsRepository(IDbContextProvider<WebShopDbContext> dbContextProvider) 
+            : base(dbContextProvider)
+        { }
     }
 }
