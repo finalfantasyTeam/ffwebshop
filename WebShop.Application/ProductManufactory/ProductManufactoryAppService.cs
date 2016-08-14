@@ -1,5 +1,6 @@
 ﻿using Abp.AutoMapper;
 using Abp.Domain.Uow;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -14,9 +15,10 @@ namespace WebShop.Application
         public ProductManufactoryAppService(IProductManufactoryRepository productManufatocryRepository)
         {
             _productManufatocryRepository = productManufatocryRepository;
+            Mapper.CreateMap<ProductManufactory, ProductManufactoryDTO>();
+            Mapper.CreateMap<ProductManufactoryDTO, ProductManufactory>();
         }
 
-        [UnitOfWork]
         public async Task<ListProductManufactoryRs> GetAllManufactory()
         {
             try
@@ -33,7 +35,6 @@ namespace WebShop.Application
             }
         }
 
-        [UnitOfWork]
         public async Task<GetProductManufactoryRs> GetManufactoryById(GetProductManufactoryRq rq)
         {
             ProductManufactory productManufactory = await _productManufatocryRepository.GetAsync(rq.Id);
@@ -44,7 +45,6 @@ namespace WebShop.Application
             };
         }
 
-        [UnitOfWork]
         public async Task<GetProductManufactoryRs> GetManufactoryByName(GetProductManufactoryRq rq)
         {
             ProductManufactory productManufactory = await _productManufatocryRepository.GetManufactoryByNameAsync(rq.Name);
@@ -55,7 +55,6 @@ namespace WebShop.Application
             };
         }
 
-        [UnitOfWork]
         public async Task<CreateProductManufactoryRs> CreateManufactory(CreateProductManufactoryRq rq)
         {
             try
@@ -74,7 +73,6 @@ namespace WebShop.Application
             }
         }
 
-        [UnitOfWork]
         public async Task<UpdateProductManufactoryRs> UpdateManufactory(UpdateProductManufactoryRq rq)
         {
             try
@@ -93,7 +91,6 @@ namespace WebShop.Application
             }
         }
 
-        [UnitOfWork]
         public async Task<DeleteProductManufactoryRs> DeleteManufactory(DeleteProductManufactoryRq rq)
         {
             try

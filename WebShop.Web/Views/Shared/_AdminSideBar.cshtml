@@ -22,17 +22,17 @@
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
     <li class="header">MAIN NAVIGATION</li>
-    <li><a href="documentation/index.html"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+    <li><a href="@Url.Action("Dashboard", "Admin")"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
     <li class="active treeview">
       <a href="#">
         <i class="fa fa-shopping-cart"></i> <span>Product Manage</span> <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li class="active"><a href="index.html"><i class="fa fa-cube"></i> Products</a></li>
-        <li class="active"><a href="index.html"><i class="fa fa-globe"></i> Product Branch</a></li>
-        <li class="active"><a href="index.html"><i class="fa fa-list-alt"></i> Product Category</a></li>
-        <li class="active"><a class="active" href="index.html"><i class="fa fa-industry"></i> Product Manufactory</a></li>
-        <li class="active"><a href="index.html"><i class="fa fa-tag"></i> Product Status</a></li>
+        <li class="active"><a href="@Url.Action("Index", "ProductManagement")"><i class="fa fa-cube"></i> Products</a></li>
+        <li class="active"><a href="@Url.Action("Index", "ProductBranchManagement")"><i class="fa fa-globe"></i> Product Branch</a></li>
+        <li class="active"><a href="@Url.Action("Index", "ProductCategoryManagement")"><i class="fa fa-list-alt"></i> Product Category</a></li>
+        <li class="active"><a class="active" href="@Url.Action("Index", "ProductManufactoryManagement")"><i class="fa fa-industry"></i> Product Manufactory</a></li>
+        <li class="active"><a href="@Url.Action("Index", "ProductStatusManagement")"><i class="fa fa-tag"></i> Product Status</a></li>
       </ul>
     </li>
     <li class="treeview">
@@ -40,8 +40,8 @@
         <i class="fa fa-dollar"></i> <span>Sales</span> <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li class="active"><a href="index.html"><i class="fa fa-edit"></i> Customer Orders</a></li>
-        <li class="active"><a href="index.html"><i class="fa fa-file-text-o"></i> Invoices</a></li>
+        <li class="active"><a href="@Url.Action("Index", "OrderManagement")"><i class="fa fa-edit"></i> Customer Orders</a></li>
+        <li class="active"><a href="@Url.Action("Index", "InvoiceManagement")"><i class="fa fa-file-text-o"></i> Invoices</a></li>
       </ul>
     </li>
     <li class="treeview">
@@ -49,12 +49,12 @@
         <i class="fa fa-user"></i> <span>Customer Manage</span> <i class="fa fa-angle-left pull-right"></i>
       </a>
       <ul class="treeview-menu">
-        <li class="active"><a href="index.html"><i class="fa fa-book"></i> Customers</a></li>
-        <li class="active"><a href="index.html"><i class="fa fa-user-md"></i> Customer Status</a></li>
+        <li class="active"><a href="@Url.Action("Index", "CustomerManagement")"><i class="fa fa-book"></i> Customers</a></li>
+        <li class="active"><a href="@Url.Action("Index", "CustomerStatusManagement")"><i class="fa fa-user-md"></i> Customer Status</a></li>
       </ul>
     </li>
-    <li><a href="documentation/index.html"><i class="fa fa-users"></i> <span>User Management</span></a></li>
-    <li><a href="documentation/index.html"><i class="fa fa-sliders"></i> <span>Configuration</span></a></li>
-    <li><a href="documentation/index.html"><i class="fa fa-info-circle"></i> <span>About</span></a></li>
+    <li><a href="@Url.Action("Index", "UserManagement")"><i class="fa fa-users"></i> <span>User Management</span></a></li>
+    <li><a href="@Url.Action("Index", "Configuration")"><i class="fa fa-sliders"></i> <span>Configuration</span></a></li>
+    <li><a href="#"><i class="fa fa-info-circle"></i> <span>About</span></a></li>
   </ul>
 </section>

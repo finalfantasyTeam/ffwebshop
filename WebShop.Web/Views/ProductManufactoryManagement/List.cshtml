@@ -16,25 +16,24 @@
               <th>Active</th>
             </tr>
           </thead>
-          
           <tbody>
             @{
-              if (Model.ListProductManufactory != null)
-              {
-                foreach (var data in Model.ListProductManufactory)
+                if (Model.ListProductManufactory != null)
                 {
-                  Html.Raw(data.Name);
+                  foreach (var data in Model.ListProductManufactory)
+                  {
+                        <tr>
+                          <td>@data.Id</td>
+                          <td>@data.ManufatoryLogo</td>
+                          <td>@data.Name</td>
+                          <td>@data.Description</td>
+                          <td>@data.ManufactoryCountry</td>
+                          <td>@data.IsActive</td>
+                        </tr>
+                  }
                 }
-              }
             }
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
+            
           </tbody>
           <tfoot>
             <tr>

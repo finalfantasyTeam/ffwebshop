@@ -27,11 +27,6 @@ namespace WebShop
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ProductBranch> ProductBranches { get; set; }
-        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
-        public virtual DbSet<ProductManufactory> ProductManufactories { get; set; }
-        public virtual DbSet<ProductStatu> ProductStatus { get; set; }
         public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
         public virtual DbSet<aspnet_Membership> aspnet_Membership { get; set; }
         public virtual DbSet<aspnet_Paths> aspnet_Paths { get; set; }
@@ -42,6 +37,19 @@ namespace WebShop
         public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
         public virtual DbSet<aspnet_Users> aspnet_Users { get; set; }
         public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
+        public virtual DbSet<ConfigOption> ConfigOptions { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerGroup> CustomerGroups { get; set; }
+        public virtual DbSet<CustomerOrder> CustomerOrders { get; set; }
+        public virtual DbSet<CustomerStatu> CustomerStatus { get; set; }
+        public virtual DbSet<Invoice> Invoices { get; set; }
+        public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductBranch> ProductBranches { get; set; }
+        public virtual DbSet<ProductCategory> ProductCategories { get; set; }
+        public virtual DbSet<ProductMeta> ProductMetas { get; set; }
+        public virtual DbSet<ProductStatu> ProductStatus { get; set; }
         public virtual DbSet<vw_aspnet_Applications> vw_aspnet_Applications { get; set; }
         public virtual DbSet<vw_aspnet_MembershipUsers> vw_aspnet_MembershipUsers { get; set; }
         public virtual DbSet<vw_aspnet_Profiles> vw_aspnet_Profiles { get; set; }
@@ -51,15 +59,6 @@ namespace WebShop
         public virtual DbSet<vw_aspnet_WebPartState_Paths> vw_aspnet_WebPartState_Paths { get; set; }
         public virtual DbSet<vw_aspnet_WebPartState_Shared> vw_aspnet_WebPartState_Shared { get; set; }
         public virtual DbSet<vw_aspnet_WebPartState_User> vw_aspnet_WebPartState_User { get; set; }
-        public virtual DbSet<ConfigOption> ConfigOptions { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
-        public virtual DbSet<CustomerGroup> CustomerGroups { get; set; }
-        public virtual DbSet<CustomerOrder> CustomerOrders { get; set; }
-        public virtual DbSet<CustomerStatu> CustomerStatus { get; set; }
-        public virtual DbSet<Invoice> Invoices { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<ProductMeta> ProductMetas { get; set; }
-        public virtual DbSet<InvoiceDetail> InvoiceDetails { get; set; }
     
         public virtual ObjectResult<string> aspnet_AnyDataInTables(Nullable<int> tablesToCheck)
         {

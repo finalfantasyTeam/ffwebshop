@@ -14,6 +14,7 @@ namespace WebShop
     
     public partial class ProductCategory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ProductCategory()
         {
             this.Products = new HashSet<Product>();
@@ -29,7 +30,9 @@ namespace WebShop
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<bool> IsActive { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductCategory> ProductCategory1 { get; set; }
         public virtual ProductCategory ProductCategory2 { get; set; }
     }

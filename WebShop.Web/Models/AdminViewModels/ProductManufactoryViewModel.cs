@@ -1,20 +1,21 @@
-﻿using Abp.EntityFramework;
+﻿using Abp.Dependency;
+using Castle.MicroKernel.Registration;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 using WebShop.Application;
 using WebShop.Core;
-
+using WebShop.EntityFramework.Repositories;
 
 namespace WebShop.Web.Models
 {
     public class ProductManufactoryViewModel
     {
-        private readonly IProductManufactoryRepository _manufactoryRepo;
         private readonly IProductManufactoryAppService _manufactoryAppService;
-        private readonly IDbContextProvider<EntityFramework.WebShopDbContext> _dbContextProvider;
 
-        public ProductManufactoryViewModel()
+        public ProductManufactoryViewModel(IProductManufactoryAppService manufactoryAppService)
         {
+            _manufactoryAppService = manufactoryAppService;
         }
 
         public async Task FillDataForModel()

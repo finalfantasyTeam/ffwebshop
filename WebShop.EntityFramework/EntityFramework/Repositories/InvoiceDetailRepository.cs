@@ -8,7 +8,10 @@ using WebShop.Core;
 
 namespace WebShop.EntityFramework.Repositories
 {
-    public class InvoiceDetailRepository
+    public class InvoiceDetailRepository : WebShopRepositoryBase<Core.InvoiceDetail>, IInvoiceDetailRepository
     {
+        public InvoiceDetailRepository(IDbContextProvider<WebShopDbContext> dbContextProvider) 
+            : base(dbContextProvider)
+        { }
     }
 }

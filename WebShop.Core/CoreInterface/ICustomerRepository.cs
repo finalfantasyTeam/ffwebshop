@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace WebShop.Core
 {
-    public interface ICustomerRepository
+    public interface ICustomerRepository : IRepository<Customer, int>
     {
     }
 }

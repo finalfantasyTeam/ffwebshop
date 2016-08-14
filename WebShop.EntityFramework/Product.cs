@@ -14,11 +14,12 @@ namespace WebShop
     
     public partial class Product
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            this.InvoiceDetails = new HashSet<InvoiceDetail>();
             this.OrderDetails = new HashSet<OrderDetail>();
             this.ProductMetas = new HashSet<ProductMeta>();
-            this.InvoiceDetails = new HashSet<InvoiceDetail>();
         }
     
         public int Id { get; set; }
@@ -39,12 +40,14 @@ namespace WebShop
         public Nullable<bool> IsActive { get; set; }
         public Nullable<decimal> Discount { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ProductBranch ProductBranch { get; set; }
         public virtual ProductCategory ProductCategory { get; set; }
-        public virtual ProductManufactory ProductManufactory { get; set; }
         public virtual ProductStatu ProductStatu { get; set; }
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductMeta> ProductMetas { get; set; }
-        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

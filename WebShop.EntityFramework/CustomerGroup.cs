@@ -14,6 +14,7 @@ namespace WebShop
     
     public partial class CustomerGroup
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CustomerGroup()
         {
             this.Customers = new HashSet<Customer>();
@@ -26,6 +27,7 @@ namespace WebShop
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<bool> IsActive { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
     }
 }

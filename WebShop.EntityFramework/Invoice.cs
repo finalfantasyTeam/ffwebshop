@@ -14,6 +14,7 @@ namespace WebShop
     
     public partial class Invoice
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Invoice()
         {
             this.InvoiceDetails = new HashSet<InvoiceDetail>();
@@ -31,6 +32,7 @@ namespace WebShop
         public string Notes { get; set; }
     
         public virtual Customer Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }
