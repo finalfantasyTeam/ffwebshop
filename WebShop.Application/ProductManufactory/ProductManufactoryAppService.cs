@@ -10,11 +10,11 @@ namespace WebShop.Application
 {
     public class ProductManufactoryAppService : IProductManufactoryAppService
     {
-        private readonly IProductManufactoryRepository _productManufatocryRepository;
+        private readonly IProductManufactoryRepository _productManufactoryRepository;
 
         public ProductManufactoryAppService(IProductManufactoryRepository productManufatocryRepository)
         {
-            _productManufatocryRepository = productManufatocryRepository;
+            _productManufactoryRepository = productManufatocryRepository;
             Mapper.CreateMap<ProductManufactory, ProductManufactoryDTO>();
             Mapper.CreateMap<ProductManufactoryDTO, ProductManufactory>();
         }
@@ -23,7 +23,7 @@ namespace WebShop.Application
         {
             try
             {
-                List<ProductManufactory> productManufactories = await _productManufatocryRepository.GetAllListAsync();
+                List<ProductManufactory> productManufactories = await _productManufactoryRepository.GetAllListAsync();
                 return new ListProductManufactoryRs()
                 {
                     Manufactories = productManufactories.MapTo<List<ProductManufactoryDTO>>()
@@ -37,7 +37,7 @@ namespace WebShop.Application
 
         public async Task<GetProductManufactoryRs> GetManufactoryById(GetProductManufactoryRq rq)
         {
-            ProductManufactory productManufactory = await _productManufatocryRepository.GetAsync(rq.Id);
+            ProductManufactory productManufactory = await _productManufactoryRepository.GetAsync(rq.Id);
 
             return new GetProductManufactoryRs()
             {
@@ -47,7 +47,7 @@ namespace WebShop.Application
 
         public async Task<GetProductManufactoryRs> GetManufactoryByName(GetProductManufactoryRq rq)
         {
-            ProductManufactory productManufactory = await _productManufatocryRepository.GetManufactoryByNameAsync(rq.Name);
+            ProductManufactory productManufactory = await _productManufactoryRepository.GetManufactoryByNameAsync(rq.Name);
 
             return new GetProductManufactoryRs()
             {
@@ -59,12 +59,12 @@ namespace WebShop.Application
         {
             try
             {
-                ProductManufactory insertManufacotry = rq.Manufactory.MapTo<ProductManufactory>();
-                insertManufacotry = await _productManufatocryRepository.InsertAsync(insertManufacotry);
+                ProductManufactory insertManufactory = rq.Manufactory.MapTo<ProductManufactory>();
+                insertManufactory = await _productManufactoryRepository.InsertAsync(insertManufactory);
 
                 return new CreateProductManufactoryRs()
                 {
-                    Manufactory = insertManufacotry.MapTo<ProductManufactoryDTO>()
+                    Manufactory = insertManufactory.MapTo<ProductManufactoryDTO>()
                 };
             }
             catch (Exception ex)
@@ -77,12 +77,12 @@ namespace WebShop.Application
         {
             try
             {
-                ProductManufactory updateManufacotry = rq.Manufactory.MapTo<ProductManufactory>();
-                updateManufacotry = await _productManufatocryRepository.UpdateAsync(updateManufacotry);
+                ProductManufactory updateManufactory = rq.Manufactory.MapTo<ProductManufactory>();
+                updateManufactory = await _productManufactoryRepository.UpdateAsync(updateManufactory);
 
                 return new UpdateProductManufactoryRs()
                 {
-                    Manufactory = updateManufacotry.MapTo<ProductManufactoryDTO>()
+                    Manufactory = updateManufactory.MapTo<ProductManufactoryDTO>()
                 };
             }
             catch (Exception ex)
@@ -95,8 +95,8 @@ namespace WebShop.Application
         {
             try
             {
-                ProductManufactory deleteManufacotry = rq.Manufactory.MapTo<ProductManufactory>();
-                await _productManufatocryRepository.DeleteAsync(deleteManufacotry);
+                ProductManufactory deleteManufactory = rq.Manufactory.MapTo<ProductManufactory>();
+                await _productManufactoryRepository.DeleteAsync(deleteManufactory);
 
                 return new DeleteProductManufactoryRs();
             }

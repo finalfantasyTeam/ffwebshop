@@ -2,8 +2,10 @@
 
 namespace WebShop.Web.Controllers
 {
-    public class ProductManagementController : AdminControllerBase
+    public class AdminProductController : AdminControllerBase
     {
+        //private readonly IProductAppService _manufactoryAppService;
+
         public ActionResult Index()
         {
             return View();

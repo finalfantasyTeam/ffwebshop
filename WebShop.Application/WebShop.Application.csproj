@@ -90,6 +90,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigOptions\CreateConfigOptionsRq.cs" />
+    <Compile Include="ConfigOptions\CreateConfigOptionsRs.cs" />
+    <Compile Include="ConfigOptions\DeleteConfigOptionsRq.cs" />
+    <Compile Include="ConfigOptions\DeleteConfigOptionsRs.cs" />
+    <Compile Include="ConfigOptions\GetConfigOptionsRq.cs" />
+    <Compile Include="ConfigOptions\GetConfigOptionsRs.cs" />
+    <Compile Include="ConfigOptions\IConfigOptionsAppService.cs" />
+    <Compile Include="ConfigOptions\ListConfigOptionsRs.cs" />
+    <Compile Include="ConfigOptions\ConfigOptionsAppService.cs" />
+    <Compile Include="ConfigOptions\ConfigOptionsDTO.cs" />
+    <Compile Include="ConfigOptions\UpdateConfigOptionsRq.cs" />
+    <Compile Include="ConfigOptions\UpdateConfigOptionsRs.cs" />
     <Compile Include="ProductManufactory\DeleteProductManufactoryRs.cs" />
     <Compile Include="ProductManufactory\CreateProductManufactoryRq.cs" />
     <Compile Include="ProductManufactory\DeleteProductManufactoryRq.cs" />
@@ -117,7 +129,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ConfigOptions\" />
     <Folder Include="CustomerGroup\" />
     <Folder Include="CustomerOrder\" />
     <Folder Include="CustomerStatus\" />
