@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebShop.Application
 {
-    public class UpdateConfigOptionsRs : IOutputDto
+    public class UpdateConfigOptionsRs : BaseResponse<ConfigOptionsDTO>
     {
         public ConfigOptionsDTO ConfigOption { get; set; }
     }

@@ -2,7 +2,7 @@
 
 namespace WebShop.Application
 {
-    public class UpdateConfigOptionsRq : IInputDto
+    public class UpdateConfigOptionsRq : BaseRequest
     {
         public ConfigOptionsDTO ConfigOption { get; set; }
     }

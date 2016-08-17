@@ -3,6 +3,6 @@ using System.Collections.Generic;
 
 namespace WebShop.Application
 {
-    public class DeleteProductManufactoryRs : IOutputDto
+    public class DeleteProductManufactoryRs : BaseResponse<ProductManufactoryDTO>
     { }
 }

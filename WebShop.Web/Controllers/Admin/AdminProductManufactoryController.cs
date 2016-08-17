@@ -32,31 +32,38 @@ namespace WebShop.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> Details(int id)
         {
-            return View();
+            ProductManufactoryViewModel viewModel = new ProductManufactoryViewModel(_manufactoryAppService);
+            await viewModel.GetProductManufactory(id);
+            return View(viewModel);
         }
 
         [HttpGet]
-        public async Task<ActionResult> Create(int id)
+        public ActionResult Create()
         {
-            return View();
+            ProductManufactoryViewModel viewModel = new ProductManufactoryViewModel(_manufactoryAppService);
+            return View(viewModel);
         }
 
         [HttpGet]
         public async Task<ActionResult> Update(int id)
         {
-            return View();
+            ProductManufactoryViewModel viewModel = new ProductManufactoryViewModel(_manufactoryAppService);
+            await viewModel.GetProductManufactory(id);
+            return View(viewModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Create(ProductManufactoryViewModel viewModel)
         {
-            return View();
+            await viewModel.CreateNewProductManufactory();
+            return RedirectToAction("Details", new { id = viewModel.ProductManufactory.Id });
         }
 
         [HttpPost]
         public async Task<ActionResult> Update(ProductManufactoryViewModel viewModel)
         {
-            return View();
+            await viewModel.UpdateProductManufactory();
+            return RedirectToAction("Details", new { id = viewModel.ProductManufactory.Id });
         }
     }
 }

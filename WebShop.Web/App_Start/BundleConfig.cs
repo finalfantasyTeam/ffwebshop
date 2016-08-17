@@ -36,8 +36,8 @@ namespace WebShop.Web
                     .Include(
                         "~/Scripts/json2.min.js",
 
-                        "~/Scripts/jquery-2.1.4.min.js",
-                        "~/Scripts/jquery-ui-1.11.4.min.js",
+                        "~/Scripts/jquery-3.1.0.min.js",
+                        "~/Scripts/jquery-ui-1.12.0.min.js",
 
                         "~/Scripts/bootstrap.min.js",
 
@@ -59,6 +59,7 @@ namespace WebShop.Web
                 );
 
             //ADMIN PAGE RESOURCES
+
             //~/Bundles/admin/css
             bundles.Add(
                 new StyleBundle("~/Bundles/admin/css")
@@ -90,6 +91,12 @@ namespace WebShop.Web
                     .Include("~/Content/admin/plugins/datatables/dataTables.bootstrap.min.js")
                     .Include("~/Content/admin/plugins/slimScroll/jquery.slimscroll.min.js")
                     .Include("~/Content/admin/plugins/fastclick/fastclick.min.min.js")
+                );
+
+            //~/Bundles/js
+            bundles.Add(
+                new ScriptBundle("~/Bundles/admin/js")
+                    .Include("~/js/admin/main.js")
                 );
 
             //APPLICATION RESOURCES

@@ -1,8 +1,9 @@
-﻿using Abp.Application.Services.Dto;
+﻿using System;
+using Abp.Application.Services.Dto;
 
 namespace WebShop.Application
 {
-    public class DeleteProductManufactoryRq : IInputDto
+    public class DeleteProductManufactoryRq : BaseRequest
     {
         public ProductManufactoryDTO Manufactory { get; set; }
     }

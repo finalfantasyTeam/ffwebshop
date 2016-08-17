@@ -90,6 +90,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BaseResponse.cs" />
+    <Compile Include="Common\BaseRequest.cs" />
     <Compile Include="ConfigOptions\CreateConfigOptionsRq.cs" />
     <Compile Include="ConfigOptions\CreateConfigOptionsRs.cs" />
     <Compile Include="ConfigOptions\DeleteConfigOptionsRq.cs" />

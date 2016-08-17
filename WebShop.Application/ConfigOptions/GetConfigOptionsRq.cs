@@ -2,7 +2,7 @@
 
 namespace WebShop.Application
 {
-    public class GetConfigOptionsRq : IInputDto
+    public class GetConfigOptionsRq : BaseRequest
     {
         public int Id { get; set; }
         public string OptionKey { get; set; }

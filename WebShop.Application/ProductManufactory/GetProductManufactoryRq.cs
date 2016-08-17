@@ -2,7 +2,7 @@
 
 namespace WebShop.Application
 {
-    public class GetProductManufactoryRq : IInputDto
+    public class GetProductManufactoryRq : BaseRequest
     {
         public int Id { get; set; }
         public string Name { get; set; }

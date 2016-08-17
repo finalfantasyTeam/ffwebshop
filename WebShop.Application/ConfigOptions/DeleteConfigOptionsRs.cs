@@ -3,6 +3,6 @@ using System.Collections.Generic;
 
 namespace WebShop.Application
 {
-    public class DeleteConfigOptionsRs : IOutputDto
+    public class DeleteConfigOptionsRs : BaseResponse<ConfigOptionsDTO>
     { }
 }

@@ -2,7 +2,7 @@
 
 namespace WebShop.Application
 {
-    public class UpdateProductManufactoryRq : IInputDto
+    public class UpdateProductManufactoryRq : BaseRequest
     {
         public ProductManufactoryDTO Manufactory { get; set; }
     }

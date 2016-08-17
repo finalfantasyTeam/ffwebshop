@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace WebShop.Application
 {
-    public class UpdateProductManufactoryRs : IOutputDto
+    public class UpdateProductManufactoryRs : BaseResponse<ProductManufactoryDTO>
     {
         public ProductManufactoryDTO Manufactory { get; set; }
     }
