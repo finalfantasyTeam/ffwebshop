@@ -23,9 +23,15 @@
                   foreach (var data in Model.ListProductManufactory)
                   {
                         <tr>
-                          <td>@data.Id</td>
-                          <td>@data.ManufatoryLogo</td>
-                          <td>@data.Name</td>
+                          <td>
+                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
+                          </td>
+                          <td>
+                           <img src='@Url.Content("~")' alt="@data.ManufactoryLogo" />
+                          </td>
+                          <td>
+                            <a href="@Url.Action("Details", new { id = data.Id })">@data.Name</a>
+                          </td>
                           <td>@data.Description</td>
                           <td>@data.ManufactoryCountry</td>
                           <td>@data.IsActive</td>
@@ -35,16 +41,6 @@
             }
             
           </tbody>
-          <tfoot>
-            <tr>
-              <th>#</th>
-              <th>Logo</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Country</th>
-              <th>Active</th>
-            </tr>
-          </tfoot>
         </table>
       </div>
     </div>

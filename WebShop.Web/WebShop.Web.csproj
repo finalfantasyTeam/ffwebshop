@@ -1032,6 +1032,7 @@
     <Content Include="Content\flags\famfamfam-flags.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="js\admin\main.js" />
     <Content Include="js\main.js" />
     <Content Include="Localization\WebShop\WebShop-zh-CN.xml" />
     <Content Include="Localization\WebShop\WebShop.ja.xml" />

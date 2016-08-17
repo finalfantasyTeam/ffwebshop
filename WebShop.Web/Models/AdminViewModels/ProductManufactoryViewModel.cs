@@ -1,11 +1,6 @@
-﻿using Abp.Dependency;
-using Castle.MicroKernel.Registration;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebShop.Application;
-using WebShop.Core;
-using WebShop.EntityFramework.Repositories;
 
 namespace WebShop.Web.Models
 {
@@ -23,6 +18,35 @@ namespace WebShop.Web.Models
             ListProductManufactory = (await _manufactoryAppService.GetAllManufactory()).Manufactories;
         }
 
+        public async Task GetProductManufactory(int id)
+        {
+            GetProductManufactoryRq rq = new GetProductManufactoryRq()
+            { Id = id };
+            ProductManufactory = (await _manufactoryAppService.GetManufactoryById(rq)).Manufactory;
+        }
+
+        public async Task CreateNewProductManufactory()
+        {
+            CreateProductManufactoryRq rq = new CreateProductManufactoryRq()
+            { Manufactory = ProductManufactory };
+            ProductManufactory = (await _manufactoryAppService.CreateManufactory(rq)).Manufactory;
+        }
+
+        public async Task UpdateProductManufactory()
+        {
+            UpdateProductManufactoryRq rq = new UpdateProductManufactoryRq()
+            { Manufactory = ProductManufactory };
+            ProductManufactory = (await _manufactoryAppService.UpdateManufactory(rq)).Manufactory;
+        }
+
+        public async Task DeleteProductManufactory()
+        {
+            DeleteProductManufactoryRq rq = new DeleteProductManufactoryRq()
+            { Manufactory = ProductManufactory };
+            await _manufactoryAppService.DeleteManufactory(rq);
+        }
+
         public IList<ProductManufactoryDTO> ListProductManufactory { get; set; }
+        public ProductManufactoryDTO ProductManufactory { get; set; }
     }
 }

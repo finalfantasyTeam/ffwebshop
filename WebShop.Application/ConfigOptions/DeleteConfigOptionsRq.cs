@@ -2,7 +2,7 @@
 
 namespace WebShop.Application
 {
-    public class DeleteConfigOptionsRq : IInputDto
+    public class DeleteConfigOptionsRq : BaseRequest
     {
         public ConfigOptionsDTO ConfigOption { get; set; }
     }

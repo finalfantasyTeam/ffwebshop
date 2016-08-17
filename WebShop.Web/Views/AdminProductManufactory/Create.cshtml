@@ -1,1 +1,50 @@
-﻿
+﻿@using (Html.BeginForm("Update", "AdminProductManufactory", FormMethod.Post))
+{
+}
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">@Model.ProductManufactory.Id - @Model.ProductManufactory.Name</h3>
+      </div>
+      <form role="form">
+        <div class="box-body">
+          <div class="form-group">
+            <label for="txtManufactoryName">Name</label>
+            <input id="txtManufactoryName" type="text" value="@Model.ProductManufactory.Name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="txtManufactoryDescription">Description</label>
+            <input id="txtManufactoryDescription" type="text" value="@Model.ProductManufactory.Description" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="txtManufactoryCountry">Manufactory Country</label>
+            <input id="txtManufactoryCountry" type="text" value="@Model.ProductManufactory.ManufactoryCountry" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="txtCreateDate">Create Date</label>
+            <input id="txtCreateDate" type="text" value="@Model.ProductManufactory.CreateDate" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="txtUpdateDate">Update Date</label>
+            <input id="txtUpdateDate" type="text" value="@Model.ProductManufactory.UpdateDate" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="fileManufactoryLogo">Manufactory Logo</label>
+            <input type="file" id="fileManufactoryLogo">
+            <p class="help-block">Please chose manufactory logo</p>
+            @Model.ProductManufactory.ManufactoryLogo
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked="@Model.ProductManufactory.IsActive" value="@Model.ProductManufactory.IsActive"> Is Activated
+            </label>
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
