@@ -1034,11 +1034,6 @@
     <Content Include="Global.asax" />
     <Content Include="js\admin\main.js" />
     <Content Include="js\main.js" />
-    <Content Include="Localization\WebShop\WebShop-zh-CN.xml" />
-    <Content Include="Localization\WebShop\WebShop.ja.xml" />
-    <Content Include="Localization\WebShop\WebShop.tr.xml">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Localization\WebShop\WebShop.xml">
       <SubType>Designer</SubType>
     </Content>

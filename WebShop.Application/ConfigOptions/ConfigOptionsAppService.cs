@@ -37,12 +37,19 @@ namespace WebShop.Application
 
         public async Task<GetConfigOptionsRs> GetConfigOption(GetConfigOptionsRq rq)
         {
-            ConfigOptions configOption = await _configOptionsRepository.GetAsync(rq.Id);
-
-            return new GetConfigOptionsRs()
+            try
             {
-                ConfigOption = configOption.MapTo<ConfigOptionsDTO>()
-            };
+                ConfigOptions configOption = await _configOptionsRepository.GetAsync(rq.Id);
+
+                return new GetConfigOptionsRs()
+                {
+                    ConfigOption = configOption.MapTo<ConfigOptionsDTO>()
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<CreateConfigOptionsRs> CreateConfigOption(CreateConfigOptionsRq rq)
