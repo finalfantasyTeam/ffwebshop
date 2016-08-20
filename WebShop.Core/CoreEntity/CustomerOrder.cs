@@ -14,9 +14,9 @@ namespace WebShop.Core
         }
 
         public int? CustomerId { get; set; }
-        public System.DateTime? CreateDate { get; set; }
-        public System.DateTime? UpdateDate { get; set; }
-        public System.DateTime? DeliveryDate { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public DateTime? DeliveryDate { get; set; }
         public decimal? OrderTotal { get; set; }
         public string Status { get; set; }
         public bool? IsActive { get; set; }

@@ -18,9 +18,9 @@ namespace WebShop.Core
         public string Description { get; set; }
         public string ImageToShow { get; set; }
         public int ParentCat { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime UpdateDate { get; set; }
-        public bool IsActive { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public bool? IsActive { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<ProductCategory> ProductCategoryChild { get; set; }
