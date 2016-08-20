@@ -24,9 +24,9 @@ namespace WebShop.Core
         public int? Status { get; set; }
         public int? ManufactoryId { get; set; }
         public int? BranchId { get; set; }
-        public System.DateTime? CreateDate { get; set; }
-        public System.DateTime? UpdateDate { get; set; }
-        public System.DateTime? ImportDate { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public DateTime? ImportDate { get; set; }
         public string FeatureImage { get; set; }
         public string ImageList { get; set; }
         public bool? IsActive { get; set; }
