@@ -6,5 +6,7 @@ namespace WebShop.Core
 {
     public interface IProductCategoryRepository : IRepository<ProductCategory, int>
     {
+        // Declare custom action with database
+        Task<ProductCategory> GetCategoryByNameAsync(string CategoryName);
     }
 }

@@ -14,7 +14,7 @@
     <RootNamespace>WebShop.Web</RootNamespace>
     <AssemblyName>WebShop.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -1207,6 +1207,7 @@
     <Compile Include="App_Start\WebShopWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\Admin\AdminProductCategoryController.cs" />
     <Compile Include="Controllers\Admin\AdminProductController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\AdminControllerBase.cs" />
@@ -1214,6 +1215,7 @@
     <Compile Include="Controllers\Admin\AdminProductManufactoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\AdminViewModels\ConfigOptionsViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\ProductCategoryViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductManufactoryViewModel.cs" />
     <Compile Include="Models\Layout\LanguageSelectionViewModel.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
@@ -1266,6 +1268,7 @@
     <Content Include="Views\AdminConfigOptions\Create.cshtml" />
     <Content Include="Views\AdminConfigOptions\Details.cshtml" />
     <Content Include="Views\AdminConfigOptions\List.cshtml" />
+    <Content Include="Views\AdminProductCategory\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1312,7 +1315,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61814</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4009</IISUrl>
+          <IISUrl>http://localhost:61814/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -5,6 +5,6 @@ namespace WebShop.Application
 {
     public class GetProductCategoryRs : BaseResponse<ProductCategoryDTO>
     {
-        public ProductCategoryDTO ProductCategory { get; set; }
+        public ProductCategoryDTO Category { get; set; }
     }
 }
