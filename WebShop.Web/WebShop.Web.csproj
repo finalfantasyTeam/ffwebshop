@@ -1269,6 +1269,7 @@
     <Content Include="Views\AdminConfigOptions\Details.cshtml" />
     <Content Include="Views\AdminConfigOptions\List.cshtml" />
     <Content Include="Views\AdminProductCategory\List.cshtml" />
+    <Content Include="Views\AdminProductCategory\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

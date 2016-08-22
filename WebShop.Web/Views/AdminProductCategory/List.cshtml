@@ -26,13 +26,13 @@
                                             <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
                                         </td>
                                         <td>
-                                            <img src='@Url.Content("~")' alt="@data.CategoryLogo" />
+                                            <img src='@Url.Content("~")' alt="@data.ImageToShow" />
                                         </td>
                                         <td>
                                             <a href="@Url.Action("Details", new { id = data.Id })">@data.Name</a>
                                         </td>
                                         <td>@data.Description</td>
-                                        <td>@data.CategoryCountry</td>
+                                        <td>@data.CreateDate</td>
                                         <td>@data.IsActive</td>
                                     </tr>
                                 }
