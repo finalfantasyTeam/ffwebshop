@@ -19,14 +19,14 @@ namespace WebShop.Application
             Mapper.CreateMap<CustomerGroupDTO, CustomerGroup>();
         }
 
-        public async Task<ListCustomerGroupRs> GetAllCustomerGroup()
+        public async Task<ListCustomerGroupRs> GetAllGroup()
         {
             try
             {
                 List<CustomerGroup> CustomerGroup = await _customerGroupRepository.GetAllListAsync();
                 return new ListCustomerGroupRs()
                 {
-                    CustomerGroups = CustomerGroup.MapTo<List<CustomerGroupDTO>>()
+                    Groups = CustomerGroup.MapTo<List<CustomerGroupDTO>>()
                 };
             }
             catch (Exception ex)
@@ -35,7 +35,7 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetCustomerGroupRs> GetCustomerGroup(GetCustomerGroupRq rq)
+        public async Task<GetCustomerGroupRs> GetGroupById(GetCustomerGroupRq rq)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace WebShop.Application
 
                 return new GetCustomerGroupRs()
                 {
-                    CustomerGroup = customerGroup.MapTo<CustomerGroupDTO>()
+                    Group = customerGroup.MapTo<CustomerGroupDTO>()
                 };
             }
             catch (Exception ex)
@@ -52,16 +52,16 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<CreateCustomerGroupRs> CreateCustomerGroup(CreateCustomerGroupRq rq)
+        public async Task<CreateCustomerGroupRs> CreateGroup(CreateCustomerGroupRq rq)
         {
             try
             {
-                CustomerGroup insertCustomerGroup = rq.CustomerGroup.MapTo<CustomerGroup>();
+                CustomerGroup insertCustomerGroup = rq.Group.MapTo<CustomerGroup>();
                 insertCustomerGroup = await _customerGroupRepository.InsertAsync(insertCustomerGroup);
 
                 return new CreateCustomerGroupRs()
                 {
-                    CustomerGroup = insertCustomerGroup.MapTo<CustomerGroupDTO>()
+                    Group = insertCustomerGroup.MapTo<CustomerGroupDTO>()
                 };
             }
             catch (Exception ex)
@@ -70,16 +70,16 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<UpdateCustomerGroupRs> UpdateCustomerGroup(UpdateCustomerGroupRq rq)
+        public async Task<UpdateCustomerGroupRs> UpdateGroup(UpdateCustomerGroupRq rq)
         {
             try
             {
-                CustomerGroup updateCustomerGroup = rq.CustomerGroup.MapTo<CustomerGroup>();
+                CustomerGroup updateCustomerGroup = rq.Group.MapTo<CustomerGroup>();
                 updateCustomerGroup = await _customerGroupRepository.UpdateAsync(updateCustomerGroup);
 
                 return new UpdateCustomerGroupRs()
                 {
-                    CustomerGroup = updateCustomerGroup.MapTo<CustomerGroupDTO>()
+                    Group = updateCustomerGroup.MapTo<CustomerGroupDTO>()
                 };
             }
             catch (Exception ex)
@@ -88,11 +88,11 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<DeleteCustomerGroupRs> DeleteCustomerGroup(DeleteCustomerGroupRq rq)
+        public async Task<DeleteCustomerGroupRs> DeleteGroup(DeleteCustomerGroupRq rq)
         {
             try
             {
-                CustomerGroup deleteCustomerGroup = rq.CustomerGroup.MapTo<CustomerGroup>();
+                CustomerGroup deleteCustomerGroup = rq.Group.MapTo<CustomerGroup>();
                 await _customerGroupRepository.DeleteAsync(deleteCustomerGroup);
 
                 return new DeleteCustomerGroupRs();

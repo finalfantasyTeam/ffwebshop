@@ -6,5 +6,7 @@ namespace WebShop.Core
 {
     public interface ICustomerGroupRepository : IRepository<CustomerGroup, int>
     {
+        // Declare custom action with database
+        Task<CustomerGroup> GetGroupByNameAsync(string GroupName);
     }
 }

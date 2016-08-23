@@ -5,6 +5,6 @@ namespace WebShop.Application
 {
     public class UpdateProductBranchRs : BaseResponse<ProductBranchDTO>
     {
-        public ProductBranchDTO ProductBranch { get; set; }
+        public ProductBranchDTO Branch { get; set; }
     }
 }

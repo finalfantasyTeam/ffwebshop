@@ -5,10 +5,10 @@ namespace WebShop.Application
 {
     public interface ICustomerGroupAppService : IApplicationService
     {
-        Task<ListCustomerGroupRs> GetAllCustomerGroup();
-        Task<GetCustomerGroupRs> GetCustomerGroup(GetCustomerGroupRq rq);
-        Task<CreateCustomerGroupRs> CreateCustomerGroup(CreateCustomerGroupRq rq);
-        Task<UpdateCustomerGroupRs> UpdateCustomerGroup(UpdateCustomerGroupRq rq);
-        Task<DeleteCustomerGroupRs> DeleteCustomerGroup(DeleteCustomerGroupRq rq);
+        Task<ListCustomerGroupRs> GetAllGroup();
+        Task<GetCustomerGroupRs> GetGroupById(GetCustomerGroupRq rq);
+        Task<CreateCustomerGroupRs> CreateGroup(CreateCustomerGroupRq rq);
+        Task<UpdateCustomerGroupRs> UpdateGroup(UpdateCustomerGroupRq rq);
+        Task<DeleteCustomerGroupRs> DeleteGroup(DeleteCustomerGroupRq rq);
     }
 }

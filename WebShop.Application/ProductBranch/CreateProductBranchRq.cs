@@ -4,6 +4,6 @@ namespace WebShop.Application
 {
     public class CreateProductBranchRq : BaseRequest
     {
-        public ProductBranchDTO ProductBranch { get; set; }
+        public ProductBranchDTO Branch { get; set; }
     }
 }

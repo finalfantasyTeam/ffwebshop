@@ -6,5 +6,7 @@ namespace WebShop.Core
 {
     public interface ICustomerStatusRepository : IRepository<CustomerStatus, int>
     {
+        // Declare custom action with database
+        Task<CustomerStatus> GetStatusByNameAsync(string StatusName);
     }
 }

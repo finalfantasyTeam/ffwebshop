@@ -13,5 +13,11 @@ namespace WebShop.EntityFramework.Repositories
         public CustomerStatusRepository(IDbContextProvider<WebShopDbContext> dbContextProvider) 
             : base(dbContextProvider)
         { }
+
+        // Implement custom data access function here
+        public async Task<Core.CustomerStatus> GetStatusByNameAsync(string StatusName)
+        {
+            return await SingleAsync(m => m.Name.Contains(StatusName));
+        }
     }
 }

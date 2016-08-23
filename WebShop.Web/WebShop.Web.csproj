@@ -1207,6 +1207,9 @@
     <Compile Include="App_Start\WebShopWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\Admin\AdminCustomerGroupController.cs" />
+    <Compile Include="Controllers\Admin\AdminCustomerStatusController.cs" />
+    <Compile Include="Controllers\Admin\AdminProductBranchController.cs" />
     <Compile Include="Controllers\Admin\AdminProductCategoryController.cs" />
     <Compile Include="Controllers\Admin\AdminProductController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
@@ -1215,6 +1218,9 @@
     <Compile Include="Controllers\Admin\AdminProductManufactoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\AdminViewModels\ConfigOptionsViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\CustomerGroupViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\CustomerStatusViewMode.cs" />
+    <Compile Include="Models\AdminViewModels\ProductBranchViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductCategoryViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductManufactoryViewModel.cs" />
     <Compile Include="Models\Layout\LanguageSelectionViewModel.cs" />
@@ -1270,6 +1276,20 @@
     <Content Include="Views\AdminConfigOptions\List.cshtml" />
     <Content Include="Views\AdminProductCategory\List.cshtml" />
     <Content Include="Views\AdminProductCategory\Details.cshtml" />
+    <Content Include="Views\AdminProductCategory\Update.cshtml" />
+    <Content Include="Views\AdminProductCategory\Create.cshtml" />
+    <Content Include="Views\AdminProductBranch\List.cshtml" />
+    <Content Include="Views\AdminProductBranch\Create.cshtml" />
+    <Content Include="Views\AdminProductBranch\Details.cshtml" />
+    <Content Include="Views\AdminProductBranch\Update.cshtml" />
+    <Content Include="Views\AdminCustomerGroup\List.cshtml" />
+    <Content Include="Views\AdminCustomerGroup\Create.cshtml" />
+    <Content Include="Views\AdminCustomerGroup\Details.cshtml" />
+    <Content Include="Views\AdminCustomerGroup\Update.cshtml" />
+    <Content Include="Views\AdminCustomerStatus\Create.cshtml" />
+    <Content Include="Views\AdminCustomerStatus\List.cshtml" />
+    <Content Include="Views\AdminCustomerStatus\Details.cshtml" />
+    <Content Include="Views\AdminCustomerStatus\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -4,6 +4,6 @@ namespace WebShop.Application
 {
     public class DeleteCustomerGroupRq : BaseRequest
     {
-        public CustomerGroupDTO CustomerGroup { get; set; }
+        public CustomerGroupDTO Group { get; set; }
     }
 }

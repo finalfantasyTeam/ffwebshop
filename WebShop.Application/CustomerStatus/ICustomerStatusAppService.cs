@@ -5,10 +5,10 @@ namespace WebShop.Application
 {
     public interface ICustomerStatusAppService : IApplicationService
     {
-        Task<ListCustomerStatusRs> GetAllCustomerStatus();
-        Task<GetCustomerStatusRs> GetCustomerStatus(GetCustomerStatusRq rq);
-        Task<CreateCustomerStatusRs> CreateCustomerStatus(CreateCustomerStatusRq rq);
-        Task<UpdateCustomerStatusRs> UpdateCustomerStatus(UpdateCustomerStatusRq rq);
-        Task<DeleteCustomerStatusRs> DeleteCustomerStatus(DeleteCustomerStatusRq rq);
+        Task<ListCustomerStatusRs> GetAllStatus();
+        Task<GetCustomerStatusRs> GetStatusById(GetCustomerStatusRq rq);
+        Task<CreateCustomerStatusRs> CreateStatus(CreateCustomerStatusRq rq);
+        Task<UpdateCustomerStatusRs> UpdateStatus(UpdateCustomerStatusRq rq);
+        Task<DeleteCustomerStatusRs> DeleteStatus(DeleteCustomerStatusRq rq);
     }
 }
