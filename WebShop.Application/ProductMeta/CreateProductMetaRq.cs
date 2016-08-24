@@ -4,6 +4,6 @@ namespace WebShop.Application
 {
     public class CreateProductMetaRq : BaseRequest
     {
-        public ProductMetaDTO ProductMeta { get; set; }
+        public ProductMetaDTO Meta { get; set; }
     }
 }

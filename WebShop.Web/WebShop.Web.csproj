@@ -1216,6 +1216,7 @@
     <Compile Include="Controllers\Admin\AdminControllerBase.cs" />
     <Compile Include="Controllers\Admin\AdminConfigOptionsController.cs" />
     <Compile Include="Controllers\Admin\AdminProductManufactoryController.cs" />
+    <Compile Include="Controllers\Admin\AdminProductMetaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\AdminViewModels\ConfigOptionsViewModel.cs" />
     <Compile Include="Models\AdminViewModels\CustomerGroupViewModel.cs" />
@@ -1223,6 +1224,7 @@
     <Compile Include="Models\AdminViewModels\ProductBranchViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductCategoryViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductManufactoryViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\ProductMetaViewModel.cs" />
     <Compile Include="Models\Layout\LanguageSelectionViewModel.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\WebShopControllerBase.cs" />
@@ -1290,6 +1292,10 @@
     <Content Include="Views\AdminCustomerStatus\List.cshtml" />
     <Content Include="Views\AdminCustomerStatus\Details.cshtml" />
     <Content Include="Views\AdminCustomerStatus\Update.cshtml" />
+    <Content Include="Views\AdminProductMeta\Create.cshtml" />
+    <Content Include="Views\AdminProductMeta\Details.cshtml" />
+    <Content Include="Views\AdminProductMeta\List.cshtml" />
+    <Content Include="Views\AdminProductMeta\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DFA48E27-7D53-4955-A722-3D91A7119BE7}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,6 +19,24 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.WebApi", "WebShop.WebApi\WebShop.WebApi.csproj", "{5EB52D3D-09FD-463A-B02A-8D9856BD3724}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Web", "WebShop.Web\WebShop.Web.csproj", "{404A6D3B-AA85-4E4C-AEEE-1E5026D5F135}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Upload", "Upload", "{2AEE1E03-4237-401B-87F5-C49D2676E114}"
+	ProjectSection(SolutionItems) = preProject
+		Upload\1.jpg = Upload\1.jpg
+		Upload\10.jpg = Upload\10.jpg
+		Upload\11.jpg = Upload\11.jpg
+		Upload\12.jpg = Upload\12.jpg
+		Upload\13.jpg = Upload\13.jpg
+		Upload\14.jpg = Upload\14.jpg
+		Upload\2.jpg = Upload\2.jpg
+		Upload\3.jpg = Upload\3.jpg
+		Upload\4.jpg = Upload\4.jpg
+		Upload\5.jpg = Upload\5.jpg
+		Upload\6.jpg = Upload\6.jpg
+		Upload\7.jpg = Upload\7.jpg
+		Upload\8.jpg = Upload\8.jpg
+		Upload\9.jpg = Upload\9.jpg
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
