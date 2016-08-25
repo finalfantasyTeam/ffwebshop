@@ -1,59 +1,60 @@
-﻿@using (Html.BeginForm("Update", "AdminProductManufactory", FormMethod.Post))
+﻿@model WebShop.Web.Models.ProductManufactoryViewModel
+
+@using (Html.BeginForm("Create", "AdminProductManufactory", FormMethod.Post))
 {
-}
-<div class="row">
-  <div class="col-md-6">
-    <div class="box box-primary">
-      <div class="box-header with-border">
-        <h3 class="box-title">@Model.ProductManufactory.Id - @Model.ProductManufactory.Name</h3>
-        <a class="btn-link">@L("BackButtonLabel")</a>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            @if (@Model.ProductManufactory != null)
+            {
+                <h3 class="box-title">@Model.ProductManufactory.Id - @Model.ProductManufactory.Name</h3>
+            }
+            else
+            {
+                <h3 class="box-title">No factory name</h3>
+            }
+            <a class="btn-link">@L("BackButtonLabel")</a>
+          </div>
+          <form role="form">
+            <div class="box-body">
+              <div class="form-group">
+                <label for="txtManufactoryName">@L("NameLabel")</label>
+                @Html.TextBoxFor(@model => @model.ProductManufactory.Name, new { @id = "txtManufactoryName", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="txtManufactoryDescription">@L("DescriptionLabel")</label>
+                @Html.TextBoxFor(@model => @model.ProductManufactory.Description, new { @id = "txtManufactoryDescription", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="txtManufactoryCountry">@L("CountryLabel")</label>
+                @Html.TextBoxFor(@model => @model.ProductManufactory.ManufactoryCountry, new { @id = "txtManufactoryCountry", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="txtCreateDate">@L("CreateDateLabel")</label>
+                @Html.TextBoxFor(@model => @model.ProductManufactory.CreateDate, new { @id = "txtCreateDate", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
+                @Html.TextBoxFor(@model => @model.ProductManufactory.UpdateDate, new { @id = "txtUpdateDate", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="fileManufactoryLogo">@L("ManufactoryLogoLabel")</label>
+                <input type="file" id="fileManufactoryLogo">
+                <p class="help-block">@L("UploadLogoHelpText")</p>
+                @*@Model.ProductManufactory.ManufactoryLogo*@
+              </div>
+              <div class="checkbox">
+                <label>
+                  @Html.CheckBoxFor(@model => @model.ProductManufactory.IsActive) @L("IsActiveLabel")
+                </label>
+              </div>
+            </div>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary">@L("SubmitButtonLabel")</button>
+            </div>
+          </form>
+        </div>
       </div>
-      <form role="form">
-        <div class="box-body">
-          <div class="form-group">
-            <label for="txtManufactoryName">@L("NameLabel")</label>
-            <input id="txtManufactoryName" type="text" value="@Model.ProductManufactory.Name" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="txtManufactoryDescription">@L("DescriptionLabel")</label>
-            <input id="txtManufactoryDescription" type="text" value="@Model.ProductManufactory.Description" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="txtManufactoryCountry">@L("CountryLabel")</label>
-            <input id="txtManufactoryCountry" type="text" value="@Model.ProductManufactory.ManufactoryCountry" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="txtCreateDate">@L("CreateDateLabel")</label>
-            <input id="txtCreateDate" type="text" value="@Model.ProductManufactory.CreateDate" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
-            <input id="txtUpdateDate" type="text" value="@Model.ProductManufactory.UpdateDate" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="fileManufactoryLogo">@L("ManufactoryLogoLabel")</label>
-            <input type="file" id="fileManufactoryLogo">
-            <p class="help-block">@L("UploadLogoHelpText")</p>
-            @Model.ProductManufactory.ManufactoryLogo
-          </div>
-          <div class="checkbox">
-            <label>
-              @if (Model.ProductManufactory.IsActive)
-              {
-                  <input type="checkbox" checked="checked" value="@Model.ProductManufactory.IsActive"> @L("IsActiveLabel")
-              }
-              else
-              {
-                  <input type="checkbox" value="@Model.ProductManufactory.IsActive"> @L("IsActiveLabel")
-              }
-            </label>
-          </div>
-        </div>
-        <div class="box-footer">
-          <button type="button" class="btn btn-primary">@L("EditButtonLabel")</button>
-          <button type="button" class="btn btn-primary">@L("DeleteButtonLabel")</button>
-        </div>
-      </form>
     </div>
-  </div>
-</div>
+}

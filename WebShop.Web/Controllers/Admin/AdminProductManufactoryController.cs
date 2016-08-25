@@ -55,7 +55,10 @@ namespace WebShop.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(ProductManufactoryViewModel viewModel)
         {
-            await viewModel.CreateNewProductManufactory();
+            CreateProductManufactoryRq rq = new CreateProductManufactoryRq()
+            { Manufactory = viewModel.ProductManufactory };
+            viewModel.ProductManufactory = (await _manufactoryAppService.CreateManufactory(rq)).Manufactory;
+
             return RedirectToAction("Details", new { id = viewModel.ProductManufactory.Id });
         }
 

@@ -60,11 +60,11 @@ namespace WebShop.Application
             try
             {
                 ProductManufactory insertManufactory = rq.Manufactory.MapTo<ProductManufactory>();
-                insertManufactory = await _productManufactoryRepository.InsertAsync(insertManufactory);
+                rq.Manufactory.Id = await _productManufactoryRepository.InsertAndGetIdAsync(insertManufactory);
 
                 return new CreateProductManufactoryRs()
                 {
-                    Manufactory = insertManufactory.MapTo<ProductManufactoryDTO>()
+                    Manufactory = rq.Manufactory
                 };
             }
             catch (Exception ex)

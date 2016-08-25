@@ -1,4 +1,6 @@
-﻿@using (Html.BeginForm("Update", "AdminProductManufactory", FormMethod.Post))
+﻿@model WebShop.Web.Models.ProductManufactoryViewModel
+
+@using (Html.BeginForm("Update", "AdminProductManufactory", FormMethod.Post))
 {
 }
 <div class="row">
@@ -37,7 +39,7 @@
             @Model.ProductManufactory.ManufactoryLogo
           </div>
           <div class="checkbox">
-            <label>
+            <label>ProductManufactory.cs
               @if (Model.ProductManufactory.IsActive)
               {
                   <input type="checkbox" checked="checked" value="@Model.ProductManufactory.IsActive"> @L("IsActiveLabel")

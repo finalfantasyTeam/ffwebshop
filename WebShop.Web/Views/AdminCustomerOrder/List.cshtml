@@ -1,0 +1,55 @@
+﻿<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Customer Order list</h3>
+      </div>
+      <div class="box-body">
+        <table id="tblCustomerOrder" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>CustomerId</th>
+              <th>Create Date</th>
+              <th>Update Date</th>
+              <th>Delivery Date</th>
+              <th>Order Total</th>
+              <th>Status</th>
+              <th>Notes</th>
+              <th>Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            @{
+                if (Model.ListCustomerOrder != null)
+                {
+                  foreach (var data in Model.ListCustomerOrder)
+                  {
+                        <tr>
+                          <td>
+                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
+                          </td>
+                          <td>@data.CustomerId</td>
+                          <td>@data.CreateDate</td>
+                          <td>@data.UpdateDate</td>
+                          <td>@data.DeliveryDate</td>
+                          <td>@data.OrderTotal</td>
+                          <td>@data.Status</td>
+                          <td>@data.Notes</td>
+                          <td>@data.IsActive</td>
+                        </tr>
+                  }
+                }
+            }
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#tblCustomerOrder").DataTable();
+  });
+</script>

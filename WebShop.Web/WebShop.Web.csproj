@@ -1296,6 +1296,14 @@
     <Content Include="Views\AdminProductMeta\Details.cshtml" />
     <Content Include="Views\AdminProductMeta\List.cshtml" />
     <Content Include="Views\AdminProductMeta\Update.cshtml" />
+    <Content Include="Views\AdminProduct\Create.cshtml" />
+    <Content Include="Views\AdminProduct\List.cshtml" />
+    <Content Include="Views\AdminProduct\Details.cshtml" />
+    <Content Include="Views\AdminProduct\Update.cshtml" />
+    <Content Include="Views\AdminCustomer\Create.cshtml" />
+    <Content Include="Views\AdminCustomerOrder\Create.cshtml" />
+    <Content Include="Views\AdminCustomerOrder\List.cshtml" />
+    <Content Include="Views\AdminCustomerOrder\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

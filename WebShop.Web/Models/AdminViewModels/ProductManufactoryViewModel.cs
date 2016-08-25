@@ -8,6 +8,10 @@ namespace WebShop.Web.Models
     {
         private readonly IProductManufactoryAppService _manufactoryAppService;
 
+        public ProductManufactoryViewModel()
+        {
+        }
+
         public ProductManufactoryViewModel(IProductManufactoryAppService manufactoryAppService)
         {
             _manufactoryAppService = manufactoryAppService;
