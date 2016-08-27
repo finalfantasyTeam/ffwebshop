@@ -4,6 +4,7 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
@@ -12,10 +13,18 @@ namespace WebShop.Application
     {
         private readonly IProductManufactoryRepository _productManufactoryRepository;
 
+        private static string SetDefaultImage(string value)
+        {
+            return "";
+        }
+
         public ProductManufactoryAppService(IProductManufactoryRepository productManufatocryRepository)
         {
             _productManufactoryRepository = productManufatocryRepository;
-            Mapper.CreateMap<ProductManufactory, ProductManufactoryDTO>();
+            Mapper.CreateMap<ProductManufactory, ProductManufactoryDTO>()
+                .ForMember(dest => dest.ManufactoryLogo, opt => opt
+                .MapFrom(src => string.IsNullOrEmpty(src.ManufactoryLogo) ? Constants.PLACEHOLDER_IMAGE_PATH : src.ManufactoryLogo));
+            
             Mapper.CreateMap<ProductManufactoryDTO, ProductManufactory>();
         }
 

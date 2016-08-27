@@ -2,10 +2,11 @@
 
 namespace WebShop.Web.Controllers
 {
-    public class AboutController : WebShopControllerBase
+    public class CategoryController : WebShopControllerBase
     {
         public ActionResult Index()
         {
+            ViewBag.ControllerName = "Category";
             return View();
         }
     }
