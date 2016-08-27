@@ -6,6 +6,7 @@ namespace WebShop.Web.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.ControllerName = "Home";
             return View();
         }
     }
