@@ -2,44 +2,42 @@
   <div class="col-xs-12">
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title">Product manufactory list</h3>
+        <h3 class="box-title">Invoice list</h3>
       </div>
       <div class="box-body">
-        <table id="tblProductManufactory" class="table table-bordered table-striped">
+        <table id="tblInvoice" class="table table-bordered table-striped">
           <thead>
             <tr>
               <th>#</th>
-              <th>Logo</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Country</th>
+              <th>CustomerId</th>
+              <th>InvoiceTotal</th>
+              <th>Status</th>
+              <th>Notes</th>
               <th>Active</th>
             </tr>
           </thead>
           <tbody>
             @{
-                if (Model.ListProductManufactory != null)
+                if (Model.ListInvoice != null)
                 {
-                  foreach (var data in Model.ListProductManufactory)
+                  foreach (var data in Model.ListInvoice)
                   {
                         <tr>
                           <td>
                             <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
                           </td>
                           <td>
-                           <img width="200" src='@data.ManufactoryLogo' alt="@data.ManufactoryLogo" />
+                            <a href="@Url.Action("Details", new { id = data.Id })">@data.CustomerId</a>
                           </td>
-                          <td>
-                            <a href="@Url.Action("Details", new { id = data.Id })">@data.Name</a>
-                          </td>
-                          <td>@data.Description</td>
-                          <td>@data.ManufactoryCountry</td>
+                          <td>@data.InvoiceTotal</td>
+                          <td>@data.Status</td>
+                          <td>@data.Notes</td>
                           <td>@data.IsActive</td>
                         </tr>
                   }
                 }
             }
-            
+
           </tbody>
         </table>
       </div>
@@ -48,6 +46,6 @@
 </div>
 <script type="text/javascript">
   $(document).ready(function () {
-    $("#tblProductManufactory").DataTable();
+    $("#tblInvoice").DataTable();
   });
 </script>

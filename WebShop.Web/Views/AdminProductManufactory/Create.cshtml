@@ -1,6 +1,6 @@
 ﻿@model WebShop.Web.Models.ProductManufactoryViewModel
 
-@using (Html.BeginForm("Create", "AdminProductManufactory", FormMethod.Post))
+@using (Html.BeginForm("Create", "AdminProductManufactory", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
     <div class="row">
       <div class="col-md-6">
@@ -30,6 +30,7 @@
                 <label for="txtManufactoryCountry">@L("CountryLabel")</label>
                 @Html.TextBoxFor(@model => @model.ProductManufactory.ManufactoryCountry, new { @id = "txtManufactoryCountry", @class = "form-control" })
               </div>
+              <!--
               <div class="form-group">
                 <label for="txtCreateDate">@L("CreateDateLabel")</label>
                 @Html.TextBoxFor(@model => @model.ProductManufactory.CreateDate, new { @id = "txtCreateDate", @class = "form-control" })
@@ -38,9 +39,10 @@
                 <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
                 @Html.TextBoxFor(@model => @model.ProductManufactory.UpdateDate, new { @id = "txtUpdateDate", @class = "form-control" })
               </div>
+              -->
               <div class="form-group">
                 <label for="fileManufactoryLogo">@L("ManufactoryLogoLabel")</label>
-                <input type="file" id="fileManufactoryLogo">
+                <input type="file" name="File" />
                 <p class="help-block">@L("UploadLogoHelpText")</p>
                 @*@Model.ProductManufactory.ManufactoryLogo*@
               </div>
@@ -51,7 +53,8 @@
               </div>
             </div>
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary">@L("SubmitButtonLabel")</button>
+              <!--<button type="button" class="btn btn-primary">@L("SaveButtonLabel")</button>-->
+              <button type="submit" class="btn btn-primary">@L("SaveButtonLabel")</button> 
             </div>
           </form>
         </div>

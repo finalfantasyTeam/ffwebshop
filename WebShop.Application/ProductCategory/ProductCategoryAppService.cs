@@ -59,13 +59,14 @@ namespace WebShop.Application
         {
             try
             {
+                rq.Category.CreateDate = DateTime.Now;
                 ProductCategory insertCategory = rq.Category.MapTo<ProductCategory>();
-                insertCategory = await _productCategoryRepository.InsertAsync(insertCategory);
+                rq.Category.Id = await _productCategoryRepository.InsertAndGetIdAsync(insertCategory);
 
                 return new CreateProductCategoryRs()
                 {
-                    Category = insertCategory.MapTo<ProductCategoryDTO>()
-                };  
+                    Category = rq.Category
+                };
             }
             catch (Exception ex)
             {
@@ -77,6 +78,7 @@ namespace WebShop.Application
         {
             try
             {
+                rq.Category.UpdateDate = DateTime.Now;
                 ProductCategory updateCategory = rq.Category.MapTo<ProductCategory>();
                 updateCategory = await _productCategoryRepository.UpdateAsync(updateCategory);
 
@@ -98,7 +100,10 @@ namespace WebShop.Application
                 ProductCategory deleteCategory = rq.Category.MapTo<ProductCategory>();
                 await _productCategoryRepository.DeleteAsync(deleteCategory);
 
-                return new DeleteProductCategoryRs();
+                return new DeleteProductCategoryRs()
+                {
+                    Category = deleteCategory.MapTo<ProductCategoryDTO>()
+                };
             }
             catch (Exception ex)
             {

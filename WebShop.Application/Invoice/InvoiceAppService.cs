@@ -35,7 +35,7 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetInvoiceRs> GetInvoice(GetInvoiceRq rq)
+        public async Task<GetInvoiceRs> GetInvoiceById(GetInvoiceRq rq)
         {
             try
             {

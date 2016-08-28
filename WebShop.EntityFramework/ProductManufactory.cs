@@ -12,7 +12,7 @@ namespace WebShop
     using System;
     using System.Collections.Generic;
     
-    public partial class ProductManufactory
+    public partial class ProductManufactory : IAuditable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ProductManufactory()
