@@ -744,7 +744,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Files\Capture.PNG" />
     <Content Include="Content\customizer\elements-pages-customizer.css" />
     <Content Include="Content\customizer\home-pages-customizer.css" />
     <Content Include="Content\customizer\pages-pages-customizer.css" />
