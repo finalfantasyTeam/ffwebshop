@@ -3,6 +3,7 @@ using Abp.Application.Navigation;
 using Abp.Localization;
 using Abp.Threading;
 using WebShop.Web.Models.Layout;
+using Abp;
 
 namespace WebShop.Web.Controllers
 {
@@ -20,9 +21,10 @@ namespace WebShop.Web.Controllers
         [ChildActionOnly]
         public PartialViewResult TopMenu(string activeMenu = "")
         {
-            var model = new TopMenuViewModel
+            UserIdentifier currentUser = UserIdentifier.Parse(AbpSession.UserId.ToString());
+            TopMenuViewModel model = new TopMenuViewModel
                         {
-                            MainMenu = AsyncHelper.RunSync(() => _userNavigationManager.GetMenuAsync("MainMenu", AbpSession.UserId)),
+                            MainMenu = AsyncHelper.RunSync(() => _userNavigationManager.GetMenusAsync(currentUser)),
                             ActiveMenuItemName = activeMenu
                         };
 
@@ -32,7 +34,7 @@ namespace WebShop.Web.Controllers
         [ChildActionOnly]
         public PartialViewResult LanguageSelection()
         {
-            var model = new LanguageSelectionViewModel
+            LanguageSelectionViewModel model = new LanguageSelectionViewModel
                         {
                             CurrentLanguage = _localizationManager.CurrentLanguage,
                             Languages = _localizationManager.GetAllLanguages()
