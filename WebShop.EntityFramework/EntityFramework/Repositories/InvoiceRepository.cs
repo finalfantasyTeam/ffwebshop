@@ -13,5 +13,11 @@ namespace WebShop.EntityFramework.Repositories
         public InvoiceRepository(IDbContextProvider<WebShopDbContext> dbContextProvider) 
             : base(dbContextProvider)
         { }
+
+        // Implement custom data access function here
+        public async Task<Core.Invoice> GetInvoiceByCustomerIdAsync(int CustomerId)
+        {
+            return await SingleAsync(m => m.CustomerId == CustomerId);
+        }
     }
 }

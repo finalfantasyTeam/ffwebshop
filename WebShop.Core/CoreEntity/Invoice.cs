@@ -13,7 +13,7 @@ namespace WebShop.Core
             this.InvoiceDetails = new HashSet<InvoiceDetail>();
         }
 
-        public int? CustomerId { get; set; }
+        public int CustomerId { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public string CreateBy { get; set; }

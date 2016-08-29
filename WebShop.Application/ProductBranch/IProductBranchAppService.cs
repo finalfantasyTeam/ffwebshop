@@ -5,10 +5,10 @@ namespace WebShop.Application
 {
     public interface IProductBranchAppService : IApplicationService
     {
-        Task<ListProductBranchRs> GetAllProductBranch();
-        Task<GetProductBranchRs> GetProductBranch(GetProductBranchRq rq);
-        Task<CreateProductBranchRs> CreateProductBranch(CreateProductBranchRq rq);
-        Task<UpdateProductBranchRs> UpdateProductBranch(UpdateProductBranchRq rq);
-        Task<DeleteProductBranchRs> DeleteProductBranch(DeleteProductBranchRq rq);
+        Task<ListProductBranchRs> GetAllBranch();
+        Task<GetProductBranchRs> GetBranchById(GetProductBranchRq rq);
+        Task<CreateProductBranchRs> CreateBranch(CreateProductBranchRq rq);
+        Task<UpdateProductBranchRs> UpdateBranch(UpdateProductBranchRq rq);
+        Task<DeleteProductBranchRs> DeleteBranch(DeleteProductBranchRq rq);
     }
 }

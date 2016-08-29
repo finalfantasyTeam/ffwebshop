@@ -5,10 +5,11 @@ namespace WebShop.Application
 {
     public interface IProductCategoryAppService : IApplicationService
     {
-        Task<ListProductCategoryRs> GetAllProductCategory();
-        Task<GetProductCategoryRs> GetProductCategory(GetProductCategoryRq rq);
-        Task<CreateProductCategoryRs> CreateProductCategory(CreateProductCategoryRq rq);
-        Task<UpdateProductCategoryRs> UpdateProductCategory(UpdateProductCategoryRq rq);
-        Task<DeleteProductCategoryRs> DeleteProductCategory(DeleteProductCategoryRq rq);
+        Task<ListProductCategoryRs> GetAllCategory();
+        Task<GetProductCategoryRs> GetCategoryById(GetProductCategoryRq rq);
+        Task<GetProductCategoryRs> GetCategoryByName(GetProductCategoryRq rq);
+        Task<CreateProductCategoryRs> CreateCategory(CreateProductCategoryRq rq);
+        Task<UpdateProductCategoryRs> UpdateCategory(UpdateProductCategoryRq rq);
+        Task<DeleteProductCategoryRs> DeleteCategory(DeleteProductCategoryRq rq);
     }
 }

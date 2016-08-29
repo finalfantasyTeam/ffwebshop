@@ -11,7 +11,7 @@ namespace WebShop.Core
         public ProductCategory()
         {
             Products = new HashSet<Product>();
-            ProductCategoryChild = new HashSet<ProductCategory>();
+            //ProductCategoryChild = new HashSet<ProductCategory>();
         }
 
         public string Name { get; set; }
@@ -23,7 +23,7 @@ namespace WebShop.Core
         public bool? IsActive { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
-        public virtual ICollection<ProductCategory> ProductCategoryChild { get; set; }
-        public virtual ProductCategory ProductCategoryParent { get; set; }
+        //public virtual ICollection<ProductCategory> ProductCategoryChild { get; set; }
+        //public virtual ProductCategory ProductCategoryParent { get; set; }
     }
 }

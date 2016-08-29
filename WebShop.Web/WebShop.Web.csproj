@@ -1375,18 +1375,30 @@
     <Compile Include="App_Start\WebShopNavigationProvider.cs" />
     <Compile Include="App_Start\WebShopWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AdminCustomerGroupController.cs" />
+    <Compile Include="Controllers\Admin\AdminCustomerStatusController.cs" />
+    <Compile Include="Controllers\Admin\AdminInvoiceController.cs" />
+    <Compile Include="Controllers\Admin\AdminProductBranchController.cs" />
+    <Compile Include="Controllers\Admin\AdminProductCategoryController.cs" />
     <Compile Include="Controllers\Admin\AdminProductController.cs" />
     <Compile Include="Controllers\Admin\AdminController.cs" />
     <Compile Include="Controllers\Admin\AdminControllerBase.cs" />
     <Compile Include="Controllers\Admin\AdminConfigOptionsController.cs" />
     <Compile Include="Controllers\Admin\AdminProductManufactoryController.cs" />
+    <Compile Include="Controllers\Admin\AdminProductMetaController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\AdminViewModels\ConfigOptionsViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\CustomerGroupViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\CustomerStatusViewMode.cs" />
+    <Compile Include="Models\AdminViewModels\InvoiceViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\ProductBranchViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\ProductCategoryViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductManufactoryViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\ProductMetaViewModel.cs" />
     <Compile Include="Models\Layout\LanguageSelectionViewModel.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\WebShopControllerBase.cs" />
@@ -1437,6 +1449,13 @@
     <Content Include="Views\AdminConfigOptions\Create.cshtml" />
     <Content Include="Views\AdminConfigOptions\Details.cshtml" />
     <Content Include="Views\AdminConfigOptions\List.cshtml" />
+    <Content Include="Views\AdminProductCategory\List.cshtml" />
+    <Content Include="Views\AdminProductCategory\Details.cshtml" />
+    <Content Include="Views\AdminProductCategory\Update.cshtml" />
+    <Content Include="Views\AdminProductCategory\Create.cshtml" />
+    <Content Include="Views\AdminProductBranch\List.cshtml" />
+    <Content Include="Views\AdminProductBranch\Create.cshtml" />
+    <Content Include="Views\AdminProductBranch\Details.cshtml" />
     <Content Include="Views\Shared\_TopBox.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
@@ -1444,6 +1463,31 @@
     <Content Include="Views\Sales\Index.cshtml" />
     <Content Include="Views\Shared\_PageBanner.cshtml" />
     <Content Include="Views\Shared\_PageSlider.cshtml" />
+    <Content Include="Views\AdminProductBranch\Update.cshtml" />
+    <Content Include="Views\AdminCustomerGroup\List.cshtml" />
+    <Content Include="Views\AdminCustomerGroup\Create.cshtml" />
+    <Content Include="Views\AdminCustomerGroup\Details.cshtml" />
+    <Content Include="Views\AdminCustomerGroup\Update.cshtml" />
+    <Content Include="Views\AdminCustomerStatus\Create.cshtml" />
+    <Content Include="Views\AdminCustomerStatus\List.cshtml" />
+    <Content Include="Views\AdminCustomerStatus\Details.cshtml" />
+    <Content Include="Views\AdminCustomerStatus\Update.cshtml" />
+    <Content Include="Views\AdminProductMeta\Create.cshtml" />
+    <Content Include="Views\AdminProductMeta\Details.cshtml" />
+    <Content Include="Views\AdminProductMeta\List.cshtml" />
+    <Content Include="Views\AdminProductMeta\Update.cshtml" />
+    <Content Include="Views\AdminProduct\Create.cshtml" />
+    <Content Include="Views\AdminProduct\List.cshtml" />
+    <Content Include="Views\AdminProduct\Details.cshtml" />
+    <Content Include="Views\AdminProduct\Update.cshtml" />
+    <Content Include="Views\AdminCustomer\Create.cshtml" />
+    <Content Include="Views\AdminCustomerOrder\Create.cshtml" />
+    <Content Include="Views\AdminCustomerOrder\List.cshtml" />
+    <Content Include="Views\AdminCustomerOrder\Details.cshtml" />
+    <Content Include="Views\AdminInvoice\List.cshtml" />
+    <Content Include="Views\AdminInvoice\Details.cshtml" />
+    <Content Include="Views\AdminInvoice\Create.cshtml" />
+    <Content Include="Views\AdminInvoice\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1492,7 +1536,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61814</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:4009</IISUrl>
+          <IISUrl>http://localhost:4009/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

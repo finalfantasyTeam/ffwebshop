@@ -30,31 +30,38 @@ namespace WebShop.Web.Controllers
         [HttpGet]
         public async Task<ActionResult> Details(int id)
         {
-            return View();
+            ConfigOptionsViewModel viewModel = new ConfigOptionsViewModel(_configOptionAppService);
+            await viewModel.GetConfigOptions(id);
+            return View(viewModel);
         }
 
         [HttpGet]
-        public async Task<ActionResult> Create(int id)
+        public ActionResult Create()
         {
-            return View();
+            ConfigOptionsViewModel viewModel = new ConfigOptionsViewModel(_configOptionAppService);
+            return View(viewModel);
         }
 
         [HttpGet]
         public async Task<ActionResult> Update(int id)
         {
-            return View();
+            ConfigOptionsViewModel viewModel = new ConfigOptionsViewModel(_configOptionAppService);
+            await viewModel.GetConfigOptions(id);
+            return View(viewModel);
         }
 
         [HttpPost]
         public async Task<ActionResult> Create(ConfigOptionsViewModel viewModel)
         {
-            return View();
+            await viewModel.CreateNewConfigOptions();
+            return RedirectToAction("Details", new { id = viewModel.ConfigOptions.Id });
         }
 
         [HttpPost]
         public async Task<ActionResult> Update(ConfigOptionsViewModel viewModel)
         {
-            return View();
+            await viewModel.UpdateConfigOptions();
+            return RedirectToAction("Details", new { id = viewModel.ConfigOptions.Id });
         }
     }
 }

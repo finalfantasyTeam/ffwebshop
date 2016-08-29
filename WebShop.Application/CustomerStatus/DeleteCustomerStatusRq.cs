@@ -4,6 +4,6 @@ namespace WebShop.Application
 {
     public class DeleteCustomerStatusRq : BaseRequest
     {
-        public CustomerStatusDTO CustomerStatus { get; set; }
+        public CustomerStatusDTO Status { get; set; }
     }
 }

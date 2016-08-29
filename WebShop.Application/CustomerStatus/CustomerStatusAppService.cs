@@ -19,14 +19,14 @@ namespace WebShop.Application
             Mapper.CreateMap<CustomerStatusDTO, CustomerStatus>();
         }
 
-        public async Task<ListCustomerStatusRs> GetAllCustomerStatus()
+        public async Task<ListCustomerStatusRs> GetAllStatus()
         {
             try
             {
                 List<CustomerStatus> CustomerStatus = await _customerStatusRepository.GetAllListAsync();
                 return new ListCustomerStatusRs()
                 {
-                    CustomerStatuses = CustomerStatus.MapTo<List<CustomerStatusDTO>>()
+                    Statuses = CustomerStatus.MapTo<List<CustomerStatusDTO>>()
                 };
             }
             catch (Exception ex)
@@ -35,7 +35,7 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetCustomerStatusRs> GetCustomerStatus(GetCustomerStatusRq rq)
+        public async Task<GetCustomerStatusRs> GetStatusById(GetCustomerStatusRq rq)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace WebShop.Application
 
                 return new GetCustomerStatusRs()
                 {
-                    CustomerStatus = customerStatus.MapTo<CustomerStatusDTO>()
+                    Status = customerStatus.MapTo<CustomerStatusDTO>()
                 };
             }
             catch (Exception ex)
@@ -52,16 +52,16 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<CreateCustomerStatusRs> CreateCustomerStatus(CreateCustomerStatusRq rq)
+        public async Task<CreateCustomerStatusRs> CreateStatus(CreateCustomerStatusRq rq)
         {
             try
             {
-                CustomerStatus insertCustomerStatus = rq.CustomerStatus.MapTo<CustomerStatus>();
+                CustomerStatus insertCustomerStatus = rq.Status.MapTo<CustomerStatus>();
                 insertCustomerStatus = await _customerStatusRepository.InsertAsync(insertCustomerStatus);
 
                 return new CreateCustomerStatusRs()
                 {
-                    CustomerStatus = insertCustomerStatus.MapTo<CustomerStatusDTO>()
+                    Status = insertCustomerStatus.MapTo<CustomerStatusDTO>()
                 };
             }
             catch (Exception ex)
@@ -70,16 +70,16 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<UpdateCustomerStatusRs> UpdateCustomerStatus(UpdateCustomerStatusRq rq)
+        public async Task<UpdateCustomerStatusRs> UpdateStatus(UpdateCustomerStatusRq rq)
         {
             try
             {
-                CustomerStatus updateCustomerStatus = rq.CustomerStatus.MapTo<CustomerStatus>();
+                CustomerStatus updateCustomerStatus = rq.Status.MapTo<CustomerStatus>();
                 updateCustomerStatus = await _customerStatusRepository.UpdateAsync(updateCustomerStatus);
 
                 return new UpdateCustomerStatusRs()
                 {
-                    CustomerStatus = updateCustomerStatus.MapTo<CustomerStatusDTO>()
+                    Status = updateCustomerStatus.MapTo<CustomerStatusDTO>()
                 };
             }
             catch (Exception ex)
@@ -88,11 +88,11 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<DeleteCustomerStatusRs> DeleteCustomerStatus(DeleteCustomerStatusRq rq)
+        public async Task<DeleteCustomerStatusRs> DeleteStatus(DeleteCustomerStatusRq rq)
         {
             try
             {
-                CustomerStatus deleteCustomerStatus = rq.CustomerStatus.MapTo<CustomerStatus>();
+                CustomerStatus deleteCustomerStatus = rq.Status.MapTo<CustomerStatus>();
                 await _customerStatusRepository.DeleteAsync(deleteCustomerStatus);
 
                 return new DeleteCustomerStatusRs();

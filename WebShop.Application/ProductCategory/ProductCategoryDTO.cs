@@ -17,6 +17,6 @@ namespace WebShop.Application
         public int ParentCat { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
     }
 }

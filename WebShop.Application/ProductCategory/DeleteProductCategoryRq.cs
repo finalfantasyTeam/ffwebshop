@@ -4,6 +4,6 @@ namespace WebShop.Application
 {
     public class DeleteProductCategoryRq : BaseRequest
     {
-        public ProductCategoryDTO ProductCategory { get; set; }
+        public ProductCategoryDTO Category { get; set; }
     }
 }

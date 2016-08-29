@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Web;
 using WebShop.Application;
 
 namespace WebShop.Web.Models
@@ -7,6 +9,10 @@ namespace WebShop.Web.Models
     public class ProductManufactoryViewModel
     {
         private readonly IProductManufactoryAppService _manufactoryAppService;
+
+        public ProductManufactoryViewModel()
+        {
+        }
 
         public ProductManufactoryViewModel(IProductManufactoryAppService manufactoryAppService)
         {
@@ -45,7 +51,6 @@ namespace WebShop.Web.Models
             { Manufactory = ProductManufactory };
             await _manufactoryAppService.DeleteManufactory(rq);
         }
-
         public IList<ProductManufactoryDTO> ListProductManufactory { get; set; }
         public ProductManufactoryDTO ProductManufactory { get; set; }
     }

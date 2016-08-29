@@ -13,5 +13,11 @@ namespace WebShop.EntityFramework.Repositories
         public ProductCategoryRepository(IDbContextProvider<WebShopDbContext> dbContextProvider) 
             : base(dbContextProvider)
         { }
+
+        // Implement custom data access function here
+        public async Task<Core.ProductCategory> GetCategoryByNameAsync(string CategoryName)
+        {
+            return await SingleAsync(m => m.Name.Contains(CategoryName));
+        }
     }
 }

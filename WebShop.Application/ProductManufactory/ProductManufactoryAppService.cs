@@ -68,12 +68,13 @@ namespace WebShop.Application
         {
             try
             {
+                rq.Manufactory.CreateDate = DateTime.Now;
                 ProductManufactory insertManufactory = rq.Manufactory.MapTo<ProductManufactory>();
-                insertManufactory = await _productManufactoryRepository.InsertAsync(insertManufactory);
+                rq.Manufactory.Id = await _productManufactoryRepository.InsertAndGetIdAsync(insertManufactory);
 
                 return new CreateProductManufactoryRs()
                 {
-                    Manufactory = insertManufactory.MapTo<ProductManufactoryDTO>()
+                    Manufactory = rq.Manufactory
                 };
             }
             catch (Exception ex)
@@ -86,6 +87,7 @@ namespace WebShop.Application
         {
             try
             {
+                rq.Manufactory.UpdateDate = DateTime.Now;
                 ProductManufactory updateManufactory = rq.Manufactory.MapTo<ProductManufactory>();
                 updateManufactory = await _productManufactoryRepository.UpdateAsync(updateManufactory);
 
@@ -107,7 +109,10 @@ namespace WebShop.Application
                 ProductManufactory deleteManufactory = rq.Manufactory.MapTo<ProductManufactory>();
                 await _productManufactoryRepository.DeleteAsync(deleteManufactory);
 
-                return new DeleteProductManufactoryRs();
+                return new DeleteProductManufactoryRs()
+                {
+                    Manufactory = deleteManufactory.MapTo<ProductManufactoryDTO>()
+                };
             }
             catch (Exception ex)
             {

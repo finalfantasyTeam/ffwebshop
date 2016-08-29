@@ -6,5 +6,7 @@ namespace WebShop.Core
 {
     public interface IProductMetaRepository : IRepository<ProductMeta, int>
     {
+        // Declare custom action with database
+        Task<ProductMeta> GetMetaByKeyAsync(string MetaKey);
     }
 }

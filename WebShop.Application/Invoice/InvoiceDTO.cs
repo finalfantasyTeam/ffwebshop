@@ -18,7 +18,7 @@ namespace WebShop.Application
         public string UpdateBy { get; set; }
         public decimal? InvoiceTotal { get; set; }
         public string Status { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
         public string Notes { get; set; }
     }
 }

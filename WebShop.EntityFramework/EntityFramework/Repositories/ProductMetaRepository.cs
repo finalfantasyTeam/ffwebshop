@@ -13,5 +13,11 @@ namespace WebShop.EntityFramework.Repositories
         public ProductMetaRepository(IDbContextProvider<WebShopDbContext> dbContextProvider) 
             : base(dbContextProvider)
         { }
+
+        // Implement custom data access function here
+        public async Task<Core.ProductMeta> GetMetaByKeyAsync(string MetaKey)
+        {
+            return await SingleAsync(m => m.MetaKey.Contains(MetaKey));
+        }
     }
 }

@@ -32,8 +32,11 @@ namespace WebShop.Core
         public bool? IsActive { get; set; }
         public decimal? Discount { get; set; }
 
+        [ForeignKey("BranchId")]
         public virtual ProductBranch ProductBranch { get; set; }
+        [ForeignKey("CategoryId")]
         public virtual ProductCategory ProductCategory { get; set; }
+        [ForeignKey("Status")]
         public virtual ProductStatus ProductStatus { get; set; }
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

@@ -5,10 +5,10 @@ namespace WebShop.Application
 {
     public interface IProductMetaAppService : IApplicationService
     {
-        Task<ListProductMetaRs> GetAllProductMeta();
-        Task<GetProductMetaRs> GetProductMeta(GetProductMetaRq rq);
-        Task<CreateProductMetaRs> CreateProductMeta(CreateProductMetaRq rq);
-        Task<UpdateProductMetaRs> UpdateProductMeta(UpdateProductMetaRq rq);
-        Task<DeleteProductMetaRs> DeleteProductMeta(DeleteProductMetaRq rq);
+        Task<ListProductMetaRs> GetAllMeta();
+        Task<GetProductMetaRs> GetMetaById(GetProductMetaRq rq);
+        Task<CreateProductMetaRs> CreateMeta(CreateProductMetaRq rq);
+        Task<UpdateProductMetaRs> UpdateMeta(UpdateProductMetaRq rq);
+        Task<DeleteProductMetaRs> DeleteMeta(DeleteProductMetaRq rq);
     }
 }

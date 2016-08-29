@@ -6,5 +6,7 @@ namespace WebShop.Core
 {
     public interface IInvoiceRepository : IRepository<Invoice, int>
     {
+        // Declare custom action with database
+        Task<Invoice> GetInvoiceByCustomerIdAsync(int CustomerId);
     }
 }

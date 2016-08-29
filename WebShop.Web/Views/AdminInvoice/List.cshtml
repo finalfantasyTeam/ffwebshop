@@ -1,0 +1,51 @@
+﻿<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Invoice list</h3>
+      </div>
+      <div class="box-body">
+        <table id="tblInvoice" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>CustomerId</th>
+              <th>InvoiceTotal</th>
+              <th>Status</th>
+              <th>Notes</th>
+              <th>Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            @{
+                if (Model.ListInvoice != null)
+                {
+                  foreach (var data in Model.ListInvoice)
+                  {
+                        <tr>
+                          <td>
+                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
+                          </td>
+                          <td>
+                            <a href="@Url.Action("Details", new { id = data.Id })">@data.CustomerId</a>
+                          </td>
+                          <td>@data.InvoiceTotal</td>
+                          <td>@data.Status</td>
+                          <td>@data.Notes</td>
+                          <td>@data.IsActive</td>
+                        </tr>
+                  }
+                }
+            }
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#tblInvoice").DataTable();
+  });
+</script>

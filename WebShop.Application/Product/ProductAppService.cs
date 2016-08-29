@@ -35,7 +35,7 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetProductRs> GetProduct(GetProductRq rq)
+        public async Task<GetProductRs> GetProductById(GetProductRq rq)
         {
             try
             {

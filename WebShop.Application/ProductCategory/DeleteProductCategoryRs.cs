@@ -4,5 +4,7 @@ using System.Collections.Generic;
 namespace WebShop.Application
 {
     public class DeleteProductCategoryRs : BaseResponse<ProductCategoryDTO>
-    { }
+    {
+        public ProductCategoryDTO Category { get; set; }
+    }
 }

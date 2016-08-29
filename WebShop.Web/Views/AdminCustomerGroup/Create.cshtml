@@ -1,0 +1,48 @@
+﻿@using (Html.BeginForm("Update", "AdminCustomerGroup", FormMethod.Post))
+{
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@Model.CustomerGroup.Id - @Model.CustomerGroup.Name</h3>
+                <a class="btn-link">@L("BackButtonLabel")</a>
+            </div>
+            <form role="form">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="txtCategoryName">@L("NameLabel")</label>
+                        <input id="txtCategoryName" type="text" value="@Model.CustomerGroup.Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCategoryDescription">@L("DescriptionLabel")</label>
+                        <input id="txtCategoryDescription" type="text" value="@Model.CustomerGroup.Description" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCreateDate">@L("CreateDateLabel")</label>
+                        <input id="txtCreateDate" type="text" value="@Model.CustomerGroup.CreateDate" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
+                        <input id="txtUpdateDate" type="text" value="@Model.CustomerGroup.UpdateDate" class="form-control">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            @if (Model.CustomerGroup.IsActive)
+                            {
+                                <input type="checkbox" checked="checked" value="@Model.CustomerGroup.IsActive"> @L("IsActiveLabel")
+                            }
+                            else
+                            {
+                                <input type="checkbox" value="@Model.CustomerGroup.IsActive"> @L("IsActiveLabel")
+                            }
+                        </label>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="button" class="btn btn-primary">@L("SaveButtonLabel")</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

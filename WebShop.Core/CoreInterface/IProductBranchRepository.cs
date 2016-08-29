@@ -6,5 +6,7 @@ namespace WebShop.Core
 {
     public interface IProductBranchRepository : IRepository<ProductBranch, int>
     {
+        // Declare custom action with database
+        Task<ProductBranch> GetBranchByNameAsync(string BranchName);
     }
 }

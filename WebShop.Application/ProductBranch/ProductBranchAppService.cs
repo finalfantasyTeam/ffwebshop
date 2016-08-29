@@ -19,14 +19,14 @@ namespace WebShop.Application
             Mapper.CreateMap<ProductBranchDTO, ProductBranch>();
         }
 
-        public async Task<ListProductBranchRs> GetAllProductBranch()
+        public async Task<ListProductBranchRs> GetAllBranch()
         {
             try
             {
                 List<ProductBranch> ProductBranch = await _productBranchRepository.GetAllListAsync();
                 return new ListProductBranchRs()
                 {
-                    ProductBranches = ProductBranch.MapTo<List<ProductBranchDTO>>()
+                    Branches = ProductBranch.MapTo<List<ProductBranchDTO>>()
                 };
             }
             catch (Exception ex)
@@ -35,26 +35,26 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetProductBranchRs> GetProductBranch(GetProductBranchRq rq)
+        public async Task<GetProductBranchRs> GetBranchById(GetProductBranchRq rq)
         {
             ProductBranch ProductBranch = await _productBranchRepository.GetAsync(rq.Id);
 
             return new GetProductBranchRs()
             {
-                ProductBranch = ProductBranch.MapTo<ProductBranchDTO>()
+                Branch = ProductBranch.MapTo<ProductBranchDTO>()
             };
         }
 
-        public async Task<CreateProductBranchRs> CreateProductBranch(CreateProductBranchRq rq)
+        public async Task<CreateProductBranchRs> CreateBranch(CreateProductBranchRq rq)
         {
             try
             {
-                ProductBranch insertProductBranch = rq.ProductBranch.MapTo<ProductBranch>();
+                ProductBranch insertProductBranch = rq.Branch.MapTo<ProductBranch>();
                 insertProductBranch = await _productBranchRepository.InsertAsync(insertProductBranch);
 
                 return new CreateProductBranchRs()
                 {
-                    ProductBranch = insertProductBranch.MapTo<ProductBranchDTO>()
+                    Branch = insertProductBranch.MapTo<ProductBranchDTO>()
                 };
             }
             catch (Exception ex)
@@ -63,16 +63,16 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<UpdateProductBranchRs> UpdateProductBranch(UpdateProductBranchRq rq)
+        public async Task<UpdateProductBranchRs> UpdateBranch(UpdateProductBranchRq rq)
         {
             try
             {
-                ProductBranch updateProductBranch = rq.ProductBranch.MapTo<ProductBranch>();
+                ProductBranch updateProductBranch = rq.Branch.MapTo<ProductBranch>();
                 updateProductBranch = await _productBranchRepository.UpdateAsync(updateProductBranch);
 
                 return new UpdateProductBranchRs()
                 {
-                    ProductBranch = updateProductBranch.MapTo<ProductBranchDTO>()
+                    Branch = updateProductBranch.MapTo<ProductBranchDTO>()
                 };
             }
             catch (Exception ex)
@@ -81,11 +81,11 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<DeleteProductBranchRs> DeleteProductBranch(DeleteProductBranchRq rq)
+        public async Task<DeleteProductBranchRs> DeleteBranch(DeleteProductBranchRq rq)
         {
             try
             {
-                ProductBranch deleteProductBranch = rq.ProductBranch.MapTo<ProductBranch>();
+                ProductBranch deleteProductBranch = rq.Branch.MapTo<ProductBranch>();
                 await _productBranchRepository.DeleteAsync(deleteProductBranch);
 
                 return new DeleteProductBranchRs();

@@ -1,0 +1,49 @@
+﻿@using (Html.BeginForm("Update", "AdminProductMeta", FormMethod.Post))
+{
+}
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">@Model.ProductMeta.Id - @Model.ProductMeta.MetaKey</h3>
+                <a class="btn-link">@L("BackButtonLabel")</a>
+            </div>
+            <form role="form">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="txtProductId">@L("ProductIdLabel")</label>
+                        <input id="txtProductId" type="text" value="@Model.ProductMeta.ProductId" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMetaKey">@L("KeyLabel")</label>
+                        <input id="txtMetaKey" type="text" value="@Model.ProductMeta.MetaKey" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMetaValue">@L("ValueLabel")</label>
+                        <input id="txtMetaValue" type="text" value="@Model.ProductMeta.MetaValue" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMetaNotes">@L("NotesLabel")</label>
+                        <input id="txtMetaNotes" type="text" value="@Model.ProductMeta.Notes" class="form-control">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            @if (Model.ProductMeta.IsActive)
+                            {
+                                <input type="checkbox" checked="checked" value="@Model.ProductMeta.IsActive"> @L("IsActiveLabel")
+                            }
+                            else
+                            {
+                                <input type="checkbox" value="@Model.ProductMeta.IsActive"> @L("IsActiveLabel")
+                            }
+                        </label>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <button type="button" class="btn btn-primary">@L("EditButtonLabel")</button>
+                    <button type="button" class="btn btn-primary">@L("DeleteButtonLabel")</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

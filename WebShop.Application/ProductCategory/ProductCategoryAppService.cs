@@ -12,21 +12,21 @@ namespace WebShop.Application
     {
         private readonly IProductCategoryRepository _productCategoryRepository;
 
-        public ProductCategoryAppService(IProductCategoryRepository productCategoryRepository)
+        public ProductCategoryAppService(IProductCategoryRepository productManufatocryRepository)
         {
-            _productCategoryRepository = productCategoryRepository;
+            _productCategoryRepository = productManufatocryRepository;
             Mapper.CreateMap<ProductCategory, ProductCategoryDTO>();
             Mapper.CreateMap<ProductCategoryDTO, ProductCategory>();
         }
 
-        public async Task<ListProductCategoryRs> GetAllProductCategory()
+        public async Task<ListProductCategoryRs> GetAllCategory()
         {
             try
             {
-                List<ProductCategory> productCategory = await _productCategoryRepository.GetAllListAsync();
+                List<ProductCategory> productCategories = await _productCategoryRepository.GetAllListAsync();
                 return new ListProductCategoryRs()
                 {
-                    ProductCategories = productCategory.MapTo<List<ProductCategoryDTO>>()
+                    Categories = productCategories.MapTo<List<ProductCategoryDTO>>()
                 };
             }
             catch (Exception ex)
@@ -35,26 +35,37 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetProductCategoryRs> GetProductCategory(GetProductCategoryRq rq)
+        public async Task<GetProductCategoryRs> GetCategoryById(GetProductCategoryRq rq)
         {
             ProductCategory productCategory = await _productCategoryRepository.GetAsync(rq.Id);
 
             return new GetProductCategoryRs()
             {
-                ProductCategory = productCategory.MapTo<ProductCategoryDTO>()
+                Category = productCategory.MapTo<ProductCategoryDTO>()
             };
         }
 
-        public async Task<CreateProductCategoryRs> CreateProductCategory(CreateProductCategoryRq rq)
+        public async Task<GetProductCategoryRs> GetCategoryByName(GetProductCategoryRq rq)
+        {
+            ProductCategory productCategory = await _productCategoryRepository.GetCategoryByNameAsync(rq.Name);
+
+            return new GetProductCategoryRs()
+            {
+                Category = productCategory.MapTo<ProductCategoryDTO>()
+            };
+        }
+
+        public async Task<CreateProductCategoryRs> CreateCategory(CreateProductCategoryRq rq)
         {
             try
             {
-                ProductCategory insertProductCategory = rq.ProductCategory.MapTo<ProductCategory>();
-                insertProductCategory = await _productCategoryRepository.InsertAsync(insertProductCategory);
+                rq.Category.CreateDate = DateTime.Now;
+                ProductCategory insertCategory = rq.Category.MapTo<ProductCategory>();
+                rq.Category.Id = await _productCategoryRepository.InsertAndGetIdAsync(insertCategory);
 
                 return new CreateProductCategoryRs()
                 {
-                    ProductCategory = insertProductCategory.MapTo<ProductCategoryDTO>()
+                    Category = rq.Category
                 };
             }
             catch (Exception ex)
@@ -63,16 +74,17 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<UpdateProductCategoryRs> UpdateProductCategory(UpdateProductCategoryRq rq)
+        public async Task<UpdateProductCategoryRs> UpdateCategory(UpdateProductCategoryRq rq)
         {
             try
             {
-                ProductCategory updateProductCategory = rq.ProductCategory.MapTo<ProductCategory>();
-                updateProductCategory = await _productCategoryRepository.UpdateAsync(updateProductCategory);
+                rq.Category.UpdateDate = DateTime.Now;
+                ProductCategory updateCategory = rq.Category.MapTo<ProductCategory>();
+                updateCategory = await _productCategoryRepository.UpdateAsync(updateCategory);
 
                 return new UpdateProductCategoryRs()
                 {
-                    ProductCategory = updateProductCategory.MapTo<ProductCategoryDTO>()
+                    Category = updateCategory.MapTo<ProductCategoryDTO>()
                 };
             }
             catch (Exception ex)
@@ -81,14 +93,17 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<DeleteProductCategoryRs> DeleteProductCategory(DeleteProductCategoryRq rq)
+        public async Task<DeleteProductCategoryRs> DeleteCategory(DeleteProductCategoryRq rq)
         {
             try
             {
-                ProductCategory deleteProductCategory = rq.ProductCategory.MapTo<ProductCategory>();
-                await _productCategoryRepository.DeleteAsync(deleteProductCategory);
+                ProductCategory deleteCategory = rq.Category.MapTo<ProductCategory>();
+                await _productCategoryRepository.DeleteAsync(deleteCategory);
 
-                return new DeleteProductCategoryRs();
+                return new DeleteProductCategoryRs()
+                {
+                    Category = deleteCategory.MapTo<ProductCategoryDTO>()
+                };
             }
             catch (Exception ex)
             {

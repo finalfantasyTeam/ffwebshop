@@ -5,6 +5,6 @@ namespace WebShop.Application
 {
     public class ListProductMetaRs : BaseResponse<ProductMetaDTO>
     {
-        public List<ProductMetaDTO> ProductMetas { get; set; }
+        public List<ProductMetaDTO> Metas { get; set; }
     }
 }

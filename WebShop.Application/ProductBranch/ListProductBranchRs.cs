@@ -5,6 +5,6 @@ namespace WebShop.Application
 {
     public class ListProductBranchRs : BaseResponse<ProductBranchDTO>
     {
-        public List<ProductBranchDTO> ProductBranches { get; set; }
+        public List<ProductBranchDTO> Branches { get; set; }
     }
 }
