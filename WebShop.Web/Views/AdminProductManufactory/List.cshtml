@@ -27,7 +27,7 @@
                             <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
                           </td>
                           <td>
-                           <img width="200" src='@data.ManufactoryLogo' alt="@data.ManufactoryLogo" />
+                           <img height="70" src='@Url.Content(data.ManufactoryLogo)' alt="@data.Name" />
                           </td>
                           <td>
                             <a href="@Url.Action("Details", new { id = data.Id })">@data.Name</a>
@@ -39,7 +39,6 @@
                   }
                 }
             }
-            
           </tbody>
         </table>
       </div>
