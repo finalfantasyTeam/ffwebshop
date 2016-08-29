@@ -4,6 +4,5 @@ namespace WebShop.Application
 {
     public class GetInvoiceRq : BaseRequest
     {
-        public int Id { get; set; }
     }
 }

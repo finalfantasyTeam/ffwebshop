@@ -20,24 +20,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.WebApi", "WebShop.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShop.Web", "WebShop.Web\WebShop.Web.csproj", "{404A6D3B-AA85-4E4C-AEEE-1E5026D5F135}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Upload", "Upload", "{2AEE1E03-4237-401B-87F5-C49D2676E114}"
-	ProjectSection(SolutionItems) = preProject
-		Upload\1.jpg = Upload\1.jpg
-		Upload\10.jpg = Upload\10.jpg
-		Upload\11.jpg = Upload\11.jpg
-		Upload\12.jpg = Upload\12.jpg
-		Upload\13.jpg = Upload\13.jpg
-		Upload\14.jpg = Upload\14.jpg
-		Upload\2.jpg = Upload\2.jpg
-		Upload\3.jpg = Upload\3.jpg
-		Upload\4.jpg = Upload\4.jpg
-		Upload\5.jpg = Upload\5.jpg
-		Upload\6.jpg = Upload\6.jpg
-		Upload\7.jpg = Upload\7.jpg
-		Upload\8.jpg = Upload\8.jpg
-		Upload\9.jpg = Upload\9.jpg
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -17,8 +17,7 @@ namespace WebShop.EntityFramework.Repositories
         // Implement custom data access function here
         public async Task<Core.Invoice> GetInvoiceByCustomerIdAsync(int CustomerId)
         {
-            return null;
-            //return await SingleAsync(m => m.CustomerId.Contains(CustomerId));
+            return await SingleAsync(m => m.CustomerId == CustomerId);
         }
     }
 }
