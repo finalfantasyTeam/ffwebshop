@@ -1365,7 +1365,9 @@
     <Content Include="Upload\img\single-1.jpg" />
     <Content Include="Upload\img\single-2.jpg" />
     <Content Include="Upload\img\single-3.jpg" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Admin\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -1399,6 +1401,7 @@
     <Compile Include="Models\AdminViewModels\ProductCategoryViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductManufactoryViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductMetaViewModel.cs" />
+    <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\Layout\LanguageSelectionViewModel.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\WebShopControllerBase.cs" />
@@ -1412,7 +1415,9 @@
     <Compile Include="Views\UrlChecker.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_TopBar.cshtml" />
     <Content Include="Views\Layout\_LanguageSelection.cshtml" />
@@ -1488,6 +1493,11 @@
     <Content Include="Views\AdminInvoice\Details.cshtml" />
     <Content Include="Views\AdminInvoice\Create.cshtml" />
     <Content Include="Views\AdminInvoice\Update.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ForgetPassword.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
