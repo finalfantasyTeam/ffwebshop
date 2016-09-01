@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Web;
 using WebShop.Application;
 
 namespace WebShop.Web.Models
@@ -7,6 +9,10 @@ namespace WebShop.Web.Models
     public class CustomerGroupViewModel
     {
         private readonly ICustomerGroupAppService _GroupAppService;
+
+        public CustomerGroupViewModel()
+        {
+        }
 
         public CustomerGroupViewModel(ICustomerGroupAppService GroupAppService)
         {
@@ -45,7 +51,6 @@ namespace WebShop.Web.Models
             { Group = CustomerGroup };
             await _GroupAppService.DeleteGroup(rq);
         }
-
         public IList<CustomerGroupDTO> ListCustomerGroup { get; set; }
         public CustomerGroupDTO CustomerGroup { get; set; }
     }

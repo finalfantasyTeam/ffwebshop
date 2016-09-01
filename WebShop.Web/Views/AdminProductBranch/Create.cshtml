@@ -1,54 +1,49 @@
-﻿@using (Html.BeginForm("Update", "AdminProductBranch", FormMethod.Post))
+﻿@model WebShop.Web.Models.ProductBranchViewModel
+
+@using (Html.BeginForm("Create", "AdminProductBranch", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
-}
-<div class="row">
-    <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-6">
         <div class="box box-primary">
-            <div class="box-header with-border">
+          <div class="box-header with-border">
+            @if (@Model.ProductBranch != null)
+            {
                 <h3 class="box-title">@Model.ProductBranch.Id - @Model.ProductBranch.Name</h3>
-                <a class="btn-link">@L("BackButtonLabel")</a>
+            }
+            else
+            {
+                <h3 class="box-title">No Records Found</h3>
+            }
+          </div>
+          <div class="box-header">
+            <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+          </div>
+          <form role="form">
+            <div class="box-body">
+              <div class="form-group">
+                <label for="txtBranchName">@L("NameLabel")</label>
+                @Html.TextBoxFor(@model => @model.ProductBranch.Name, new { @id = "txtBranchName", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="txtBranchDescription">@L("DescriptionLabel")</label>
+                @Html.TextBoxFor(@model => @model.ProductBranch.Description, new { @id = "txtBranchDescription", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="fileBranchLogo">@L("BranchLogoLabel")</label>
+                <input type="file" name="File" />
+                <p class="help-block">@L("UploadLogoHelpText")</p>
+              </div>
+              <div class="checkbox">
+                <label>
+                  @Html.CheckBoxFor(@model => @model.ProductBranch.IsActive) @L("IsActiveLabel")
+                </label>
+              </div>
             </div>
-            <form role="form">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="txtBranchName">@L("NameLabel")</label>
-                        <input id="txtBranchName" type="text" value="@Model.ProductBranch.Name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtBranchDescription">@L("DescriptionLabel")</label>
-                        <input id="txtBranchDescription" type="text" value="@Model.ProductBranch.Description" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtCreateDate">@L("CreateDateLabel")</label>
-                        <input id="txtCreateDate" type="text" value="@Model.ProductBranch.CreateDate" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
-                        <input id="txtUpdateDate" type="text" value="@Model.ProductBranch.UpdateDate" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="fileBranchLogo">@L("BranchLogoLabel")</label>
-                        <input type="file" id="fileBranchLogo">
-                        <p class="help-block">@L("UploadLogoHelpText")</p>
-                        @Model.ProductBranch.BranchLogo
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            @if (Model.ProductBranch.IsActive)
-                            {
-                                <input type="checkbox" checked="checked" value="@Model.ProductBranch.IsActive"> @L("IsActiveLabel")
-                            }
-                            else
-                            {
-                                <input type="checkbox" value="@Model.ProductBranch.IsActive"> @L("IsActiveLabel")
-                            }
-                        </label>
-                    </div>
-                </div>
-                <div class="box-footer">
-                    <button type="button" class="btn btn-primary">@L("SubmitButtonLabel")</button>
-                </div>
-            </form>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary">@L("SaveButtonLabel")</button>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
-</div>
+}

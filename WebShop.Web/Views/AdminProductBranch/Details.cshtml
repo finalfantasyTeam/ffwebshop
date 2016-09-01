@@ -1,55 +1,78 @@
-﻿@using (Html.BeginForm("Update", "AdminProductBranch", FormMethod.Post))
-{
-}
+﻿@model WebShop.Web.Models.ProductBranchViewModel
+
+
 <div class="row">
-    <div class="col-md-6">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">@Model.ProductBranch.Id - @Model.ProductBranch.Name</h3>
-                <a class="btn-link">@L("BackButtonLabel")</a>
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">@Model.ProductBranch.Id - @Model.ProductBranch.Name</h3>
+      </div>
+      <div class="box-header">
+        <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+      </div>
+      @using (Html.BeginForm("Update", "AdminProductBranch", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+      {
+          <div class="box-body">
+            <div class="form-group">
+              <label for="txtBranchName">@L("NameLabel")</label>
+              @Html.TextBoxFor(@model => @model.ProductBranch.Name, new { @id = "txtBranchName", @class = "form-control" })
             </div>
-            <form role="form">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="txtBranchName">@L("NameLabel")</label>
-                        <input id="txtBranchName" type="text" value="@Model.ProductBranch.Name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtBranchDescription">@L("DescriptionLabel")</label>
-                        <input id="txtBranchDescription" type="text" value="@Model.ProductBranch.Description" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtCreateDate">@L("CreateDateLabel")</label>
-                        <input id="txtCreateDate" type="text" value="@Model.ProductBranch.CreateDate" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
-                        <input id="txtUpdateDate" type="text" value="@Model.ProductBranch.UpdateDate" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="fileBranchLogo">@L("BranchLogoLabel")</label>
-                        <input type="file" id="fileBranchLogo">
-                        <p class="help-block">@L("UploadLogoHelpText")</p>
-                        @Model.ProductBranch.BranchLogo
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            @if (Model.ProductBranch.IsActive)
-                            {
-                                <input type="checkbox" checked="checked" value="@Model.ProductBranch.IsActive"> @L("IsActiveLabel")
-                            }
-                            else
-                            {
-                                <input type="checkbox" value="@Model.ProductBranch.IsActive"> @L("IsActiveLabel")
-                            }
-                        </label>
-                    </div>
-                </div>
-                <div class="box-footer">
-                    <button type="button" class="btn btn-primary">@L("EditButtonLabel")</button>
-                    <button type="button" class="btn btn-primary">@L("DeleteButtonLabel")</button>
-                </div>
-            </form>
-        </div>
+            @Html.HiddenFor(@model => @model.ProductBranch.Id)
+            <div class="form-group">
+              <label for="txtBranchDescription">@L("DescriptionLabel")</label>
+              @Html.TextBoxFor(@model => @model.ProductBranch.Description, new { @id = "txtBranchDescription", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtCreateDate">@L("CreateDateLabel")</label>
+              <p class="readonly-text">@Model.ProductBranch.CreateDate</p>
+              @Html.HiddenFor(@model => @model.ProductBranch.CreateDate)
+            </div>
+            <div class="form-group">
+              <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
+              <p class="readonly-text">@Model.ProductBranch.UpdateDate</p>
+            </div>
+            <div class="form-group">
+              <label for="fileBranchLogo">@L("BranchLogoLabel")</label>
+              <input type="file" name="File">
+              @Html.HiddenFor(@model => @model.ProductBranch.BranchLogo)
+              <p class="help-block">@L("UploadLogoHelpText")</p>
+              <img width="100" src='@Url.Content(Model.ProductBranch.BranchLogo)' alt="@Model.ProductBranch.Name" />
+            </div>
+            <div class="checkbox">
+              <label>
+
+                @Html.CheckBoxFor(@model => @model.ProductBranch.IsActive) @L("IsActiveLabel")
+              </label>
+
+            </div>
+          </div>
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">@L("EditButtonLabel")</button>
+            @Html.ActionLink(L("DeleteButtonLabel"), "Delete", new { @id = Model.ProductBranch.Id }, new { @class = "btn btn-primary" })
+          </div>
+      }
     </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#btnDeleteBranch").click(function (e) {
+    console.log(e);
+  });
+</script>
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal Default</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

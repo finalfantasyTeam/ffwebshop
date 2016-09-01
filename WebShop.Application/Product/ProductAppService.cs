@@ -4,29 +4,39 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
 {
     public class ProductAppService : IProductAppService
     {
-        private readonly IProductRepository _productsRepository;
+        private readonly IProductRepository _ProductRepository;
 
-        public ProductAppService(IProductRepository productsRepository)
+        private static string SetDefaultImage(string value)
         {
-            _productsRepository = productsRepository;
-            Mapper.CreateMap<Product, ProductDTO>();
+            return "";
+        }
+
+        public ProductAppService(IProductRepository ProductRepository)
+        {
+            _ProductRepository = ProductRepository;
+            Mapper.CreateMap<Product, ProductDTO>()
+                .ForMember(dest => dest.FeatureImage, opt => opt
+                .MapFrom(src => string.IsNullOrEmpty(src.FeatureImage) ? Constants.PLACEHOLDER_IMAGE_PATH : src.FeatureImage));
+                
             Mapper.CreateMap<ProductDTO, Product>();
+            Mapper.CreateMap<Product, ProductDTO>();
         }
 
         public async Task<ListProductRs> GetAllProducts()
         {
             try
             {
-                List<Product> products = await _productsRepository.GetAllListAsync();
+                List<Product> productProducts = await _ProductRepository.GetAllListAsync();
                 return new ListProductRs()
                 {
-                    Products = products.MapTo<List<ProductDTO>>()
+                    Products = productProducts.MapTo<List<ProductDTO>>()
                 };
             }
             catch (Exception ex)
@@ -37,31 +47,35 @@ namespace WebShop.Application
 
         public async Task<GetProductRs> GetProductById(GetProductRq rq)
         {
-            try
-            {
-                Product product = await _productsRepository.GetAsync(rq.Id);
+            Product Product = await _ProductRepository.GetAsync(rq.Id);
 
-                return new GetProductRs()
-                {
-                    Product = product.MapTo<ProductDTO>()
-                };
-            }
-            catch (Exception ex)
+            return new GetProductRs()
             {
-                throw new Exception(ex.Message);
-            }
+                Product = Product.MapTo<ProductDTO>()
+            };
+        }
+
+        public async Task<GetProductRs> GetProductByName(GetProductRq rq)
+        {
+            Product Product = await _ProductRepository.GetProductByNameAsync(rq.Name);
+
+            return new GetProductRs()
+            {
+                Product = Product.MapTo<ProductDTO>()
+            };
         }
 
         public async Task<CreateProductRs> CreateProduct(CreateProductRq rq)
         {
             try
             {
+                rq.Product.CreateDate = DateTime.Now;
                 Product insertProduct = rq.Product.MapTo<Product>();
-                insertProduct = await _productsRepository.InsertAsync(insertProduct);
+                rq.Product.Id = await _ProductRepository.InsertAndGetIdAsync(insertProduct);
 
                 return new CreateProductRs()
                 {
-                    Product = insertProduct.MapTo<ProductDTO>()
+                    Product = rq.Product
                 };
             }
             catch (Exception ex)
@@ -74,8 +88,9 @@ namespace WebShop.Application
         {
             try
             {
+                rq.Product.UpdateDate = DateTime.Now;
                 Product updateProduct = rq.Product.MapTo<Product>();
-                updateProduct = await _productsRepository.UpdateAsync(updateProduct);
+                updateProduct = await _ProductRepository.UpdateAsync(updateProduct);
 
                 return new UpdateProductRs()
                 {
@@ -93,9 +108,12 @@ namespace WebShop.Application
             try
             {
                 Product deleteProduct = rq.Product.MapTo<Product>();
-                await _productsRepository.DeleteAsync(deleteProduct);
+                await _ProductRepository.DeleteAsync(deleteProduct);
 
-                return new DeleteProductRs();
+                return new DeleteProductRs()
+                {
+                    Product = deleteProduct.MapTo<ProductDTO>()
+                };
             }
             catch (Exception ex)
             {

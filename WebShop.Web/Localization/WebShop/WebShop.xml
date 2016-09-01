@@ -17,6 +17,12 @@
     <text name="BackButtonLabel" value="Back" />
     <text name="CancelButtonLabel" value="Cancel" />
     <text name="CreateDateLabel" value="Create Date" />
+    
+    <text name="ProductIdLabel" value="Product" />
+    <text name="KeyLabel" value="Key" />
+    <text name="ValueLabel" value="Value" />
+    <text name="NotesLabel" value="Notes" />
+    
     <text name="CountryLabel" value="Country" />
     <text name="DeleteButtonLabel" value="Delete" />
     <text name="DescriptionLabel" value="Description" />
@@ -26,6 +32,27 @@
     <text name="NameLabel" value="Name" />
     <text name="SaveButtonLabel" value="Save" />
     <text name="UpdateDateLabel" value="Update Date" />
-    <text name="UploadLogoHelpText" value="Please chose manufactory logo" />
+    <text name="UploadLogoHelpText" value="Please chose a picture!" />
+    <text name="AddNewLabel" value="Add New" />
+    <text name="ParentCatLabel" value="Parents Category Name" />
+    <text name="ImageToShowLabel" value="Image" />
+    <text name="BranchLogoLabel" value="Brand Logo" />
+    <text name="CustomerIdLabel" value="Customer" />
+    <text name="DeliveryDateLabel" value="Delivery Date" />
+    <text name="OrderTotalLabel" value="Order Total" />
+    <text name="StatusLabel" value="Status" />
+    <!--customer-->
+    <text name="FirstNameLabel" value="First Name" />
+    <text name="LastNameLabel" value="Last Name" />
+    <text name="AddressLabel" value="Address" />
+    <text name="PhoneNumberLabel" value="Phone Number" />
+    <text name="CartLabel" value="Cart" />
+    <text name="WishListLabel" value="Wish List" />
+    <text name="NewsletterLabel" value="Newsletter" />
+    <text name="CustomerGroupLabel" value="Customer Group" />
+    <text name="IpAddressLabel" value="Ip Address" />
+    <text name="BirthDateLabel" value="BirthDate" />
+    <text name="UserIdLabel" value="User Id" />
+    
   </texts>
 </localizationDictionary>

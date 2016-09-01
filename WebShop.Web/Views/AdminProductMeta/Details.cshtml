@@ -1,49 +1,70 @@
-﻿@using (Html.BeginForm("Update", "AdminProductMeta", FormMethod.Post))
-{
-}
+﻿@model WebShop.Web.Models.ProductMetaViewModel
+
 <div class="row">
     <div class="col-md-6">
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">@Model.ProductMeta.Id - @Model.ProductMeta.MetaKey</h3>
-                <a class="btn-link">@L("BackButtonLabel")</a>
             </div>
-            <form role="form">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="txtProductId">@L("ProductIdLabel")</label>
-                        <input id="txtProductId" type="text" value="@Model.ProductMeta.ProductId" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtMetaKey">@L("KeyLabel")</label>
-                        <input id="txtMetaKey" type="text" value="@Model.ProductMeta.MetaKey" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtMetaValue">@L("ValueLabel")</label>
-                        <input id="txtMetaValue" type="text" value="@Model.ProductMeta.MetaValue" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtMetaNotes">@L("NotesLabel")</label>
-                        <input id="txtMetaNotes" type="text" value="@Model.ProductMeta.Notes" class="form-control">
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            @if (Model.ProductMeta.IsActive)
-                            {
-                                <input type="checkbox" checked="checked" value="@Model.ProductMeta.IsActive"> @L("IsActiveLabel")
-                            }
-                            else
-                            {
-                                <input type="checkbox" value="@Model.ProductMeta.IsActive"> @L("IsActiveLabel")
-                            }
-                        </label>
-                    </div>
+            <div class="box-header">
+              <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+            </div>
+          @using (Html.BeginForm("Update", "AdminProductMeta", FormMethod.Post))
+          {
+              @Html.HiddenFor(@model => @model.ProductMeta.Id);
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="txtParentCat">@L("ProductIdLabel")</label>
+                  @Html.DropDownListFor(@model => @model.ProductMeta.ProductId, (IEnumerable<SelectListItem>)ViewBag.ProductId, string.Empty, new { @class = "form-control without-styles" })
                 </div>
+                <div class="form-group">
+                  <label for="txtMetaKey">@L("KeyLabel")</label>
+                  @Html.TextBoxFor(@model => @model.ProductMeta.MetaKey, new { @id = "txtMetaKey", @class = "form-control" })
+                </div>
+                <div class="form-group">
+                  <label for="txtMetaValue">@L("ValueLabel")</label>
+                  @Html.TextBoxFor(@model => @model.ProductMeta.MetaValue, new { @id = "txtMetaValue", @class = "form-control" })
+                <!--@Html.TextBoxFor(@model => @model.ProductMeta.MetaValue, new { @id = "txtMetaValue", @class = "form-control", @maxlength = "10", @readonly = "" })-->
+                </div>
+                <div class="form-group">
+                  <label for="txtMetaNotes">@L("NotesLabel")</label>
+                  @Html.TextBoxFor(@model => @model.ProductMeta.Notes, new { @id = "txtMetaNotes", @class = "form-control" })
+                 <!-- @Html.ValidationMessageFor(@model => @model.ProductMeta.Notes) -->
+                </div>
+                <div class="checkbox">
+                  <label>
+                    @Html.CheckBoxFor(@model => @model.ProductMeta.IsActive) @L("IsActiveLabel")
+                  </label>
+                </div>
+              </div>
                 <div class="box-footer">
-                    <button type="button" class="btn btn-primary">@L("EditButtonLabel")</button>
-                    <button type="button" class="btn btn-primary">@L("DeleteButtonLabel")</button>
+                    <button type="submit" class="btn btn-primary">@L("EditButtonLabel")</button>
+                  @Html.ActionLink(L("DeleteButtonLabel"), "Delete", new { @id = Model.ProductMeta.Id }, new { @class = "btn btn-primary" })
                 </div>
-            </form>
+          }
         </div>
     </div>
 </div>
+<script type="text/javascript">
+  $("#btnDeleteMeta").click(function (e) {
+    console.log(e);
+  });
+</script>
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal Default</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+}

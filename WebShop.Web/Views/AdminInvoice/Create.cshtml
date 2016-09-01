@@ -1,38 +1,53 @@
 ﻿@model WebShop.Web.Models.InvoiceViewModel
-
-@using (Html.BeginForm("Create", "Invoice", FormMethod.Post))
+@using (Html.BeginForm("Create", "AdminInvoice", FormMethod.Post, new { @enctype = "multipart/form-data" }))
 {
+    @Html.AntiForgeryToken()
     <div class="row">
       <div class="col-md-6">
         <div class="box box-primary">
           <div class="box-header with-border">
+
             @if (@Model.Invoice != null)
             {
                 <h3 class="box-title">@Model.Invoice.Id - @Model.Invoice.CustomerId</h3>
             }
             else
             {
-                <h3 class="box-title">No factory CustomerId</h3>
+                <h3 class="box-title">No Records Found</h3>
             }
-            <a class="btn-link">@L("BackButtonLabel")</a>
+          </div>
+          <div class="box-header">
+            <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
           </div>
           <form role="form">
             <div class="box-body">
               <div class="form-group">
-                <label for="txtInvoiceCustomerId">@L("CustomerIdLabel")</label>
-                @Html.TextBoxFor(@model => @model.Invoice.CustomerId, new { @id = "txtInvoiceCustomerId", @class = "form-control" })
+                <label for="txtCustomerId">@L("CustomerIdLabel")</label>
+                @Html.DropDownListFor(@model => @model.Invoice.CustomerId, (IEnumerable<SelectListItem>)ViewBag.CustomerId, string.Empty, new { @class = "form-control without-styles" })
               </div>
               <div class="form-group">
-                <label for="txtInvoiceInvoiceTotal">@L("InvoiceTotal")</label>
-                @Html.TextBoxFor(@model => @model.Invoice.InvoiceTotal, new { @id = "txtInvoiceInvoiceTotal", @class = "form-control" })
+                <label for="txtCreateBy">@L("CreateByLabel")</label>
+                @Html.TextBoxFor(@model => @model.Invoice.CreateBy, new { @id = "txtCreateBy", @class = "form-control" })
               </div>
               <div class="form-group">
-                <label for="txtStatus">@L("Status")</label>
+                <label for="txtUpdateBy">@L("UpdateByLabel")</label>
+                @Html.TextBoxFor(@model => @model.Invoice.UpdateBy, new { @id = "txtUpdateBy", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="txtMetaNotes">@L("NotesLabel")</label>
+                @Html.TextBoxFor(@model => @model.Invoice.Notes, new { @id = "txtMetaNotes", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="txtInvoiceTotal">@L("InvoiceTotalLabel")</label>
+                @Html.TextBoxFor(@model => @model.Invoice.InvoiceTotal, new { @id = "txtInvoiceTotal", @class = "form-control" })
+              </div>
+              <div class="form-group">
+                <label for="txtStatus">@L("StatusLabel")</label>
                 @Html.TextBoxFor(@model => @model.Invoice.Status, new { @id = "txtStatus", @class = "form-control" })
               </div>
               <div class="form-group">
-                <label for="txtNotes">@L("Notes")</label>
-                @Html.TextBoxFor(@model => @model.Invoice.Notes, new { @id = "txtNotes", @class = "form-control" })
+                <label for="txtMetaNotes">@L("NotesLabel")</label>
+                @Html.TextBoxFor(@model => @model.Invoice.Notes, new { @id = "txtMetaNotes", @class = "form-control" })
               </div>
               <div class="checkbox">
                 <label>
@@ -41,8 +56,7 @@
               </div>
             </div>
             <div class="box-footer">
-              <!--<button type="button" class="btn btn-primary">@L("SaveButtonLabel")</button>-->
-              <button type="submit" class="btn btn-primary">@L("SubmitButtonLabel")</button>
+              <button type="submit" class="btn btn-primary">@L("SaveButtonLabel")</button>
             </div>
           </form>
         </div>

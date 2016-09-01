@@ -1,49 +1,71 @@
-﻿@using (Html.BeginForm("Update", "AdminCustomerGroup", FormMethod.Post))
-{
-}
+﻿@model WebShop.Web.Models.CustomerGroupViewModel
+
+
 <div class="row">
-    <div class="col-md-6">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">@Model.CustomerGroup.Id - @Model.CustomerGroup.Name</h3>
-                <a class="btn-link">@L("BackButtonLabel")</a>
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">@Model.CustomerGroup.Id - @Model.CustomerGroup.Name</h3>
+      </div>
+      <div class="box-header">
+        <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+      </div>
+      @using (Html.BeginForm("Update", "AdminCustomerGroup", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+      {
+          <div class="box-body">
+            <div class="form-group">
+              <label for="txtGroupName">@L("NameLabel")</label>
+              @Html.TextBoxFor(@model => @model.CustomerGroup.Name, new { @id = "txtGroupName", @class = "form-control" })
             </div>
-            <form role="form">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="txtGroupName">@L("NameLabel")</label>
-                        <input id="txtGroupName" type="text" value="@Model.CustomerGroup.Name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtGroupDescription">@L("DescriptionLabel")</label>
-                        <input id="txtGroupDescription" type="text" value="@Model.CustomerGroup.Description" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtCreateDate">@L("CreateDateLabel")</label>
-                        <input id="txtCreateDate" type="text" value="@Model.CustomerGroup.CreateDate" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
-                        <input id="txtUpdateDate" type="text" value="@Model.CustomerGroup.UpdateDate" class="form-control">
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            @if (Model.CustomerGroup.IsActive)
-                            {
-                                <input type="checkbox" checked="checked" value="@Model.CustomerGroup.IsActive"> @L("IsActiveLabel")
-                            }
-                            else
-                            {
-                                <input type="checkbox" value="@Model.CustomerGroup.IsActive"> @L("IsActiveLabel")
-                            }
-                        </label>
-                    </div>
-                </div>
-                <div class="box-footer">
-                    <button type="button" class="btn btn-primary">@L("EditButtonLabel")</button>
-                    <button type="button" class="btn btn-primary">@L("DeleteButtonLabel")</button>
-                </div>
-            </form>
-        </div>
+            @Html.HiddenFor(@model => @model.CustomerGroup.Id)
+            <div class="form-group">
+              <label for="txtGroupDescription">@L("DescriptionLabel")</label>
+              @Html.TextBoxFor(@model => @model.CustomerGroup.Description, new { @id = "txtGroupDescription", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtCreateDate">@L("CreateDateLabel")</label>
+              <p class="readonly-text">@Model.CustomerGroup.CreateDate</p>
+              @Html.HiddenFor(@model => @model.CustomerGroup.CreateDate)
+            </div>
+            <div class="form-group">
+              <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
+              <p class="readonly-text">@Model.CustomerGroup.UpdateDate</p>
+            </div>
+            <div class="checkbox">
+              <label>
+
+                @Html.CheckBoxFor(@model => @model.CustomerGroup.IsActive) @L("IsActiveLabel")
+              </label>
+
+            </div>
+          </div>
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">@L("EditButtonLabel")</button>
+            @Html.ActionLink(L("DeleteButtonLabel"), "Delete", new { @id = Model.CustomerGroup.Id }, new { @class = "btn btn-primary" })
+          </div>
+      }
     </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#btnDeleteGroup").click(function (e) {
+    console.log(e);
+  });
+</script>
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal Default</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

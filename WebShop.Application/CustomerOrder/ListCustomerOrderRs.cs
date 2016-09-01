@@ -5,6 +5,6 @@ namespace WebShop.Application
 {
     public class ListCustomerOrderRs : BaseResponse<CustomerOrderDTO>
     {
-        public List<CustomerOrderDTO> CustomerOrders { get; set; }
+        public List<CustomerOrderDTO> Orders { get; set; }
     }
 }

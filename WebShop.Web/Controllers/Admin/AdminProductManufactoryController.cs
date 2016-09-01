@@ -6,7 +6,7 @@ using WebShop.Web.Models;
 
 namespace WebShop.Web.Controllers
 {
-    public class AdminProductManufactoryController : Controller//AdminControllerBase
+    public class AdminProductManufactoryController : AdminControllerBase
     {
         private readonly IProductManufactoryAppService _manufactoryAppService;
 
@@ -60,45 +60,51 @@ namespace WebShop.Web.Controllers
             await viewModel.GetProductManufactory(id);
             return View(viewModel);
         }
-
+        private string SaveFile()
+        {
+            var uri = "";
+            if (Request.Files.Count > 0 && !string.IsNullOrEmpty(Request.Files[0].FileName))
+            {
+                var file = Request.Files[0];
+                var path = Path.Combine(Server.MapPath("~/Content/Files/"), file.FileName);
+                var data = new byte[file.ContentLength];
+                file.InputStream.Read(data, 0, file.ContentLength);
+                using (var sw = new FileStream(path, FileMode.Create))
+                {
+                    sw.Write(data, 0, data.Length);
+                }
+                uri = "/Content/Files/" + file.FileName;
+            }
+            return uri;
+        }
         [HttpPost]
         public async Task<ActionResult> Create(ProductManufactoryViewModel viewModel)
         {
-            
-            var file = Request.Files[0];
-            var path = Path.Combine(Server.MapPath("~/Content/Files/"), file.FileName);
-
-            var data = new byte[file.ContentLength];
-            file.InputStream.Read(data, 0, file.ContentLength);
-
-            using (var sw = new FileStream(path, FileMode.Create))
-            {
-                sw.Write(data, 0, data.Length);
-            }
-
-            viewModel.ProductManufactory.ManufactoryLogo = "/Content/Files/" + file.FileName;
-
+            viewModel.ProductManufactory.ManufactoryLogo = SaveFile();
             CreateProductManufactoryRq rq = new CreateProductManufactoryRq()
             {
                 Manufactory = viewModel.ProductManufactory,
 
-            };
-            
+            };            
             viewModel.ProductManufactory = (await _manufactoryAppService.CreateManufactory(rq)).Manufactory;
-
             return RedirectToAction("List", new { id = viewModel.ProductManufactory.Id });
         }
 
         [HttpPost]
         public async Task<ActionResult> Update(ProductManufactoryViewModel viewModel)
         {
-            UpdateProductManufactoryRq rq = new UpdateProductManufactoryRq()
-            { Manufactory = viewModel.ProductManufactory };
-            viewModel.ProductManufactory = (await _manufactoryAppService.UpdateManufactory(rq)).Manufactory;
+            var uri = SaveFile();
+            if (!string.IsNullOrEmpty(uri))
+            {
+                viewModel.ProductManufactory.ManufactoryLogo = uri;
+            }
 
+            UpdateProductManufactoryRq rq = new UpdateProductManufactoryRq()
+            {
+                Manufactory = viewModel.ProductManufactory
+            };
+            viewModel.ProductManufactory = (await _manufactoryAppService.UpdateManufactory(rq)).Manufactory;
             return RedirectToAction("List", new { id = viewModel.ProductManufactory.Id });
-            //await viewModel.UpdateProductManufactory();
-            //return RedirectToAction("Details", new { id = viewModel.ProductManufactory.Id });
         }
 
         [HttpPost]
@@ -107,7 +113,6 @@ namespace WebShop.Web.Controllers
             DeleteProductManufactoryRq rq = new DeleteProductManufactoryRq()
             { Manufactory = viewModel.ProductManufactory };
             viewModel.ProductManufactory = (await _manufactoryAppService.DeleteManufactory(rq)).Manufactory;
-
             return RedirectToAction("List", new { id = viewModel.ProductManufactory.Id });
         }
     }

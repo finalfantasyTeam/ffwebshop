@@ -10,12 +10,12 @@ namespace WebShop.Core
     {
         public ProductStatus()
         {
-            this.Products = new HashSet<Product>();
+            //this.Products = new HashSet<Product>();
         }
 
         public string Name { get; set; }
         public string Notes { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        //public virtual ICollection<Product> Products { get; set; }
     }
 }

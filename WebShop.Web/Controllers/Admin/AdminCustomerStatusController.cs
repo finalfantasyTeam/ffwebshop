@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebShop.Application;
 using WebShop.Web.Models;
@@ -52,18 +53,43 @@ namespace WebShop.Web.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Delete(int id)
+        {
+            CustomerStatusViewModel viewModel = new CustomerStatusViewModel(_StatusAppService);
+            await viewModel.GetCustomerStatus(id);
+            return View(viewModel);
+        }
         [HttpPost]
         public async Task<ActionResult> Create(CustomerStatusViewModel viewModel)
         {
-            await viewModel.CreateNewCustomerStatus();
-            return RedirectToAction("Details", new { id = viewModel.CustomerStatus.Id });
+            CreateCustomerStatusRq rq = new CreateCustomerStatusRq()
+            {
+                Status = viewModel.CustomerStatus,
+
+            };
+            viewModel.CustomerStatus = (await _StatusAppService.CreateStatus(rq)).Status;
+            return RedirectToAction("List", new { id = viewModel.CustomerStatus.Id });
         }
 
         [HttpPost]
         public async Task<ActionResult> Update(CustomerStatusViewModel viewModel)
         {
-            await viewModel.UpdateCustomerStatus();
-            return RedirectToAction("Details", new { id = viewModel.CustomerStatus.Id });
+            UpdateCustomerStatusRq rq = new UpdateCustomerStatusRq()
+            {
+                Status = viewModel.CustomerStatus
+            };
+            viewModel.CustomerStatus = (await _StatusAppService.UpdateStatus(rq)).Status;
+            return RedirectToAction("List", new { id = viewModel.CustomerStatus.Id });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(CustomerStatusViewModel viewModel)
+        {
+            DeleteCustomerStatusRq rq = new DeleteCustomerStatusRq()
+            { Status = viewModel.CustomerStatus };
+            viewModel.CustomerStatus = (await _StatusAppService.DeleteStatus(rq)).Status;
+            return RedirectToAction("List", new { id = viewModel.CustomerStatus.Id });
         }
     }
 }

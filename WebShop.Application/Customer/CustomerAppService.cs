@@ -4,29 +4,35 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
 {
     public class CustomerAppService : ICustomerAppService
     {
-        private readonly ICustomerRepository _customersRepository;
+        private readonly ICustomerRepository _CustomerRepository;
 
-        public CustomerAppService(ICustomerRepository customersRepository)
+        private static string SetDefaultImage(string value)
         {
-            _customersRepository = customersRepository;
-            Mapper.CreateMap<Customer, CustomerDTO>();
+            return "";
+        }
+
+        public CustomerAppService(ICustomerRepository CustomerRepository)
+        {
+            _CustomerRepository = CustomerRepository;
             Mapper.CreateMap<CustomerDTO, Customer>();
+            Mapper.CreateMap<Customer, CustomerDTO>();
         }
 
         public async Task<ListCustomerRs> GetAllCustomer()
         {
             try
             {
-                List<Customer> customers = await _customersRepository.GetAllListAsync();
+                List<Customer> Customers = await _CustomerRepository.GetAllListAsync();
                 return new ListCustomerRs()
                 {
-                    Customers = customers.MapTo<List<CustomerDTO>>()
+                    Customers = Customers.MapTo<List<CustomerDTO>>()
                 };
             }
             catch (Exception ex)
@@ -35,33 +41,37 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetCustomerRs> GetCustomer(GetCustomerRq rq)
+        public async Task<GetCustomerRs> GetCustomerById(GetCustomerRq rq)
         {
-            try
-            {
-                Customer customer = await _customersRepository.GetAsync(rq.Id);
+            Customer Customer = await _CustomerRepository.GetAsync(rq.Id);
 
-                return new GetCustomerRs()
-                {
-                    Customer = customer.MapTo<CustomerDTO>()
-                };
-            }
-            catch (Exception ex)
+            return new GetCustomerRs()
             {
-                throw new Exception(ex.Message);
-            }
+                Customer = Customer.MapTo<CustomerDTO>()
+            };
+        }
+
+        public async Task<GetCustomerRs> GetCustomerByFirstName(GetCustomerRq rq)
+        {
+            Customer Customer = await _CustomerRepository.GetCustomerByFirstNameAsync(rq.FirstName);
+
+            return new GetCustomerRs()
+            {
+                Customer = Customer.MapTo<CustomerDTO>()
+            };
         }
 
         public async Task<CreateCustomerRs> CreateCustomer(CreateCustomerRq rq)
         {
             try
             {
+                rq.Customer.JoinDate = DateTime.Now;
                 Customer insertCustomer = rq.Customer.MapTo<Customer>();
-                insertCustomer = await _customersRepository.InsertAsync(insertCustomer);
+                rq.Customer.Id = await _CustomerRepository.InsertAndGetIdAsync(insertCustomer);
 
                 return new CreateCustomerRs()
                 {
-                    Customer = insertCustomer.MapTo<CustomerDTO>()
+                    Customer = rq.Customer
                 };
             }
             catch (Exception ex)
@@ -74,8 +84,9 @@ namespace WebShop.Application
         {
             try
             {
+                rq.Customer.JoinDate = DateTime.Now;
                 Customer updateCustomer = rq.Customer.MapTo<Customer>();
-                updateCustomer = await _customersRepository.UpdateAsync(updateCustomer);
+                updateCustomer = await _CustomerRepository.UpdateAsync(updateCustomer);
 
                 return new UpdateCustomerRs()
                 {
@@ -93,9 +104,12 @@ namespace WebShop.Application
             try
             {
                 Customer deleteCustomer = rq.Customer.MapTo<Customer>();
-                await _customersRepository.DeleteAsync(deleteCustomer);
+                await _CustomerRepository.DeleteAsync(deleteCustomer);
 
-                return new DeleteCustomerRs();
+                return new DeleteCustomerRs()
+                {
+                    Customer = deleteCustomer.MapTo<CustomerDTO>()
+                };
             }
             catch (Exception ex)
             {

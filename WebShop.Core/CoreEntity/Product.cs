@@ -37,7 +37,7 @@ namespace WebShop.Core
         [ForeignKey("CategoryId")]
         public virtual ProductCategory ProductCategory { get; set; }
         [ForeignKey("Status")]
-        public virtual ProductStatus ProductStatus { get; set; }
+        public virtual ProductStatus ProductStatus { get; set; }        
         public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ICollection<ProductMeta> ProductMetas { get; set; }

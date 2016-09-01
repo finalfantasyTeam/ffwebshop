@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Web;
 using WebShop.Application;
 
 namespace WebShop.Web.Models
@@ -7,6 +9,10 @@ namespace WebShop.Web.Models
     public class ProductMetaViewModel
     {
         private readonly IProductMetaAppService _MetaAppService;
+
+        public ProductMetaViewModel()
+        {
+        }
 
         public ProductMetaViewModel(IProductMetaAppService MetaAppService)
         {
@@ -45,7 +51,6 @@ namespace WebShop.Web.Models
             { Meta = ProductMeta };
             await _MetaAppService.DeleteMeta(rq);
         }
-
         public IList<ProductMetaDTO> ListProductMeta { get; set; }
         public ProductMetaDTO ProductMeta { get; set; }
     }

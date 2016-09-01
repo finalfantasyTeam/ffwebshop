@@ -4,29 +4,35 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
 {
     public class CustomerOrderAppService : ICustomerOrderAppService
     {
-        private readonly ICustomerOrderRepository _customerOrdersRepository;
+        private readonly ICustomerOrderRepository _CustomerOrderRepository;
 
-        public CustomerOrderAppService(ICustomerOrderRepository customerOrdersRepository)
+        private static string SetDefaultImage(string value)
         {
-            _customerOrdersRepository = customerOrdersRepository;
-            Mapper.CreateMap<CustomerOrder, CustomerOrderDTO>();
-            Mapper.CreateMap<CustomerOrderDTO, CustomerOrder>();
+            return "";
         }
 
-        public async Task<ListCustomerOrderRs> GetAllCustomerOrder()
+        public CustomerOrderAppService(ICustomerOrderRepository CustomerOrderRepository)
+        {
+            _CustomerOrderRepository = CustomerOrderRepository;
+            Mapper.CreateMap<CustomerOrderDTO, CustomerOrder>();
+            Mapper.CreateMap<CustomerOrder, CustomerOrderDTO>();
+        }
+
+        public async Task<ListCustomerOrderRs> GetAllOrder()
         {
             try
             {
-                List<CustomerOrder> customerOrders = await _customerOrdersRepository.GetAllListAsync();
+                List<CustomerOrder> CustomerOrders = await _CustomerOrderRepository.GetAllListAsync();
                 return new ListCustomerOrderRs()
                 {
-                    CustomerOrders = customerOrders.MapTo<List<CustomerOrderDTO>>()
+                    Orders = CustomerOrders.MapTo<List<CustomerOrderDTO>>()
                 };
             }
             catch (Exception ex)
@@ -35,33 +41,37 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetCustomerOrderRs> GetCustomerOrder(GetCustomerOrderRq rq)
+        public async Task<GetCustomerOrderRs> GetOrderById(GetCustomerOrderRq rq)
         {
-            try
-            {
-                CustomerOrder customerOrder = await _customerOrdersRepository.GetAsync(rq.Id);
+            CustomerOrder CustomerOrder = await _CustomerOrderRepository.GetAsync(rq.Id);
 
-                return new GetCustomerOrderRs()
-                {
-                    CustomerOrder = customerOrder.MapTo<CustomerOrderDTO>()
-                };
-            }
-            catch (Exception ex)
+            return new GetCustomerOrderRs()
             {
-                throw new Exception(ex.Message);
-            }
+                Order = CustomerOrder.MapTo<CustomerOrderDTO>()
+            };
         }
 
-        public async Task<CreateCustomerOrderRs> CreateCustomerOrder(CreateCustomerOrderRq rq)
+        //public async Task<GetCustomerOrderRs> GetOrderByCustomerId(GetCustomerOrderRq rq)
+        //{
+        //    CustomerOrder CustomerOrder = await _CustomerOrderRepository.GetOrderByCustomerId(rq.CustomerId);
+
+        //    return new GetCustomerOrderRs()
+        //    {
+        //        Order = CustomerOrder.MapTo<CustomerOrderDTO>()
+        //    };
+        //}
+
+        public async Task<CreateCustomerOrderRs> CreateOrder(CreateCustomerOrderRq rq)
         {
             try
             {
-                CustomerOrder insertCustomerOrder = rq.CustomerOrder.MapTo<CustomerOrder>();
-                insertCustomerOrder = await _customerOrdersRepository.InsertAsync(insertCustomerOrder);
+                rq.Order.CreateDate = DateTime.Now;
+                CustomerOrder insertOrder = rq.Order.MapTo<CustomerOrder>();
+                rq.Order.Id = await _CustomerOrderRepository.InsertAndGetIdAsync(insertOrder);
 
                 return new CreateCustomerOrderRs()
                 {
-                    CustomerOrder = insertCustomerOrder.MapTo<CustomerOrderDTO>()
+                    Order = rq.Order
                 };
             }
             catch (Exception ex)
@@ -70,16 +80,17 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<UpdateCustomerOrderRs> UpdateCustomerOrder(UpdateCustomerOrderRq rq)
+        public async Task<UpdateCustomerOrderRs> UpdateOrder(UpdateCustomerOrderRq rq)
         {
             try
             {
-                CustomerOrder updateCustomerOrder = rq.CustomerOrder.MapTo<CustomerOrder>();
-                updateCustomerOrder = await _customerOrdersRepository.UpdateAsync(updateCustomerOrder);
+                rq.Order.CreateDate = DateTime.Now;
+                CustomerOrder updateOrder = rq.Order.MapTo<CustomerOrder>();
+                updateOrder = await _CustomerOrderRepository.UpdateAsync(updateOrder);
 
                 return new UpdateCustomerOrderRs()
                 {
-                    CustomerOrder = updateCustomerOrder.MapTo<CustomerOrderDTO>()
+                    Order = updateOrder.MapTo<CustomerOrderDTO>()
                 };
             }
             catch (Exception ex)
@@ -88,14 +99,17 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<DeleteCustomerOrderRs> DeleteCustomerOrder(DeleteCustomerOrderRq rq)
+        public async Task<DeleteCustomerOrderRs> DeleteOrder(DeleteCustomerOrderRq rq)
         {
             try
             {
-                CustomerOrder deleteCustomerOrder = rq.CustomerOrder.MapTo<CustomerOrder>();
-                await _customerOrdersRepository.DeleteAsync(deleteCustomerOrder);
+                CustomerOrder deleteOrder = rq.Order.MapTo<CustomerOrder>();
+                await _CustomerOrderRepository.DeleteAsync(deleteOrder);
 
-                return new DeleteCustomerOrderRs();
+                return new DeleteCustomerOrderRs()
+                {
+                    Order = deleteOrder.MapTo<CustomerOrderDTO>()
+                };
             }
             catch (Exception ex)
             {

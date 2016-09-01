@@ -12,9 +12,11 @@
             }
             else
             {
-                <h3 class="box-title">No factory name</h3>
+                <h3 class="box-title">No Records Found</h3>
             }
-            <a class="btn-link">@L("BackButtonLabel")</a>
+            <div class="box-header">
+              <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+            </div>
           </div>
           <form role="form">
             <div class="box-body">
@@ -30,21 +32,10 @@
                 <label for="txtManufactoryCountry">@L("CountryLabel")</label>
                 @Html.TextBoxFor(@model => @model.ProductManufactory.ManufactoryCountry, new { @id = "txtManufactoryCountry", @class = "form-control" })
               </div>
-              <!--
-              <div class="form-group">
-                <label for="txtCreateDate">@L("CreateDateLabel")</label>
-                @Html.TextBoxFor(@model => @model.ProductManufactory.CreateDate, new { @id = "txtCreateDate", @class = "form-control" })
-              </div>
-              <div class="form-group">
-                <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
-                @Html.TextBoxFor(@model => @model.ProductManufactory.UpdateDate, new { @id = "txtUpdateDate", @class = "form-control" })
-              </div>
-              -->
               <div class="form-group">
                 <label for="fileManufactoryLogo">@L("ManufactoryLogoLabel")</label>
                 <input type="file" name="File" />
                 <p class="help-block">@L("UploadLogoHelpText")</p>
-                @*@Model.ProductManufactory.ManufactoryLogo*@
               </div>
               <div class="checkbox">
                 <label>
@@ -53,7 +44,6 @@
               </div>
             </div>
             <div class="box-footer">
-              <!--<button type="button" class="btn btn-primary">@L("SaveButtonLabel")</button>-->
               <button type="submit" class="btn btn-primary">@L("SaveButtonLabel")</button> 
             </div>
           </form>

@@ -1,52 +1,87 @@
 ﻿@model WebShop.Web.Models.InvoiceViewModel
 
-@using (Html.BeginForm("Update", "Invoice", FormMethod.Post))
-{
-}
 <div class="row">
   <div class="col-md-6">
     <div class="box box-primary">
       <div class="box-header with-border">
         <h3 class="box-title">@Model.Invoice.Id - @Model.Invoice.CustomerId</h3>
-        <a class="btn-link">@L("BackButtonLabel")</a>
       </div>
-      <form role="form">
-        <div class="box-body">
-          <div class="form-group">
-            <label for="txtInvoiceCustomerId">@L("CustomerIdLabel")</label>
-            <input id="txtInvoiceCustomerId" type="text" value="@Model.Invoice.CustomerId" class="form-control">
+      <div class="box-header">
+        <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+      </div>
+      @using (Html.BeginForm("Update", "AdminInvoice", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+      {
+          <div class="box-body">
+            <div class="form-group">
+              <label for="txtCustomerId">@L("CustomerIdLabel")</label>
+              @Html.DropDownListFor(@model => @model.Invoice.CustomerId, (IEnumerable<SelectListItem>)ViewBag.CustomerId, string.Empty, new { @class = "form-control without-styles" })
+            </div>
+            <div class="form-group">
+              <label for="txtCreateBy">@L("CreateByLabel")</label>
+              @Html.TextBoxFor(@model => @model.Invoice.CreateBy, new { @id = "txtCreateBy", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtUpdateBy">@L("UpdateByLabel")</label>
+              @Html.TextBoxFor(@model => @model.Invoice.UpdateBy, new { @id = "txtUpdateBy", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtMetaNotes">@L("NotesLabel")</label>
+              @Html.TextBoxFor(@model => @model.Invoice.Notes, new { @id = "txtMetaNotes", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtInvoiceTotal">@L("InvoiceTotalLabel")</label>
+              @Html.TextBoxFor(@model => @model.Invoice.InvoiceTotal, new { @id = "txtInvoiceTotal", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtStatus">@L("StatusLabel")</label>
+              @Html.TextBoxFor(@model => @model.Invoice.Status, new { @id = "txtStatus", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtMetaNotes">@L("NotesLabel")</label>
+              @Html.TextBoxFor(@model => @model.Invoice.Notes, new { @id = "txtMetaNotes", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtCreateDate">@L("CreateDateLabel")</label>
+              <p class="readonly-text">@Model.Invoice.CreateDate</p>
+              @Html.HiddenFor(@model => @model.Invoice.CreateDate)
+            </div>
+            <div class="form-group">
+              <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
+              <p class="readonly-text">@Model.Invoice.UpdateDate</p>
+            </div>
+            <div class="checkbox">
+              <label>
+                @Html.CheckBoxFor(@model => @model.Invoice.IsActive) @L("IsActiveLabel")
+              </label>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="txtInvoiceTotal">@L("InvoiceTotalLabel")</label>
-            <input id="txtInvoiceTotal" type="text" value="@Model.Invoice.InvoiceTotal" class="form-control">
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">@L("EditButtonLabel")</button>
+            @Html.ActionLink(L("DeleteButtonLabel"), "Delete", new { @id = Model.Invoice.Id }, new { @class = "btn btn-primary" })
           </div>
-          <div class="form-group">
-            <label for="txtInvoiceStatus">@L("StatusLabel")</label>
-            <input id="txtInvoiceStatus" type="text" value="@Model.Invoice.Status" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="txtNotes">@L("NotesLabel")</label>
-            <input id="txtNotes" type="text" value="@Model.Invoice.Notes" class="form-control">
-          </div>
-          <div class="checkbox">
-            <label>
-              Invoice.cs
-              @if (Model.Invoice.IsActive)
-              {
-                  <input type="checkbox" checked="checked" value="@Model.Invoice.IsActive"> @L("IsActiveLabel")
-              }
-              else
-              {
-                  <input type="checkbox" value="@Model.Invoice.IsActive"> @L("IsActiveLabel")
-              }
-            </label>
-          </div>
-        </div>
-        <div class="box-footer">
-          <button type="button" class="btn btn-primary">@L("EditButtonLabel")</button>
-          <button type="button" class="btn btn-primary">@L("DeleteButtonLabel")</button>
-        </div>
-      </form>
+      }
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#btnDeleteCategory").click(function (e) {
+    console.log(e);
+  });
+</script>
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal Default</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
     </div>
   </div>
 </div>

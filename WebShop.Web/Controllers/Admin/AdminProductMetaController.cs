@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebShop.Application;
 using WebShop.Web.Models;
@@ -8,10 +9,12 @@ namespace WebShop.Web.Controllers
     public class AdminProductMetaController : AdminControllerBase
     {
         private readonly IProductMetaAppService _MetaAppService;
+        private readonly IProductAppService _ProductAppService;
 
-        public AdminProductMetaController(IProductMetaAppService MetaAppService)
+        public AdminProductMetaController(IProductMetaAppService MetaAppService, IProductAppService ProductAppService)
         {
             _MetaAppService = MetaAppService;
+            _ProductAppService = ProductAppService;
         }
 
         [HttpGet]
@@ -33,14 +36,22 @@ namespace WebShop.Web.Controllers
         public async Task<ActionResult> Details(int id)
         {
             ProductMetaViewModel viewModel = new ProductMetaViewModel(_MetaAppService);
+
+            var getAllProductRs = await _ProductAppService.GetAllProducts();
+            ViewBag.ProductId = new SelectList(getAllProductRs.Products, "Id", "Name");
+            
             await viewModel.GetProductMeta(id);
             return View(viewModel);
         }
 
         [HttpGet]
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
             ProductMetaViewModel viewModel = new ProductMetaViewModel(_MetaAppService);
+
+            var getAllProductRs = await _ProductAppService.GetAllProducts();
+            ViewBag.ProductId = new SelectList(getAllProductRs.Products, "Id", "Name");
+
             return View(viewModel);
         }
 
@@ -52,18 +63,45 @@ namespace WebShop.Web.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Delete(int id)
+        {
+            ProductMetaViewModel viewModel = new ProductMetaViewModel(_MetaAppService);
+            await viewModel.GetProductMeta(id);
+            return View(viewModel);
+        }
+        
         [HttpPost]
         public async Task<ActionResult> Create(ProductMetaViewModel viewModel)
         {
-            await viewModel.CreateNewProductMeta();
-            return RedirectToAction("Details", new { id = viewModel.ProductMeta.Id });
+            CreateProductMetaRq rq = new CreateProductMetaRq()
+            {
+                Meta = viewModel.ProductMeta,
+
+            };
+            viewModel.ProductMeta = (await _MetaAppService.CreateMeta(rq)).Meta;
+            return RedirectToAction("List", new { id = viewModel.ProductMeta.Id });
         }
 
         [HttpPost]
         public async Task<ActionResult> Update(ProductMetaViewModel viewModel)
         {
-            await viewModel.UpdateProductMeta();
-            return RedirectToAction("Details", new { id = viewModel.ProductMeta.Id });
+            UpdateProductMetaRq rq = new UpdateProductMetaRq()
+            {
+                Meta = viewModel.ProductMeta
+            };
+            viewModel.ProductMeta = (await _MetaAppService.UpdateMeta(rq)).Meta;
+            return RedirectToAction("List", new { id = viewModel.ProductMeta.Id });
         }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(ProductMetaViewModel viewModel)
+        {
+            DeleteProductMetaRq rq = new DeleteProductMetaRq()
+            { Meta = viewModel.ProductMeta };
+            viewModel.ProductMeta = (await _MetaAppService.DeleteMeta(rq)).Meta;
+            return RedirectToAction("List", new { id = viewModel.ProductMeta.Id });
+        }
+        
     }
 }

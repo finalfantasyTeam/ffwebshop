@@ -10,7 +10,7 @@ namespace WebShop.Core
     {
         public CustomerGroup()
         {
-            this.Customers = new HashSet<Customer>();
+            //Products = new HashSet<Product>();
         }
 
         public string Name { get; set; }
@@ -19,6 +19,6 @@ namespace WebShop.Core
         public DateTime? UpdateDate { get; set; }
         public bool? IsActive { get; set; }
 
-        public virtual ICollection<Customer> Customers { get; set; }
+        //public virtual ICollection<Product> Products { get; set; }
     }
 }

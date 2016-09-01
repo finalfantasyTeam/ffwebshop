@@ -1,0 +1,24 @@
+﻿@model WebShop.Web.Models.CustomerStatusViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h3 class="box-title">Delete Customer Status</h3>
+<div class="box-header">
+  <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+</div>
+<h4>Are you sure you want to delete this?</h4>
+<div>
+  <dl class="dl-horizontal"></dl>
+
+  @using (Html.BeginForm())
+  {
+      @Html.AntiForgeryToken()
+      @Html.HiddenFor(@model => @model.CustomerStatus.Notes)
+      @Html.HiddenFor(@model => @model.CustomerStatus.Id)
+      @Html.HiddenFor(@model => @model.CustomerStatus.Name)
+      <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-primary" /> 
+      </div>
+  }
+</div>

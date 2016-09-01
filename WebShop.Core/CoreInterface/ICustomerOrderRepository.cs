@@ -6,5 +6,7 @@ namespace WebShop.Core
 {
     public interface ICustomerOrderRepository : IRepository<CustomerOrder, int>
     {
+        // Declare custom action with database
+        //Task<CustomerOrder> GetOrderByCustomerIdAsync(int CustomerId);
     }
 }

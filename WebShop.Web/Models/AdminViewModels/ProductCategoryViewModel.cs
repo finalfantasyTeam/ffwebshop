@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Web;
 using WebShop.Application;
 
 namespace WebShop.Web.Models
@@ -7,6 +9,10 @@ namespace WebShop.Web.Models
     public class ProductCategoryViewModel
     {
         private readonly IProductCategoryAppService _CategoryAppService;
+
+        public ProductCategoryViewModel()
+        {
+        }
 
         public ProductCategoryViewModel(IProductCategoryAppService CategoryAppService)
         {
@@ -45,7 +51,6 @@ namespace WebShop.Web.Models
             { Category = ProductCategory };
             await _CategoryAppService.DeleteCategory(rq);
         }
-
         public IList<ProductCategoryDTO> ListProductCategory { get; set; }
         public ProductCategoryDTO ProductCategory { get; set; }
     }

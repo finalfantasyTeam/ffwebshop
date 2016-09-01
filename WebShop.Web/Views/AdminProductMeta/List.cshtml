@@ -2,15 +2,18 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Product Meta list</h3>
+                <h3 class="box-title">Product Meta List</h3>
             </div>
+          <div class="box-header">
+            <a href='@Url.Action("Create")'>@L("AddNewLabel")</a>
+          </div>
             <div class="box-body">
                 <table id="tblProductMeta" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>Product Id</th>   
+                            <th>#</th>  
                             <th>Key</th>
+                            <th>Product Id</th> 
                             <th>Value</th>
                             <th>Notes</th>
                             <th>Active</th>
@@ -27,11 +30,9 @@
                                             <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
                                         </td>
                                         <td>
-                                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.ProductId</a>
-                                        </td>
-                                        <td>
                                             <a href="@Url.Action("Details", new { id = data.Id })">@data.MetaKey</a>
                                         </td>
+                                        <td>@data.ProductId</td>
                                         <td>@data.MetaValue</td>
                                         <td>@data.Notes</td>
                                         <td>@data.IsActive</td>
