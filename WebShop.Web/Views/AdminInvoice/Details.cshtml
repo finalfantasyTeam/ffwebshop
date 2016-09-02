@@ -9,12 +9,13 @@
       <div class="box-header">
         <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
       </div>
-      @using (Html.BeginForm("Update", "AdminInvoice", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+      @using (Html.BeginForm("Update", "AdminInvoice", FormMethod.Post))
       {
+          @Html.HiddenFor(@model => @model.Invoice.Id);
           <div class="box-body">
             <div class="form-group">
               <label for="txtCustomerId">@L("CustomerIdLabel")</label>
-              @Html.DropDownListFor(@model => @model.Invoice.CustomerId, (IEnumerable<SelectListItem>)ViewBag.CustomerId, string.Empty, new { @class = "form-control without-styles" })
+              @Html.TextBoxFor(@model => @model.Invoice.CustomerId, new { @id = "txtCustomerId", @class = "form-control" })
             </div>
             <div class="form-group">
               <label for="txtCreateBy">@L("CreateByLabel")</label>
@@ -64,7 +65,7 @@
   </div>
 </div>
 <script type="text/javascript">
-  $("#btnDeleteCategory").click(function (e) {
+  $("#btnDeleteInvoice").click(function (e) {
     console.log(e);
   });
 </script>

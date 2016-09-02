@@ -5,6 +5,6 @@ namespace WebShop.Application
 {
     public class CreateConfigOptionsRs : BaseResponse<ConfigOptionsDTO>
     {
-        public ConfigOptionsDTO ConfigOption { get; set; }
+        public ConfigOptionsDTO Option { get; set; }
     }
 }

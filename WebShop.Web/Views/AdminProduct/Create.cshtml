@@ -12,10 +12,12 @@
               }
               else
               {
-                  <h3 class="box-title">No factory name</h3>
+                  <h3 class="box-title">No Product Name</h3>
               }
-                <a class="btn-link">@L("BackButtonLabel")</a>
             </div>
+          <div class="box-header">
+            <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+          </div>
             <form role="form">
                 <div class="box-body">
                   <div class="form-group">
@@ -28,7 +30,7 @@
                   </div>
                   <div class="form-group">
                     <label for="txtCategoryId">@L("CategoryIdLabel")</label>
-                    @Html.TextBoxFor(@model => @model.Product.CategoryId, new { @id = "txtProductCategoryId", @class = "form-control" })
+                    @Html.DropDownListFor(@model => @model.Product.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryId, string.Empty, new { @class = "form-control without-styles" })
                   </div>
                   <div class="form-group">
                     <label for="txtOriginPrice">@L("OriginPriceLabel")</label>
@@ -44,15 +46,15 @@
                   </div>
                   <div class="form-group">
                     <label for="txtStatus">@L("StatusLabel")</label>
-                    @Html.TextBoxFor(@model => @model.Product.Status, new { @id = "txtProductStatus", @class = "form-control" })
+                    @Html.DropDownListFor(@model => @model.Product.Status, (IEnumerable<SelectListItem>)ViewBag.Status, string.Empty, new { @class = "form-control without-styles" })
                   </div>
                   <div class="form-group">
                     <label for="txtManufactoryId">@L("ManufactoryIdLabel")</label>
-                    @Html.TextBoxFor(@model => @model.Product.ManufactoryId, new { @id = "txtManufactoryId", @class = "form-control" })
+                    @Html.DropDownListFor(@model => @model.Product.ManufactoryId, (IEnumerable<SelectListItem>)ViewBag.ManufactoryId, string.Empty, new { @class = "form-control without-styles" })
                   </div>
                   <div class="form-group">
                     <label for="txtBranchId">@L("BranchIdLabel")</label>
-                    @Html.TextBoxFor(@model => @model.Product.BranchId, new { @id = "txtBranchId", @class = "form-control" })
+                    @Html.DropDownListFor(@model => @model.Product.BranchId, (IEnumerable<SelectListItem>)ViewBag.BranchId, string.Empty, new { @class = "form-control without-styles" })
                   </div>
                   <div class="form-group">
                     <label for="txtCreateDate">@L("CreateDateLabel")</label>

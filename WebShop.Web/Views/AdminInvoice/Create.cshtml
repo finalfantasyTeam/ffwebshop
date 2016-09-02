@@ -23,7 +23,7 @@
             <div class="box-body">
               <div class="form-group">
                 <label for="txtCustomerId">@L("CustomerIdLabel")</label>
-                @Html.DropDownListFor(@model => @model.Invoice.CustomerId, (IEnumerable<SelectListItem>)ViewBag.CustomerId, string.Empty, new { @class = "form-control without-styles" })
+                @Html.TextBoxFor(@model => @model.Invoice.CustomerId, new { @id = "txtCustomerId", @class = "form-control" })
               </div>
               <div class="form-group">
                 <label for="txtCreateBy">@L("CreateByLabel")</label>

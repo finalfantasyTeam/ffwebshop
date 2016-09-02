@@ -9,12 +9,17 @@ namespace WebShop.Web.Controllers
     public class AdminCustomerOrderController : AdminControllerBase
     {
         private readonly ICustomerOrderAppService _OrderAppService;
-        private readonly ICustomerAppService _CustomerAppService;
+        //private readonly ICustomerAppService _CustomerAppService;
 
-        public AdminCustomerOrderController(ICustomerOrderAppService OrderAppService, ICustomerAppService CustomerAppService)
+        //public AdminCustomerOrderController(ICustomerOrderAppService OrderAppService, ICustomerAppService CustomerAppService)
+        //{
+        //    _OrderAppService = OrderAppService;
+        //    _CustomerAppService = CustomerAppService;
+        //}
+
+        public AdminCustomerOrderController(ICustomerOrderAppService OrderAppService)
         {
             _OrderAppService = OrderAppService;
-            _CustomerAppService = CustomerAppService;
         }
 
         [HttpGet]
@@ -36,8 +41,8 @@ namespace WebShop.Web.Controllers
         public async Task<ActionResult> Details(int id)
         {
             CustomerOrderViewModel viewModel = new CustomerOrderViewModel(_OrderAppService);
-            var getAllCustomerRs = await _CustomerAppService.GetAllCustomer();
-            ViewBag.CustomerId = new SelectList(getAllCustomerRs.Customers, "Id", "FirstName");
+            //var getAllCustomerRs = await _CustomerAppService.GetAllCustomer();
+            //ViewBag.CustomerId = new SelectList(getAllCustomerRs.Customers, "Id", "FirstName");
             await viewModel.GetCustomerOrder(id);
             return View(viewModel);
         }
@@ -46,8 +51,8 @@ namespace WebShop.Web.Controllers
         public async Task<ActionResult> Create()
         {
             CustomerOrderViewModel viewModel = new CustomerOrderViewModel(_OrderAppService);
-            var getAllCustomerRs = await _CustomerAppService.GetAllCustomer();
-            ViewBag.CustomerId = new SelectList(getAllCustomerRs.Customers, "Id", "FirstName");
+            //var getAllCustomerRs = await _CustomerAppService.GetAllCustomer();
+            //ViewBag.CustomerId = new SelectList(getAllCustomerRs.Customers, "Id", "FirstName");
             return View(viewModel);
         }
 

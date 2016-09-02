@@ -1,98 +1,114 @@
-﻿@using (Html.BeginForm("Update", "AdminProduct", FormMethod.Post))
-{
-    
-            }
+﻿@model WebShop.Web.Models.ProductViewModel
+
 <div class="row">
-    <div class="col-md-6">
-        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">@Model.Product.Id - @Model.Product.Name</h3>
-                <a class="btn-link">@L("BackButtonLabel")</a>
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">@Model.Product.Id - @Model.Product.Name</h3>
+      </div>
+      <div class="box-header">
+        <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+      </div>
+      @using (Html.BeginForm("Update", "AdminProduct", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+      {
+          @Html.HiddenFor(@model => @model.Product.Id);
+          <div class="box-body">
+            <div class="form-group">
+              <label for="txtProductName">@L("NameLabel")</label>
+              @Html.TextBoxFor(@model => @model.Product.Name, new { @id = "txtProductName", @class = "form-control" })
             </div>
-            <form role="form">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="txtProductName">@L("NameLabel")</label>
-                        <input id="txtProductName" type="text" value="@Model.Product.Name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtProductCode">@L("CodeLabel")</label>
-                        <input id="txtProductCode" type="text" value="@Model.Product.Code" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtCategoryId">@L("CategoryIdLabel")</label>
-                        <input id="txtCategoryId" type="text" value="@Model.Product.CategoryId" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtOriginPrice">@L("OriginPriceLabel")</label>
-                        <input id="txtOriginPrice" type="text" value="@Model.Product.OriginPrice" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtSellPrice">@L("SellPriceLabel")</label>
-                        <input id="txtSellPrice" type="text" value="@Model.Product.SellPrice" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtQuantity">@L("QuantityLabel")</label>
-                        <input id="txtQuantity" type="text" value="@Model.Product.Quantity" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtStatus">@L("StatusLabel")</label>
-                        <input id="txtStatus" type="text" value="@Model.Product.Status" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtManufactoryId">@L("ManufactoryIdLabel")</label>
-                        <input id="txtManufactoryId" type="text" value="@Model.Product.ManufactoryId" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtBranchId">@L("BranchIdLabel")</label>
-                        <input id="txtBranchId" type="text" value="@Model.Product.BranchId" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtCreateDate">@L("CreateDateLabel")</label>
-                        <input id="txtCreateDate" type="text" value="@Model.Product.CreateDate" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
-                        <input id="txtUpdateDate" type="text" value="@Model.Product.UpdateDate" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="txtImportDate">@L("ImportDateLabel")</label>
-                        <input id="txtImportDate" type="text" value="@Model.Product.ImportDate" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="fileFeatureImage">@L("FeatureImageLabel")</label>
-                        <input type="file" id="fileFeatureImage">
-                        <p class="help-block">@L("UploadLogoHelpText")</p>
-                        @Model.Product.FeatureImage
-                    </div>
-                    <div class="form-group">
-                        <label for="fileImageList">@L("ImageListLabel")</label>
-                        <input type="file" id="fileImageList">
-                        <p class="help-block">@L("UploadLogoHelpText")</p>
-                        @Model.Product.ImageList
-                    </div>
-                    <div class="form-group">
-                        <label for="txtDiscount">@L("DiscountLabel")</label>
-                        <input id="txtDiscount" type="text" value="@Model.Product.Discount" class="form-control">
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            @if (Model.Product.IsActive)
-                            {
-                                <input type="checkbox" checked="checked" value="@Model.Product.IsActive"> @L("IsActiveLabel")
-                            }
-                            else
-                            {
-                                <input type="checkbox" value="@Model.Product.IsActive"> @L("IsActiveLabel")
-                            }
-                        </label>
-                    </div>
-                </div>
-                <div class="box-footer">
-                    <button type="button" class="btn btn-primary">@L("EditButtonLabel")</button>
-                    <button type="button" class="btn btn-primary">@L("DeleteButtonLabel")</button>
-                </div>
-            </form>
-        </div>
+            <div class="form-group">
+              <label for="txtProductCode">@L("CodeLabel")</label>
+              @Html.TextBoxFor(@model => @model.Product.Code, new { @id = "txtProductCode", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtCategoryId">@L("CategoryIdLabel")</label>
+              @Html.DropDownListFor(@model => @model.Product.CategoryId, (IEnumerable<SelectListItem>)ViewBag.CategoryId, string.Empty, new { @class = "form-control without-styles" })
+            </div>
+            <div class="form-group">
+              <label for="txtOriginPrice">@L("OriginPriceLabel")</label>
+              @Html.TextBoxFor(@model => @model.Product.OriginPrice, new { @id = "txtProductOriginPrice", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtSellPrice">@L("SellPriceLabel")</label>
+              @Html.TextBoxFor(@model => @model.Product.SellPrice, new { @id = "txtSellPrice", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtQuantity">@L("QuantityLabel")</label>
+              @Html.TextBoxFor(@model => @model.Product.Quantity, new { @id = "txtQuantity", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtStatus">@L("StatusLabel")</label>
+              @Html.DropDownListFor(@model => @model.Product.Status, (IEnumerable<SelectListItem>)ViewBag.Status, string.Empty, new { @class = "form-control without-styles" })
+            </div>
+            <div class="form-group">
+              <label for="txtManufactoryId">@L("ManufactoryIdLabel")</label>
+              @Html.DropDownListFor(@model => @model.Product.ManufactoryId, (IEnumerable<SelectListItem>)ViewBag.ManufactoryId, string.Empty, new { @class = "form-control without-styles" })
+            </div>
+            <div class="form-group">
+              <label for="txtBranchId">@L("BranchIdLabel")</label>
+              @Html.DropDownListFor(@model => @model.Product.BranchId, (IEnumerable<SelectListItem>)ViewBag.BranchId, string.Empty, new { @class = "form-control without-styles" })
+            </div>
+            <div class="form-group">
+              <label for="txtCreateDate">@L("CreateDateLabel")</label>
+              @Html.TextBoxFor(@model => @model.Product.CreateDate, new { @id = "txtCreateDate", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
+              @Html.TextBoxFor(@model => @model.Product.UpdateDate, new { @id = "txtUpdateDate", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtImportDate">@L("ImportDateLabel")</label>
+              @Html.TextBoxFor(@model => @model.Product.ImportDate, new { @id = "txtImportDate", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="fileProductLogo">@L("FeatureImageLabel")</label>
+              <input type="file" name="File" />
+              <p class="help-block">@L("UploadLogoHelpText")</p>
+            </div>
+            <div class="form-group">
+              <label for="fileImageList">@L("ImageListLabel")</label>
+              <input type="file" id="fileImageList">
+              <p class="help-block">@L("UploadLogoHelpText")</p>
+            </div>
+            <div class="form-group">
+              <label for="txtDiscount">@L("DiscountLabel")</label>
+              @Html.TextBoxFor(@model => @model.Product.Discount, new { @id = "txtDiscount", @class = "form-control" })
+            </div>
+            <div class="checkbox">
+              <label>
+                @Html.CheckBoxFor(@model => @model.Product.IsActive) @L("IsActiveLabel")
+              </label>
+            </div>
+          </div>
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">@L("EditButtonLabel")</button>
+                @Html.ActionLink(L("DeleteButtonLabel"), "Delete", new { @id = Model.Product.Id }, new { @class = "btn btn-primary" })
+              </div>
+      }
     </div>
+  </div>
 </div>
+<script type="text/javascript">
+  $("#btnDeleteInvoice").click(function (e) {
+    console.log(e);
+  });
+</script>
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal Default</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+}

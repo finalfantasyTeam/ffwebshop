@@ -1451,7 +1451,7 @@
     <Content Include="Views\AdminProductCategory\_ViewStart.cshtml" />
     <Content Include="Views\AdminProductMeta\_ViewStart.cshtml" />
     <Content Include="Views\AdminUsers\_ViewStart.cshtml" />
-    <Content Include="Views\AdminConfigOptions\Update.cshtml" />
+    <Content Include="Views\AdminConfigOptions\Delete.cshtml" />
     <Content Include="Views\AdminConfigOptions\Create.cshtml" />
     <Content Include="Views\AdminConfigOptions\Details.cshtml" />
     <Content Include="Views\AdminConfigOptions\List.cshtml" />

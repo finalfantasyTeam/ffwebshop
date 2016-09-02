@@ -1,1 +1,86 @@
-﻿
+﻿@model WebShop.Web.Models.ConfigOptionsViewModel
+
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">@Model.ConfigOptions.Id - @Model.ConfigOptions.OptionKey</h3>
+      </div>
+      <div class="box-header">
+        <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+      </div>
+      @using (Html.BeginForm("Update", "AdminConfigOptions", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+      {
+          @Html.AntiForgeryToken()
+          @Html.HiddenFor(@model => @model.ConfigOptions.Id);
+          <div class="box-body">
+            <div class="form-group">
+              <label for="txtAppId">@L("AppIdLabel")</label>
+              @Html.TextBoxFor(@model => @model.ConfigOptions.AppId, new { @id = "txtAppId", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtOptionKey">@L("OptionKeyLabel")</label>
+              @Html.TextBoxFor(@model => @model.ConfigOptions.OptionKey, new { @id = "txtOptionKey", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtOptionValue">@L("OptionValueLabel")</label>
+              @Html.TextBoxFor(@model => @model.ConfigOptions.OptionValue, new { @id = "txtOptionValue", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtCreateBy">@L("CreateByLabel")</label>
+              @Html.TextBoxFor(@model => @model.ConfigOptions.CreateBy, new { @id = "txtCreateBy", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtUpdateBy">@L("UpdateByLabel")</label>
+              @Html.TextBoxFor(@model => @model.ConfigOptions.UpdateBy, new { @id = "txtUpdateBy", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtNotes">@L("NotesLabel")</label>
+              @Html.TextBoxFor(@model => @model.ConfigOptions.Notes, new { @id = "txtNotes", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtCreateDate">@L("CreateDateLabel")</label>
+              <p class="readonly-text">@Model.ConfigOptions.CreateDate</p>
+              @Html.HiddenFor(@model => @model.ConfigOptions.CreateDate)
+            </div>
+            <div class="form-group">
+              <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
+              <p class="readonly-text">@Model.ConfigOptions.UpdateDate</p>
+            </div>
+            <div class="checkbox">
+              <label>
+                @Html.CheckBoxFor(@model => @model.ConfigOptions.IsActive) @L("IsActiveLabel")
+              </label>
+            </div>
+          </div>
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary">@L("EditButtonLabel")</button>
+            @Html.ActionLink(L("DeleteButtonLabel"), "Delete", new { @id = Model.ConfigOptions.Id }, new { @class = "btn btn-primary" })
+          </div>
+      }
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#btnDeleteGroup").click(function (e) {
+    console.log(e);
+  });
+</script>
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal Default</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

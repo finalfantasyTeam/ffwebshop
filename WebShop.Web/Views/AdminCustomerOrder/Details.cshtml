@@ -1,23 +1,22 @@
 ﻿@model WebShop.Web.Models.CustomerOrderViewModel
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">@Model.CustomerOrder.Id - @Model.CustomerOrder.Id</h3>
+      </div>
+      <div class="box-header">
+        <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+      </div>
 
-@using (Html.BeginForm("Update", "AdminCustomerOrder", FormMethod.Post, new { @enctype = "multipart/form-data" }))
-{
-
-    <div class="row">
-      <div class="col-md-6">
-        <div class="box box-primary">
-          <div class="box-header with-border">
-            <h3 class="box-title">@Model.CustomerOrder.Id - @Model.CustomerOrder.Id</h3>
-          </div>
-          <div class="box-header">
-            <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
-          </div>
+      @using (Html.BeginForm("Update", "AdminCustomerOrder", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+      {
           @Html.AntiForgeryToken()
           @Html.HiddenFor(@model => @model.CustomerOrder.Id);
           <div class="box-body">
             <div class="form-group">
               <label for="txtCustomerId">@L("CustomerIdLabel")</label>
-              @Html.DropDownListFor(@model => @model.CustomerOrder.CustomerId, (IEnumerable<SelectListItem>)ViewBag.CustomerId, string.Empty, new { @class = "form-control without-styles" })
+              @Html.TextBoxFor(@model => @model.CustomerOrder.CustomerId, new { @id = "txtCustomerId", @class = "form-control" })
             </div>
             <div class="form-group">
               <label for="txtCreateDate">@L("CreateDateLabel")</label>
@@ -54,30 +53,30 @@
             <input type="submit" class="btn btn-primary" value="@L("EditButtonLabel")" />
             @Html.ActionLink(L("DeleteButtonLabel"), "Delete", new { @id = Model.CustomerOrder.Id }, new { @class = "btn btn-primary" })
           </div>
-
+      }
         </div>
       </div>
     </div>
-}
-<script type="text/javascript">
-  $("#btnDelete").click(function (e) {
-    console.log(e);
-  });
-</script>
-<div class="modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal Default</h4>
+     
+      <script type="text/javascript">
+        $("#btnDelete").click(function (e) {
+          console.log(e);
+        });
+      </script>
+      <div class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Modal Default</h4>
+            </div>
+            <div class="modal-body">
+              <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>

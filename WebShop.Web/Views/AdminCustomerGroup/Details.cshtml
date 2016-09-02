@@ -12,12 +12,13 @@
       </div>
       @using (Html.BeginForm("Update", "AdminCustomerGroup", FormMethod.Post, new { @enctype = "multipart/form-data" }))
       {
+          @Html.AntiForgeryToken()
+          @Html.HiddenFor(@model => @model.CustomerGroup.Id);
           <div class="box-body">
             <div class="form-group">
               <label for="txtGroupName">@L("NameLabel")</label>
               @Html.TextBoxFor(@model => @model.CustomerGroup.Name, new { @id = "txtGroupName", @class = "form-control" })
             </div>
-            @Html.HiddenFor(@model => @model.CustomerGroup.Id)
             <div class="form-group">
               <label for="txtGroupDescription">@L("DescriptionLabel")</label>
               @Html.TextBoxFor(@model => @model.CustomerGroup.Description, new { @id = "txtGroupDescription", @class = "form-control" })

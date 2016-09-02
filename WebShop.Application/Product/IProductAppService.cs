@@ -7,6 +7,7 @@ namespace WebShop.Application
     {
         Task<ListProductRs> GetAllProducts();
         Task<GetProductRs> GetProductById(GetProductRq rq);
+        Task<GetProductRs> GetProductByName(GetProductRq rq);
         Task<CreateProductRs> CreateProduct(CreateProductRq rq);
         Task<UpdateProductRs> UpdateProduct(UpdateProductRq rq);
         Task<DeleteProductRs> DeleteProduct(DeleteProductRq rq);

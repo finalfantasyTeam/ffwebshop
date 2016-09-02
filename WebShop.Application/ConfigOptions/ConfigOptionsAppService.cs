@@ -4,29 +4,35 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
 {
     public class ConfigOptionsAppService : IConfigOptionsAppService
     {
-        private readonly IConfigOptionsRepository _configOptionsRepository;
+        private readonly IConfigOptionsRepository _ConfigOptionsRepository;
 
-        public ConfigOptionsAppService(IConfigOptionsRepository configOptionsRepository)
+        private static string SetDefaultImage(string value)
         {
-            _configOptionsRepository = configOptionsRepository;
-            Mapper.CreateMap<ConfigOptions, ConfigOptionsDTO>();
-            Mapper.CreateMap<ConfigOptionsDTO, ConfigOptions>();
+            return "";
         }
 
-        public async Task<ListConfigOptionsRs> GetAllConfigOptions()
+        public ConfigOptionsAppService(IConfigOptionsRepository ConfigOptionsyRepository)
+        {
+            _ConfigOptionsRepository = ConfigOptionsyRepository;
+            Mapper.CreateMap<ConfigOptionsDTO, ConfigOptions>();
+            Mapper.CreateMap<ConfigOptions, ConfigOptionsDTO>();
+        }
+
+        public async Task<ListConfigOptionsRs> GetAllOptions()
         {
             try
             {
-                List<ConfigOptions> configOptions = await _configOptionsRepository.GetAllListAsync();
+                List<ConfigOptions> ConfigOptionses = await _ConfigOptionsRepository.GetAllListAsync();
                 return new ListConfigOptionsRs()
                 {
-                    ConfigOptions = configOptions.MapTo<List<ConfigOptionsDTO>>()
+                    Options = ConfigOptionses.MapTo<List<ConfigOptionsDTO>>()
                 };
             }
             catch (Exception ex)
@@ -35,33 +41,37 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetConfigOptionsRs> GetConfigOption(GetConfigOptionsRq rq)
+        public async Task<GetConfigOptionsRs> GetOptionById(GetConfigOptionsRq rq)
         {
-            try
-            {
-                ConfigOptions configOption = await _configOptionsRepository.GetAsync(rq.Id);
+            ConfigOptions ConfigOptions = await _ConfigOptionsRepository.GetAsync(rq.Id);
 
-                return new GetConfigOptionsRs()
-                {
-                    ConfigOption = configOption.MapTo<ConfigOptionsDTO>()
-                };
-            }
-            catch (Exception ex)
+            return new GetConfigOptionsRs()
             {
-                throw new Exception(ex.Message);
-            }
+                Option = ConfigOptions.MapTo<ConfigOptionsDTO>()
+            };
         }
 
-        public async Task<CreateConfigOptionsRs> CreateConfigOption(CreateConfigOptionsRq rq)
+        public async Task<GetConfigOptionsRs> GetOptionByKey(GetConfigOptionsRq rq)
+        {
+            ConfigOptions ConfigOptions = await _ConfigOptionsRepository.GetOptionByKeyAsync(rq.OptionKey);
+
+            return new GetConfigOptionsRs()
+            {
+                Option = ConfigOptions.MapTo<ConfigOptionsDTO>()
+            };
+        }
+
+        public async Task<CreateConfigOptionsRs> CreateOption(CreateConfigOptionsRq rq)
         {
             try
             {
-                ConfigOptions insertConfigOption = rq.ConfigOption.MapTo<ConfigOptions>();
-                insertConfigOption = await _configOptionsRepository.InsertAsync(insertConfigOption);
+                rq.Option.CreateDate = DateTime.Now;
+                ConfigOptions insertOption = rq.Option.MapTo<ConfigOptions>();
+                rq.Option.Id = await _ConfigOptionsRepository.InsertAndGetIdAsync(insertOption);
 
                 return new CreateConfigOptionsRs()
                 {
-                    ConfigOption = insertConfigOption.MapTo<ConfigOptionsDTO>()
+                    Option = rq.Option
                 };
             }
             catch (Exception ex)
@@ -70,16 +80,17 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<UpdateConfigOptionsRs> UpdateConfigOption(UpdateConfigOptionsRq rq)
+        public async Task<UpdateConfigOptionsRs> UpdateOption(UpdateConfigOptionsRq rq)
         {
             try
             {
-                ConfigOptions updateConfigOption = rq.ConfigOption.MapTo<ConfigOptions>();
-                updateConfigOption = await _configOptionsRepository.UpdateAsync(updateConfigOption);
+                rq.Option.UpdateDate = DateTime.Now;
+                ConfigOptions updateOption = rq.Option.MapTo<ConfigOptions>();
+                updateOption = await _ConfigOptionsRepository.UpdateAsync(updateOption);
 
                 return new UpdateConfigOptionsRs()
                 {
-                    ConfigOption = updateConfigOption.MapTo<ConfigOptionsDTO>()
+                    Option = updateOption.MapTo<ConfigOptionsDTO>()
                 };
             }
             catch (Exception ex)
@@ -88,14 +99,17 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<DeleteConfigOptionsRs> DeleteConfigOption(DeleteConfigOptionsRq rq)
+        public async Task<DeleteConfigOptionsRs> DeleteOption(DeleteConfigOptionsRq rq)
         {
             try
             {
-                ConfigOptions deleteConfigOption = rq.ConfigOption.MapTo<ConfigOptions>();
-                await _configOptionsRepository.DeleteAsync(deleteConfigOption);
+                ConfigOptions deleteOption = rq.Option.MapTo<ConfigOptions>();
+                await _ConfigOptionsRepository.DeleteAsync(deleteOption);
 
-                return new DeleteConfigOptionsRs();
+                return new DeleteConfigOptionsRs()
+                {
+                    Option = deleteOption.MapTo<ConfigOptionsDTO>()
+                };
             }
             catch (Exception ex)
             {

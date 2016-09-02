@@ -54,5 +54,15 @@
     <text name="BirthDateLabel" value="BirthDate" />
     <text name="UserIdLabel" value="User Id" />
     
+    <!--Invoice-->
+    <text name="CreateByLabel" value="Created By" />
+    <text name="UpdateByLabel" value="Updated By" />
+    <text name="InvoiceTotalLabel" value="Invoice Total" />
+
+    <!--ConfigOptions-->
+    <text name="AppIdLabel" value="App Id" />
+    <text name="OptionKeyLabel" value="Option Key" />
+    <text name="OptionValueLabel" value="Option Value" />
+    
   </texts>
 </localizationDictionary>

@@ -5,6 +5,6 @@ namespace WebShop.Application
 {
     public class ListConfigOptionsRs : BaseResponse<ConfigOptionsDTO>
     {
-        public List<ConfigOptionsDTO> ConfigOptions { get; set; }
+        public List<ConfigOptionsDTO> Options { get; set; }
     }
 }
