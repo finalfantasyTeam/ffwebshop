@@ -13,11 +13,6 @@ namespace WebShop.Application
     {
         private readonly IProductManufactoryRepository _productManufactoryRepository;
 
-        private static string SetDefaultImage(string value)
-        {
-            return "";
-        }
-
         public ProductManufactoryAppService(IProductManufactoryRepository productManufatocryRepository)
         {
             _productManufactoryRepository = productManufatocryRepository;

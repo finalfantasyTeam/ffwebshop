@@ -14,13 +14,6 @@ namespace WebShop
     
     public partial class Customer
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
-        {
-            this.CustomerOrders = new HashSet<CustomerOrder>();
-            this.Invoices = new HashSet<Invoice>();
-        }
-    
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -41,10 +34,6 @@ namespace WebShop
     
         public virtual aspnet_Users aspnet_Users { get; set; }
         public virtual CustomerGroup CustomerGroup1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
         public virtual CustomerStatu CustomerStatu { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Invoice> Invoices { get; set; }
     }
 }

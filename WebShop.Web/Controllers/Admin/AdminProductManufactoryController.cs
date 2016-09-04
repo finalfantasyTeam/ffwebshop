@@ -1,12 +1,14 @@
-﻿using System.IO;
+﻿using System.Configuration;
+using System.IO;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebShop.Application;
+using WebShop.Web.Helpers;
 using WebShop.Web.Models;
 
 namespace WebShop.Web.Controllers
 {
-    public class AdminProductManufactoryController : Controller//AdminControllerBase
+    public class AdminProductManufactoryController : AdminControllerBase
     {
         private readonly IProductManufactoryAppService _manufactoryAppService;
 
@@ -64,26 +66,20 @@ namespace WebShop.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(ProductManufactoryViewModel viewModel)
         {
-            
-            var file = Request.Files[0];
-            var path = Path.Combine(Server.MapPath("~/Content/Files/"), file.FileName);
+            viewModel.ProductManufactory.ManufactoryLogo = string.Empty;
 
-            var data = new byte[file.ContentLength];
-            file.InputStream.Read(data, 0, file.ContentLength);
-
-            using (var sw = new FileStream(path, FileMode.Create))
+            if (Request.Files.Count > 0)
             {
-                sw.Write(data, 0, data.Length);
+                string fileName = FileUploadHelpers.FileNameBuilder(viewModel.ProductManufactory.Name, Request.Files[0].FileName);
+                string folderName = Server.MapPath(ConfigurationManager.AppSettings.Get("LogoUploadFilePath"));
+                string filePath = Path.Combine(folderName, fileName);
+                await FileUploadHelpers.SaveImagesFile(Request.Files[0].InputStream, filePath);
+                viewModel.ProductManufactory.ManufactoryLogo = Path.Combine(ConfigurationManager.AppSettings.Get("LogoUploadFilePath"), fileName);
             }
 
-            viewModel.ProductManufactory.ManufactoryLogo = "/Content/Files/" + file.FileName;
-
             CreateProductManufactoryRq rq = new CreateProductManufactoryRq()
-            {
-                Manufactory = viewModel.ProductManufactory,
+            { Manufactory = viewModel.ProductManufactory };
 
-            };
-            
             viewModel.ProductManufactory = (await _manufactoryAppService.CreateManufactory(rq)).Manufactory;
 
             return RedirectToAction("List", new { id = viewModel.ProductManufactory.Id });
@@ -97,8 +93,6 @@ namespace WebShop.Web.Controllers
             viewModel.ProductManufactory = (await _manufactoryAppService.UpdateManufactory(rq)).Manufactory;
 
             return RedirectToAction("List", new { id = viewModel.ProductManufactory.Id });
-            //await viewModel.UpdateProductManufactory();
-            //return RedirectToAction("Details", new { id = viewModel.ProductManufactory.Id });
         }
 
         [HttpPost]

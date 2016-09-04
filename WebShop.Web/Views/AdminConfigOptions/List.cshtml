@@ -9,10 +9,9 @@
           <thead>
             <tr>
               <th>#</th>
-              <th>Logo</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Country</th>
+              <th>Config Key</th>
+              <th>Config Value</th>
+              <th>Notes</th>
               <th>Active</th>
             </tr>
           </thead>
@@ -22,30 +21,25 @@
                 {
                   foreach (var data in Model.ListConfigOptions)
                   {
-                        <tr>
-                          <td>@data.Id</td>
-                          <td>@data.ManufatoryLogo</td>
-                          <td>@data.Name</td>
-                          <td>@data.Description</td>
-                          <td>@data.ManufactoryCountry</td>
-                          <td>@data.IsActive</td>
-                        </tr>
+                      <tr>
+                        <td>
+                          <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
+                        </td>
+                        <td>
+                          <a href="@Url.Action("Details", new { id = data.Id })">@data.OptionKey</a>
+                        </td>
+                        <td>@data.OptionValue</td>
+                        <td>@data.Notes</td>
+                        <td>@data.IsActive</td>
+                      </tr>
                   }
                 }
             }
-            
           </tbody>
-          <tfoot>
-            <tr>
-              <th>#</th>
-              <th>Logo</th>
-              <th>Name</th>
-              <th>Description</th>
-              <th>Country</th>
-              <th>Active</th>
-            </tr>
-          </tfoot>
         </table>
+      </div>
+      <div class="box-footer">
+        @Html.ActionLink(L("CreateButtonLabel"), "Create", null, new { @class = "btn btn-info" })
       </div>
     </div>
   </div>

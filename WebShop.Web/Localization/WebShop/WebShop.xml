@@ -15,17 +15,37 @@
     <text name="ForMoreInformation" value="For more information" />
     <!--Admin page-->
     <text name="BackButtonLabel" value="Back" />
+
     <text name="CancelButtonLabel" value="Cancel" />
+    <text name="CreateButtonLabel" value="Create" />
     <text name="CreateDateLabel" value="Create Date" />
     <text name="CountryLabel" value="Country" />
+
     <text name="DeleteButtonLabel" value="Delete" />
     <text name="DescriptionLabel" value="Description" />
+
     <text name="EditButtonLabel" value="Edit" />
+    
+    <text name="ForgetPasswordLinkLabel" value="I forgot my password" />
+
     <text name="IsActiveLabel" value="Is Activated" />
+
+    <text name="KeyLabel" value="Key" />
+
     <text name="ManufactoryLogoLabel" value="Manufactory Logo" />
+
     <text name="NameLabel" value="Name" />
+    <text name="NotesLabel" value="Notes" />
+
     <text name="SaveButtonLabel" value="Save" />
+
+    <text name="RegisterLinkLabel" value="Register a new membership." />
+    <text name="RememberLoginLabel" value="Remember for the next session." />
+
+    <text name="UntitleLabel" value="Untitled" />
     <text name="UpdateDateLabel" value="Update Date" />
     <text name="UploadLogoHelpText" value="Please chose manufactory logo" />
+
+    <text name="ValueLabel" value="Value" />
   </texts>
 </localizationDictionary>

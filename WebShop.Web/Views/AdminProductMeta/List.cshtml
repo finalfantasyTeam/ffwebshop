@@ -1,50 +1,53 @@
 ﻿<div class="row">
-    <div class="col-xs-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">Product Meta list</h3>
-            </div>
-            <div class="box-body">
-                <table id="tblProductMeta" class="table table-bordered table-striped">
-                    <thead>
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Product Meta list</h3>
+      </div>
+      <div class="box-body">
+        <table id="tblProductMeta" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product Id</th>
+              <th>Key</th>
+              <th>Value</th>
+              <th>Notes</th>
+              <th>Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            @{
+                if (Model.ListProductMeta != null)
+                {
+                  foreach (var data in Model.ListProductMeta)
+                  {
                         <tr>
-                            <th>#</th>
-                            <th>Product Id</th>   
-                            <th>Key</th>
-                            <th>Value</th>
-                            <th>Notes</th>
-                            <th>Active</th>
+                          <td>
+                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
+                          </td>
+                          <td>
+                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.ProductId</a>
+                          </td>
+                          <td>
+                            <a href="@Url.Action("Details", new { id = data.Id })">@data.MetaKey</a>
+                          </td>
+                          <td>@data.MetaValue</td>
+                          <td>@data.Notes</td>
+                          <td>@data.IsActive</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @{
-                            if (Model.ListProductMeta != null)
-                            {
-                                foreach (var data in Model.ListProductMeta)
-                                {
-                                    <tr>
-                                        <td>
-                                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
-                                        </td>
-                                        <td>
-                                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.ProductId</a>
-                                        </td>
-                                        <td>
-                                            <a href="@Url.Action("Details", new { id = data.Id })">@data.MetaKey</a>
-                                        </td>
-                                        <td>@data.MetaValue</td>
-                                        <td>@data.Notes</td>
-                                        <td>@data.IsActive</td>
-                                    </tr>
-                                }
-                            }
-                        }
+                  }
+                }
+            }
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
+          </tbody>
+        </table>
+      </div>
+      <div class="box-footer">
+        @Html.ActionLink(L("CreateButtonLabel"), "Create", null, new { @class = "btn btn-info" })
+      </div>
     </div>
+  </div>
 </div>
 <script type="text/javascript">
   $(document).ready(function () {

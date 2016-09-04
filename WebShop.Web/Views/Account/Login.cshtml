@@ -1,0 +1,30 @@
+﻿@model WebShop.Web.Models.AccountViewModel
+<div class="login-box">
+  <div class="login-logo">
+    <a href="~">GemShop</a>
+  </div>
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <div class="form-group has-feedback">
+          @Html.TextBoxFor(model => model.CurrentUser.UserName, new { @id = "txtUserName", @class = "form-control", @placeholder = "User name" })
+        </div>
+        <div class="form-group has-feedback">
+          @Html.PasswordFor(model => model.UserMembership.Password, new { @id = "txtPassword", @class = "form-control", @placeholder = "Password" })
+        </div>
+        <div class="row">
+          <div class="col-xs-8">
+            <div class="checkbox icheck">
+              @Html.CheckBoxFor(model => model.IsRemember)
+              @L("RememberLoginLabel")
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </div>
+        </div>
+    }
+    @Html.ActionLink(L("ForgetPasswordLinkLabel"), "ForgetPassword")
+  </div>
+</div>

@@ -1,63 +1,42 @@
 ﻿@model WebShop.Web.Models.ProductManufactoryViewModel
 
-@using (Html.BeginForm("Create", "AdminProductManufactory", FormMethod.Post, new { @enctype = "multipart/form-data" }))
-{
-    <div class="row">
-      <div class="col-md-6">
-        <div class="box box-primary">
-          <div class="box-header with-border">
-            @if (@Model.ProductManufactory != null)
-            {
-                <h3 class="box-title">@Model.ProductManufactory.Id - @Model.ProductManufactory.Name</h3>
-            }
-            else
-            {
-                <h3 class="box-title">No factory name</h3>
-            }
-            <a class="btn-link">@L("BackButtonLabel")</a>
-          </div>
-          <form role="form">
-            <div class="box-body">
-              <div class="form-group">
-                <label for="txtManufactoryName">@L("NameLabel")</label>
-                @Html.TextBoxFor(@model => @model.ProductManufactory.Name, new { @id = "txtManufactoryName", @class = "form-control" })
-              </div>
-              <div class="form-group">
-                <label for="txtManufactoryDescription">@L("DescriptionLabel")</label>
-                @Html.TextBoxFor(@model => @model.ProductManufactory.Description, new { @id = "txtManufactoryDescription", @class = "form-control" })
-              </div>
-              <div class="form-group">
-                <label for="txtManufactoryCountry">@L("CountryLabel")</label>
-                @Html.TextBoxFor(@model => @model.ProductManufactory.ManufactoryCountry, new { @id = "txtManufactoryCountry", @class = "form-control" })
-              </div>
-              <!--
-              <div class="form-group">
-                <label for="txtCreateDate">@L("CreateDateLabel")</label>
-                @Html.TextBoxFor(@model => @model.ProductManufactory.CreateDate, new { @id = "txtCreateDate", @class = "form-control" })
-              </div>
-              <div class="form-group">
-                <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
-                @Html.TextBoxFor(@model => @model.ProductManufactory.UpdateDate, new { @id = "txtUpdateDate", @class = "form-control" })
-              </div>
-              -->
-              <div class="form-group">
-                <label for="fileManufactoryLogo">@L("ManufactoryLogoLabel")</label>
-                <input type="file" name="File" />
-                <p class="help-block">@L("UploadLogoHelpText")</p>
-                @*@Model.ProductManufactory.ManufactoryLogo*@
-              </div>
-              <div class="checkbox">
-                <label>
-                  @Html.CheckBoxFor(@model => @model.ProductManufactory.IsActive) @L("IsActiveLabel")
-                </label>
-              </div>
-            </div>
-            <div class="box-footer">
-              <!--<button type="button" class="btn btn-primary">@L("SaveButtonLabel")</button>-->
-              <button type="submit" class="btn btn-primary">@L("SaveButtonLabel")</button> 
-            </div>
-          </form>
-        </div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">@L("UntitleLabel")</h3>
+        @Html.ActionLink(L("BackButtonLabel"), "List", null, new { @class = "btn-link" })
       </div>
+      @using (Html.BeginForm("Create", "AdminProductManufactory", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+      {
+        <div class="box-body">
+          <div class="form-group">
+            <label for="txtManufactoryName">@L("NameLabel")</label>
+            @Html.TextBoxFor(model => model.ProductManufactory.Name, new { @id = "txtManufactoryName", @class = "form-control" })
+          </div>
+          <div class="form-group">
+            <label for="txtManufactoryDescription">@L("DescriptionLabel")</label>
+            @Html.TextBoxFor(model => model.ProductManufactory.Description, new { @id = "txtManufactoryDescription", @class = "form-control" })
+          </div>
+          <div class="form-group">
+            <label for="txtManufactoryCountry">@L("CountryLabel")</label>
+            @Html.TextBoxFor(model => model.ProductManufactory.ManufactoryCountry, new { @id = "txtManufactoryCountry", @class = "form-control" })
+          </div>
+          <div class="form-group">
+            <label for="fileManufactoryLogo">@L("ManufactoryLogoLabel")</label>
+            <input type="file" name="File" />
+            <p class="help-block">@L("UploadLogoHelpText")</p>
+          </div>
+          <div class="checkbox">
+              @Html.CheckBoxFor(model => model.ProductManufactory.IsActive)
+              @Html.LabelFor(model => model.ProductManufactory.IsActive, L("IsActiveLabel"))
+          </div>
+        </div>
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary">@L("SaveButtonLabel")</button> 
+        </div>
+      }
     </div>
-}
+  </div>
+</div>

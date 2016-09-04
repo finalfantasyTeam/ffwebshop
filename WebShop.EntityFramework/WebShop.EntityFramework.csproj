@@ -162,9 +162,6 @@
     <Compile Include="CustomerGroup.cs">
       <DependentUpon>WebShopAuthDb.tt</DependentUpon>
     </Compile>
-    <Compile Include="CustomerOrder.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="CustomerStatu.cs">
       <DependentUpon>WebShopAuthDb.tt</DependentUpon>
     </Compile>
@@ -189,34 +186,7 @@
     <Compile Include="EntityFramework\WebShopDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\WebShopRepositoryBase.cs" />
     <Compile Include="IAuditable.cs" />
-    <Compile Include="Invoice.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="InvoiceDetail.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="OrderDetail.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Product.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductBranch.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductCategory.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductManufactory.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductMeta.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductStatu.cs">
-      <DependentUpon>WebShopAuthDb.tt</DependentUpon>
-    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>WebShopAuthDb.tt</DependentUpon>
     </Compile>
