@@ -12,5 +12,17 @@ namespace WebShop.Web.Models
     public class AccountViewModel
     {
         private readonly IUsersAppService _usersAppService;
+
+        public AccountViewModel()
+        { }
+
+        public AccountViewModel(IUsersAppService userAppService)
+        {
+            _usersAppService = userAppService;
+        }
+
+        public bool IsRemember { get; set; }
+        public aspnet_Users CurrentUser { get; set; }
+        public aspnet_Membership UserMembership { get; set; }
     }
 }

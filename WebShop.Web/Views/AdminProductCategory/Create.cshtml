@@ -13,7 +13,7 @@
               {
                   <h3 class="box-title">Product Category name</h3>
               }
-              <a class="btn-link">@L("BackButtonLabel")</a>
+              @Html.ActionLink(L("BackButtonLabel"), "List", null, new { @class = "btn-link" })
             </div>
             <form role="form">
                 <div class="box-body">

@@ -6,7 +6,7 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">@Model.ProductBranch.Id - @Model.ProductBranch.Name</h3>
-                <a class="btn-link">@L("BackButtonLabel")</a>
+                @Html.ActionLink(L("BackButtonLabel"), "List", null, new { @class = "btn-link" })
             </div>
             <form role="form">
                 <div class="box-body">

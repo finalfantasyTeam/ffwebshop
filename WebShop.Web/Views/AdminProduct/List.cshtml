@@ -1,74 +1,76 @@
 ﻿<div class="row">
-    <div class="col-xs-12">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">Product list</h3>
-            </div>
-            <div class="box-body">
-                <table id="tblProduct" class="table table-bordered table-striped">
-                    <thead>
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Product list</h3>
+      </div>
+      <div class="box-body">
+        <table id="tblProduct" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Code</th>
+              <th>CategoryId</th>
+              <th>Origin Price</th>
+              <th>Sell Price</th>
+              <th>Quantity</th>
+              <th>Status</th>
+              <th>ManufactoryId</th>
+              <th>BranchId</th>
+              <th>Create Date</th>
+              <th>Update Date</th>
+              <th>Import Date</th>
+              <th>Feature Image</th>
+              <th>Image List</th>
+              <th>Discount</th>
+              <th>Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            @{
+                if (Model.ListProduct != null)
+                {
+                  foreach (var data in Model.ListProduct)
+                  {
                         <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Code</th>
-                            <th>CategoryId</th>
-                            <th>Origin Price</th>
-                            <th>Sell Price</th>
-                            <th>Quantity</th>
-                            <th>Status</th>
-                            <th>ManufactoryId</th>
-                            <th>BranchId</th>
-                            <th>Create Date</th>
-                            <th>Update Date</th>
-                            <th>Import Date</th>
-                            <th>Feature Image</th>
-                            <th>Image List</th>
-                            <th>Discount</th>
-                            <th>Active</th>
+                          <td>
+                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
+                          </td>
+                          <td>
+                            <a href="@Url.Action("Details", new { id = data.Id })">@data.Name</a>
+                          </td>
+                          <td>@data.Code</td>
+                          <td>@data.CategoryId</td>
+                          <td>@data.OriginPrice</td>
+                          <td>@data.SellPrice</td>
+                          <td>@data.Quantity</td>
+                          <td>@data.Discount</td>
+                          <td>@data.Status</td>
+                          <td>@data.ManufactoryId</td>
+                          <td>@data.BranchId</td>
+                          <td>@data.CreateDate</td>
+                          <td>@data.UpdateDate</td>
+                          <td>@data.ImportDate</td>
+                          <td>
+                            <img src='@Url.Content("~")' alt="@data.FeatureImage" />
+                          </td>
+                          <td>
+                            <img src='@Url.Content("~")' alt="@data.ImageList" />
+                          </td>
+                          <td>@data.IsActive</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @{
-                            if (Model.ListProduct != null)
-                            {
-                                foreach (var data in Model.ListProduct)
-                                {
-                                    <tr>
-                                        <td>
-                                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
-                                        </td>
-                                        <td>
-                                            <a href="@Url.Action("Details", new { id = data.Id })">@data.Name</a>
-                                        </td>
-                                        <td>@data.Code</td>
-                                        <td>@data.CategoryId</td>
-                                        <td>@data.OriginPrice</td>
-                                        <td>@data.SellPrice</td>
-                                        <td>@data.Quantity</td>
-                                        <td>@data.Discount</td>
-                                        <td>@data.Status</td>
-                                        <td>@data.ManufactoryId</td>
-                                        <td>@data.BranchId</td>
-                                        <td>@data.CreateDate</td>
-                                        <td>@data.UpdateDate</td>
-                                        <td>@data.ImportDate</td>
-                                        <td>
-                                            <img src='@Url.Content("~")' alt="@data.FeatureImage" />
-                                        </td>
-                                        <td>
-                                            <img src='@Url.Content("~")' alt="@data.ImageList" />
-                                        </td>
-                                        <td>@data.IsActive</td>
-                                    </tr>
-                                }
-                            }
-                        }
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                  }
+                }
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="box-footer">
+        @Html.ActionLink(L("CreateButtonLabel"), "Create", null, new { @class = "btn btn-info" })
+      </div>
     </div>
+  </div>
 </div>
 <script type="text/javascript">
   $(document).ready(function () {

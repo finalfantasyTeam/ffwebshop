@@ -57,7 +57,8 @@ namespace WebShop.Application
             try
             {
                 ConfigOptions insertConfigOption = rq.ConfigOption.MapTo<ConfigOptions>();
-                insertConfigOption = await _configOptionsRepository.InsertAsync(insertConfigOption);
+                insertConfigOption.CreateDate = DateTime.Now;
+                insertConfigOption.Id = await _configOptionsRepository.InsertAndGetIdAsync(insertConfigOption);
 
                 return new CreateConfigOptionsRs()
                 {
@@ -75,6 +76,7 @@ namespace WebShop.Application
             try
             {
                 ConfigOptions updateConfigOption = rq.ConfigOption.MapTo<ConfigOptions>();
+                updateConfigOption.UpdateDate = DateTime.Now;
                 updateConfigOption = await _configOptionsRepository.UpdateAsync(updateConfigOption);
 
                 return new UpdateConfigOptionsRs()

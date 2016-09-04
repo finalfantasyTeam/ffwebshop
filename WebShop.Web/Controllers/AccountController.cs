@@ -1,10 +1,15 @@
 ﻿using System.Web.Mvc;
+using System.Web.Security;
 using WebShop.Web.Models;
 
 namespace WebShop.Web.Controllers
 {
     public class AccountController : WebShopControllerBase
     {
+        public AccountController()
+        {
+        }
+
         public ActionResult Index()
         {
             return RedirectToAction("Login");
@@ -16,20 +21,27 @@ namespace WebShop.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(AccountViewModel viewModel)
+        public ActionResult Login(AccountViewModel viewModel, string returlUrl)
         {
+            if (Membership.ValidateUser(viewModel.CurrentUser.UserName, viewModel.UserMembership.Password))
+            {
+                if (string.IsNullOrEmpty(returlUrl))
+                {
+                    FormsAuthentication.RedirectFromLoginPage(viewModel.CurrentUser.UserName, false);
+                }
+                else
+                {
+                    FormsAuthentication.SetAuthCookie(viewModel.CurrentUser.UserName, false);
+                }
+            }
+
             return View(viewModel);
         }
 
-        public ActionResult Register()
+        public ActionResult Logout()
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register(AccountViewModel viewModel)
-        {
-            return View();
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
 
         public ActionResult ForgetPassword()

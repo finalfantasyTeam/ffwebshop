@@ -53,14 +53,20 @@ namespace WebShop.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(ConfigOptionsViewModel viewModel)
         {
-            await viewModel.CreateNewConfigOptions();
+            CreateConfigOptionsRq rq = new CreateConfigOptionsRq()
+            { ConfigOption = viewModel.ConfigOptions };
+            viewModel.ConfigOptions = (await _configOptionAppService.CreateConfigOption(rq)).ConfigOption;
+
             return RedirectToAction("Details", new { id = viewModel.ConfigOptions.Id });
         }
 
         [HttpPost]
         public async Task<ActionResult> Update(ConfigOptionsViewModel viewModel)
         {
-            await viewModel.UpdateConfigOptions();
+            UpdateConfigOptionsRq rq = new UpdateConfigOptionsRq()
+            { ConfigOption = viewModel.ConfigOptions };
+            viewModel.ConfigOptions = (await _configOptionAppService.UpdateConfigOption(rq)).ConfigOption;
+
             return RedirectToAction("Details", new { id = viewModel.ConfigOptions.Id });
         }
     }

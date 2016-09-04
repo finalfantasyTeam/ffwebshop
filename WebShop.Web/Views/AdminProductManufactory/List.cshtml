@@ -27,7 +27,7 @@
                             <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
                           </td>
                           <td>
-                           <img height="70" src='@Url.Content(data.ManufactoryLogo)' alt="@data.Name" />
+                            <img height="70" src='@Url.Content(data.ManufactoryLogo)' alt="@data.Name" />
                           </td>
                           <td>
                             <a href="@Url.Action("Details", new { id = data.Id })">@data.Name</a>
@@ -41,6 +41,9 @@
             }
           </tbody>
         </table>
+      </div>
+      <div class="box-footer">
+        @Html.ActionLink(L("CreateButtonLabel"), "Create", null, new { @class = "btn btn-info" })
       </div>
     </div>
   </div>

@@ -13,6 +13,10 @@ namespace WebShop.Web.Models
     {
         private readonly IConfigOptionsAppService _configOptionsAppService;
 
+        public ConfigOptionsViewModel()
+        {
+        }
+
         public ConfigOptionsViewModel(IConfigOptionsAppService configOptionsAppService)
         {
             _configOptionsAppService = configOptionsAppService;
@@ -28,27 +32,6 @@ namespace WebShop.Web.Models
             GetConfigOptionsRq rq = new GetConfigOptionsRq()
             { Id = id };
             ConfigOptions = (await _configOptionsAppService.GetConfigOption(rq)).ConfigOption;
-        }
-
-        public async Task CreateNewConfigOptions()
-        {
-            CreateConfigOptionsRq rq = new CreateConfigOptionsRq()
-            { ConfigOption = ConfigOptions };
-            ConfigOptions = (await _configOptionsAppService.CreateConfigOption(rq)).ConfigOption;
-        }
-
-        public async Task UpdateConfigOptions()
-        {
-            UpdateConfigOptionsRq rq = new UpdateConfigOptionsRq()
-            { ConfigOption = ConfigOptions };
-            ConfigOptions = (await _configOptionsAppService.UpdateConfigOption(rq)).ConfigOption;
-        }
-
-        public async Task DeleteConfigOptions()
-        {
-            DeleteConfigOptionsRq rq = new DeleteConfigOptionsRq()
-            { ConfigOption = ConfigOptions };
-            await _configOptionsAppService.DeleteConfigOption(rq);
         }
 
         public ConfigOptionsDTO ConfigOptions { get; set; }
