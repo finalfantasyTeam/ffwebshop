@@ -27,5 +27,8 @@ namespace WebShop.Application
         public string ImageList { get; set; }
         public bool? IsActive { get; set; }
         public decimal? Discount { get; set; }
+        public ProductCategory ProductCategory { get; set; }
+        public ProductBranch ProductBranch { get; set; }
+        public ProductStatus ProductStatus { get; set; }
     }
 }

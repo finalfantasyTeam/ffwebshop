@@ -21,11 +21,10 @@ namespace WebShop.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> List()
+        public ActionResult List()
         {
             ProductViewModel viewModel = new ProductViewModel(_ProductAppService);
-            await viewModel.FillDataForModel();
-
+            viewModel.FillDataForModel();
             return View(viewModel);
         }
 

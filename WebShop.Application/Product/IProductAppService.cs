@@ -5,7 +5,8 @@ namespace WebShop.Application
 {
     public interface IProductAppService : IApplicationService
     {
-        Task<ListProductRs> GetAllProducts();
+        ListProductRs GetAllProducts();
+        Task<ListProductRs> GetAllProductsAsync();
         Task<GetProductRs> GetProductById(GetProductRq rq);
         Task<CreateProductRs> CreateProduct(CreateProductRq rq);
         Task<UpdateProductRs> UpdateProduct(UpdateProductRq rq);

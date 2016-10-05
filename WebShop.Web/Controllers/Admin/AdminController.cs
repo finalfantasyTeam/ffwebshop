@@ -8,7 +8,7 @@ namespace WebShop.Web.Controllers
         {
             return RedirectToAction("Dashboard");
         }
-
+        
         public ActionResult Dashboard()
         {
             return View();

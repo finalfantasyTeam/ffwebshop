@@ -4,8 +4,8 @@
       <div class="row">
         <div class="col-xs-6 col-md-2 col-lg-3 logo-box">
           <div class="logo">
-            <a href="#">
-              <img src="@Url.Content("~/images/logo.png")" class="logo-img" alt="abc"/>
+            <a href="@Url.Content("~")">
+              <img src="@Url.Content("~/images/logo.png")" class="logo-img" alt="GemShop"/>
             </a>
           </div>
         </div><!-- .logo-box -->
@@ -95,7 +95,7 @@
                     </li>
                   </ul>
                   <div class="cart-button">
-                    <button class="btn btn-default">View Cart</button>
+                    <a href="@Url.Action("Index", "Sales")" class="btn btn-default">View Cart</a>
                     <button class="btn checkout btn-default">Checkout</button>
                   </div>
                 </div>
