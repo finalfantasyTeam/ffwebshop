@@ -10,10 +10,7 @@ namespace WebShop.Core
     {
         public Product()
         {
-            ProductBranch = new HashSet<ProductBranch>();
-            ProductCategory = new HashSet<ProductCategory>();
-            ProductManufactory = new HashSet<ProductManufactory>();
-            ProductStatus = new HashSet<ProductStatus>();
+            ProductFields = new HashSet<ProductMeta>();
         }
 
         public string Name { get; set; }
@@ -33,15 +30,15 @@ namespace WebShop.Core
         public bool? IsActive { get; set; }
         public decimal? Discount { get; set; }
 
-        //[ForeignKey("BranchId")]
-        //public virtual ProductBranch ProductBranch { get; set; }
-        //[ForeignKey("CategoryId")]
-        //public virtual ProductCategory ProductCategory { get; set; }
-        //[ForeignKey("Status")]
-        //public virtual ProductStatus ProductStatus { get; set; }        
-        public virtual ICollection<ProductBranch> ProductBranch { get; set; }
-        public virtual ICollection<ProductCategory> ProductCategory { get; set; }
-        public virtual ICollection<ProductManufactory> ProductManufactory { get; set; }
-        public virtual ICollection<ProductStatus> ProductStatus { get; set; }
+        [ForeignKey("BranchId")]
+        public virtual ProductBranch ProdBranch { get; set; }
+        [ForeignKey("CategoryId")]
+        public virtual ProductCategory ProdCategory { get; set; }
+        [ForeignKey("ManufactoryId")]
+        public virtual ProductManufactory ProdManufactory { get; set; }
+        [ForeignKey("Status")]
+        public virtual ProductStatus ProdStatus { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual ICollection<ProductMeta> ProductFields { get; set; }
     }
 }

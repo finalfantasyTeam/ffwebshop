@@ -36,22 +36,14 @@ namespace WebShop.Web.Controllers
         public async Task<ActionResult> Details(int id)
         {
             ProductMetaViewModel viewModel = new ProductMetaViewModel(_MetaAppService);
-
-            var getAllProductRs = await _ProductAppService.GetAllProducts();
-            ViewBag.ProductId = new SelectList(getAllProductRs.Products, "Id", "Name");
-            
             await viewModel.GetProductMeta(id);
             return View(viewModel);
         }
 
         [HttpGet]
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
             ProductMetaViewModel viewModel = new ProductMetaViewModel(_MetaAppService);
-
-            var getAllProductRs = await _ProductAppService.GetAllProducts();
-            ViewBag.ProductId = new SelectList(getAllProductRs.Products, "Id", "Name");
-
             return View(viewModel);
         }
 

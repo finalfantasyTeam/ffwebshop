@@ -1,11 +1,6 @@
-﻿using Abp.Dependency;
-using Castle.MicroKernel.Registration;
-using System.Collections.Generic;
-using System.Reflection;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebShop.Application;
-using WebShop.Core;
-using WebShop.EntityFramework.Repositories;
 
 namespace WebShop.Web.Models
 {
@@ -24,14 +19,14 @@ namespace WebShop.Web.Models
 
         public async Task FillDataForModel()
         {
-            ListConfigOptions = (await _configOptionsAppService.GetAllConfigOptions()).ConfigOptions;
+            ListConfigOptions = (await _configOptionsAppService.GetAllConfigOptions()).Options;
         }
 
         public async Task GetConfigOptions(int id)
         {
             GetConfigOptionsRq rq = new GetConfigOptionsRq()
             { Id = id };
-            ConfigOptions = (await _configOptionsAppService.GetConfigOption(rq)).ConfigOption;
+            ConfigOptions = (await _configOptionsAppService.GetConfigOption(rq)).Option;
         }
 
         public ConfigOptionsDTO ConfigOptions { get; set; }

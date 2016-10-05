@@ -1,10 +1,8 @@
 ﻿using Abp.AutoMapper;
-using Abp.Domain.Uow;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application

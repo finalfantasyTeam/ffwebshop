@@ -26,7 +26,7 @@ namespace WebShop.Application
                 List<ConfigOptions> configOptions = await _configOptionsRepository.GetAllListAsync();
                 return new ListConfigOptionsRs()
                 {
-                    ConfigOptions = configOptions.MapTo<List<ConfigOptionsDTO>>()
+                    Options = configOptions.MapTo<List<ConfigOptionsDTO>>()
                 };
             }
             catch (Exception ex)
@@ -43,7 +43,7 @@ namespace WebShop.Application
 
                 return new GetConfigOptionsRs()
                 {
-                    ConfigOption = configOption.MapTo<ConfigOptionsDTO>()
+                    Option = configOption.MapTo<ConfigOptionsDTO>()
                 };
             }
             catch (Exception ex)
@@ -56,13 +56,13 @@ namespace WebShop.Application
         {
             try
             {
-                ConfigOptions insertConfigOption = rq.ConfigOption.MapTo<ConfigOptions>();
+                ConfigOptions insertConfigOption = rq.Option.MapTo<ConfigOptions>();
                 insertConfigOption.CreateDate = DateTime.Now;
                 insertConfigOption.Id = await _configOptionsRepository.InsertAndGetIdAsync(insertConfigOption);
 
                 return new CreateConfigOptionsRs()
                 {
-                    ConfigOption = insertConfigOption.MapTo<ConfigOptionsDTO>()
+                    Option = insertConfigOption.MapTo<ConfigOptionsDTO>()
                 };
             }
             catch (Exception ex)
@@ -75,13 +75,13 @@ namespace WebShop.Application
         {
             try
             {
-                ConfigOptions updateConfigOption = rq.ConfigOption.MapTo<ConfigOptions>();
+                ConfigOptions updateConfigOption = rq.Option.MapTo<ConfigOptions>();
                 updateConfigOption.UpdateDate = DateTime.Now;
                 updateConfigOption = await _configOptionsRepository.UpdateAsync(updateConfigOption);
 
                 return new UpdateConfigOptionsRs()
                 {
-                    ConfigOption = updateConfigOption.MapTo<ConfigOptionsDTO>()
+                    Option = updateConfigOption.MapTo<ConfigOptionsDTO>()
                 };
             }
             catch (Exception ex)
@@ -94,7 +94,7 @@ namespace WebShop.Application
         {
             try
             {
-                ConfigOptions deleteConfigOption = rq.ConfigOption.MapTo<ConfigOptions>();
+                ConfigOptions deleteConfigOption = rq.Option.MapTo<ConfigOptions>();
                 await _configOptionsRepository.DeleteAsync(deleteConfigOption);
 
                 return new DeleteConfigOptionsRs();

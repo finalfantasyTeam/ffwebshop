@@ -53,8 +53,8 @@ namespace WebShop.Web.Controllers
         public async Task<ActionResult> Create(ConfigOptionsViewModel viewModel)
         {
             CreateConfigOptionsRq rq = new CreateConfigOptionsRq()
-            { ConfigOption = viewModel.ConfigOptions };
-            viewModel.ConfigOptions = (await _configOptionAppService.CreateConfigOption(rq)).ConfigOption;
+            { Option = viewModel.ConfigOptions };
+            viewModel.ConfigOptions = (await _configOptionAppService.CreateConfigOption(rq)).Option;
 
             return RedirectToAction("Details", new { id = viewModel.ConfigOptions.Id });
         }
@@ -63,8 +63,8 @@ namespace WebShop.Web.Controllers
         public async Task<ActionResult> Update(ConfigOptionsViewModel viewModel)
         {
             UpdateConfigOptionsRq rq = new UpdateConfigOptionsRq()
-            { ConfigOption = viewModel.ConfigOptions };
-            viewModel.ConfigOptions = (await _configOptionAppService.UpdateConfigOption(rq)).ConfigOption;
+            { Option = viewModel.ConfigOptions };
+            viewModel.ConfigOptions = (await _configOptionAppService.UpdateConfigOption(rq)).Option;
 
             return RedirectToAction("Details", new { id = viewModel.ConfigOptions.Id });
         }

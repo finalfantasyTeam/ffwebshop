@@ -48,7 +48,7 @@ namespace WebShop.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Create()
+        public ActionResult Create()
         {
             CustomerOrderViewModel viewModel = new CustomerOrderViewModel(_OrderAppService);
             //var getAllCustomerRs = await _CustomerAppService.GetAllCustomer();

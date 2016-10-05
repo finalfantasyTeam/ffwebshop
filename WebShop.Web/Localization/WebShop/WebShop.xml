@@ -11,8 +11,10 @@
     <text name="LearnMore" value="Learn more" />
     <text name="Home_OtherTools" value="Many other frameworks/libraries such as ASP.NET Web API, EntityFramework/NHibernate, Castle Windsor, Log4Net, Twitter Bootstrap, jQuery..." />
     <text name="AboutFormat" value="About {0}" />
-    <text name="About_AspNetBoilerplateDescription" value="ASP.NET Boilerplate is a starting point for new web applications with best practices and most popular tools! ASP.NET Boilerplate provides an infrastructure for &lt;strong&gt;NLayer architecture&lt;/strong&gt; and &lt;strong&gt;Domain Driven Design&lt;/strong&gt;." />
     <text name="ForMoreInformation" value="For more information" />
+    <!--Common Text-->
+    <text name="IndiaCurrency" value="₹" />
+    
     <!--Admin page-->
     <text name="BackButtonLabel" value="Back" />
 
@@ -47,5 +49,13 @@
     <text name="UploadLogoHelpText" value="Please chose manufactory logo" />
 
     <text name="ValueLabel" value="Value" />
+    <!--End Admin Page-->
+    
+    <!--Home Page-->
+    <text name="FirstTabLabel" value="Best Sellers" />
+    <text name="SecondTabLabel" value="New Products" />
+    <text name="ThirdTabLabel" value="Sale-Off Products" />
+    <text name="PromoSectionTitle" value="Promo Section"/>
+    <!--End Home Page-->
   </texts>
 </localizationDictionary>
