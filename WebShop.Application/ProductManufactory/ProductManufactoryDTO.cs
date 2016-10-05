@@ -13,10 +13,10 @@ namespace WebShop.Application
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public string ManufactoryLogo { get; set; }
+        public string ManufactoryLogo { get; set; } //can be null
         public string ManufactoryCountry { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } //can be null
     }
 }

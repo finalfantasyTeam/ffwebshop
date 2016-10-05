@@ -1,0 +1,29 @@
+﻿@model WebShop.Web.Models.ProductManufactoryViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h3 class="box-title">Delete Product Manufactory</h3>
+<div class="box-header">
+  <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+</div>
+<h4>Are you sure you want to delete this?</h4>
+<div>
+  <dl class="dl-horizontal"></dl>
+
+  @using (Html.BeginForm())
+  {
+      @Html.AntiForgeryToken()
+      @Html.HiddenFor(@model => @model.ProductManufactory.CreateDate)
+      @Html.HiddenFor(@model => @model.ProductManufactory.Id)
+      @Html.HiddenFor(@model => @model.ProductManufactory.Description)
+      @Html.HiddenFor(@model => @model.ProductManufactory.IsActive)
+      @Html.HiddenFor(@model => @model.ProductManufactory.ManufactoryCountry)
+      @Html.HiddenFor(@model => @model.ProductManufactory.ManufactoryLogo)
+      @Html.HiddenFor(@model => @model.ProductManufactory.Name)
+      @Html.HiddenFor(@model => @model.ProductManufactory.UpdateDate)
+      <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-primary" /> 
+      </div>
+  }
+</div>

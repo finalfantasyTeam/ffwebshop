@@ -61,6 +61,7 @@ namespace WebShop.Web
 
                         "~/Scripts/moment-with-locales.min.js",
                         "~/Scripts/jquery.validate.min.js",
+                        "~/Scripts/jquery.validate.unobtrusive.min.js",
                         "~/Scripts/jquery.blockUI.js",
                         "~/Scripts/jquery.appear.js",
                         "~/Scripts/jquery.carouFredSel-6.2.1-packed.js",

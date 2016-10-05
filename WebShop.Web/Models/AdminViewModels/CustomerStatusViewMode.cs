@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Web;
 using WebShop.Application;
 
 namespace WebShop.Web.Models
@@ -7,6 +9,10 @@ namespace WebShop.Web.Models
     public class CustomerStatusViewModel
     {
         private readonly ICustomerStatusAppService _StatusAppService;
+
+        public CustomerStatusViewModel()
+        {
+        }
 
         public CustomerStatusViewModel(ICustomerStatusAppService StatusAppService)
         {
@@ -45,7 +51,6 @@ namespace WebShop.Web.Models
             { Status = CustomerStatus };
             await _StatusAppService.DeleteStatus(rq);
         }
-
         public IList<CustomerStatusDTO> ListCustomerStatus { get; set; }
         public CustomerStatusDTO CustomerStatus { get; set; }
     }

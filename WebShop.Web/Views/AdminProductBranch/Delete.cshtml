@@ -1,0 +1,28 @@
+﻿@model WebShop.Web.Models.ProductBranchViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h3 class="box-title">Delete Product Brand</h3>
+<div class="box-header">
+  <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+</div>
+<h4>Are you sure you want to delete this?</h4>
+<div>
+  <dl class="dl-horizontal"></dl>
+
+  @using (Html.BeginForm())
+  {
+      @Html.AntiForgeryToken()
+      @Html.HiddenFor(@model => @model.ProductBranch.CreateDate)
+      @Html.HiddenFor(@model => @model.ProductBranch.Id)
+      @Html.HiddenFor(@model => @model.ProductBranch.Description)
+      @Html.HiddenFor(@model => @model.ProductBranch.IsActive)
+      @Html.HiddenFor(@model => @model.ProductBranch.BranchLogo)
+      @Html.HiddenFor(@model => @model.ProductBranch.Name)
+      @Html.HiddenFor(@model => @model.ProductBranch.UpdateDate)
+      <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-primary" />
+      </div>
+  }
+</div>

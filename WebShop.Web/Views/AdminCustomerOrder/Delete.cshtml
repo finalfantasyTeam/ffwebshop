@@ -1,0 +1,30 @@
+﻿@model WebShop.Web.Models.CustomerOrderViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h3 class="box-title">Delete Customer Order</h3>
+<div class="box-header">
+  <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+</div>
+<h4>Are you sure you want to delete this?</h4>
+<div>
+  <dl class="dl-horizontal"></dl>
+
+  @using (Html.BeginForm())
+  {
+      @Html.AntiForgeryToken()
+      @Html.HiddenFor(@model => @model.CustomerOrder.CustomerId)
+      @Html.HiddenFor(@model => @model.CustomerOrder.Id)
+      @Html.HiddenFor(@model => @model.CustomerOrder.CreateDate)
+      @Html.HiddenFor(@model => @model.CustomerOrder.IsActive)
+      @Html.HiddenFor(@model => @model.CustomerOrder.UpdateDate)
+      @Html.HiddenFor(@model => @model.CustomerOrder.DeliveryDate)
+      @Html.HiddenFor(@model => @model.CustomerOrder.OrderTotal)
+      @Html.HiddenFor(@model => @model.CustomerOrder.Status)
+      @Html.HiddenFor(@model => @model.CustomerOrder.Notes)
+      <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-primary" />
+      </div>
+  }
+</div>

@@ -4,5 +4,7 @@ using System.Collections.Generic;
 namespace WebShop.Application
 {
     public class DeleteConfigOptionsRs : BaseResponse<ConfigOptionsDTO>
-    { }
+    {
+        public ConfigOptionsDTO Option { get; set; }
+    }
 }

@@ -25,7 +25,7 @@ namespace WebShop.Application
         public DateTime? ImportDate { get; set; }
         public string FeatureImage { get; set; }
         public string ImageList { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
         public decimal? Discount { get; set; }
         public ProductCategory ProductCategory { get; set; }
         public ProductBranch ProductBranch { get; set; }

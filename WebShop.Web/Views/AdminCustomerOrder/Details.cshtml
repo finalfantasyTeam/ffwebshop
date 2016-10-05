@@ -1,17 +1,82 @@
-﻿@{
-    Layout = null;
-}
+﻿@model WebShop.Web.Models.CustomerOrderViewModel
+<div class="row">
+  <div class="col-md-6">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">@Model.CustomerOrder.Id - @Model.CustomerOrder.Id</h3>
+      </div>
+      <div class="box-header">
+        <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+      </div>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
+      @using (Html.BeginForm("Update", "AdminCustomerOrder", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+      {
+          @Html.AntiForgeryToken()
+          @Html.HiddenFor(@model => @model.CustomerOrder.Id);
+          <div class="box-body">
+            <div class="form-group">
+              <label for="txtCustomerId">@L("CustomerIdLabel")</label>
+              @Html.TextBoxFor(@model => @model.CustomerOrder.CustomerId, new { @id = "txtCustomerId", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtCreateDate">@L("CreateDateLabel")</label>
+              <p class="readonly-text">@Model.CustomerOrder.CreateDate</p>
+              @Html.HiddenFor(@model => @model.CustomerOrder.CreateDate)
+            </div>
+            <div class="form-group">
+              <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
+              <p class="readonly-text">@Model.CustomerOrder.UpdateDate</p>
+            </div>
+            <div class="form-group">
+              <label for="txtDeliveryDate">@L("DeliveryDateLabel")</label>
+              @Html.TextBoxFor(@model => @model.CustomerOrder.DeliveryDate, new { @id = "txtDeliveryDate", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtOrderTotal">@L("OrderTotalLabel")</label>
+              @Html.TextBoxFor(@model => @model.CustomerOrder.OrderTotal, new { @id = "txtOrderTotal", @class = "form-control", @dataVal = false })
+            </div>
+            <div class="form-group">
+              <label for="txtStatus">@L("StatusLabel")</label>
+              @Html.TextBoxFor(@model => @model.CustomerOrder.Status, new { @id = "txtStatus", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtNotes">@L("NotesLabel")</label>
+              @Html.TextBoxFor(@model => @model.CustomerOrder.Notes, new { @id = "txtNotes", @class = "form-control" })
+            </div>
+            <div class="checkbox">
+              <label>
+                @Html.CheckBoxFor(@model => @model.CustomerOrder.IsActive) @L("IsActiveLabel")
+              </label>
+            </div>
+          </div>
+          <div class="box-footer">
+            <input type="submit" class="btn btn-primary" value="@L("EditButtonLabel")" />
+            @Html.ActionLink(L("DeleteButtonLabel"), "Delete", new { @id = Model.CustomerOrder.Id }, new { @class = "btn btn-primary" })
+          </div>
+      }
+        </div>
+      </div>
     </div>
-</body>
-</html>
+     
+      <script type="text/javascript">
+        $("#btnDelete").click(function (e) {
+          console.log(e);
+        });
+      </script>
+      <div class="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">Modal Default</h4>
+            </div>
+            <div class="modal-body">
+              <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -4,29 +4,35 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
 {
     public class CustomerGroupAppService : ICustomerGroupAppService
     {
-        private readonly ICustomerGroupRepository _customerGroupRepository;
+        private readonly ICustomerGroupRepository _CustomerGroupRepository;
 
-        public CustomerGroupAppService(ICustomerGroupRepository customerGroupRepository)
+        private static string SetDefaultImage(string value)
         {
-            _customerGroupRepository = customerGroupRepository;
-            Mapper.CreateMap<CustomerGroup, CustomerGroupDTO>();
+            return "";
+        }
+
+        public CustomerGroupAppService(ICustomerGroupRepository CustomerGroupyRepository)
+        {
+            _CustomerGroupRepository = CustomerGroupyRepository;
             Mapper.CreateMap<CustomerGroupDTO, CustomerGroup>();
+            Mapper.CreateMap<CustomerGroup, CustomerGroupDTO>();
         }
 
         public async Task<ListCustomerGroupRs> GetAllGroup()
         {
             try
             {
-                List<CustomerGroup> CustomerGroup = await _customerGroupRepository.GetAllListAsync();
+                List<CustomerGroup> CustomerGroupes = await _CustomerGroupRepository.GetAllListAsync();
                 return new ListCustomerGroupRs()
                 {
-                    Groups = CustomerGroup.MapTo<List<CustomerGroupDTO>>()
+                    Groups = CustomerGroupes.MapTo<List<CustomerGroupDTO>>()
                 };
             }
             catch (Exception ex)
@@ -37,31 +43,35 @@ namespace WebShop.Application
 
         public async Task<GetCustomerGroupRs> GetGroupById(GetCustomerGroupRq rq)
         {
-            try
-            {
-                CustomerGroup customerGroup = await _customerGroupRepository.GetAsync(rq.Id);
+            CustomerGroup CustomerGroup = await _CustomerGroupRepository.GetAsync(rq.Id);
 
-                return new GetCustomerGroupRs()
-                {
-                    Group = customerGroup.MapTo<CustomerGroupDTO>()
-                };
-            }
-            catch (Exception ex)
+            return new GetCustomerGroupRs()
             {
-                throw new Exception(ex.Message);
-            }
+                Group = CustomerGroup.MapTo<CustomerGroupDTO>()
+            };
+        }
+
+        public async Task<GetCustomerGroupRs> GetGroupByName(GetCustomerGroupRq rq)
+        {
+            CustomerGroup CustomerGroup = await _CustomerGroupRepository.GetGroupByNameAsync(rq.Name);
+
+            return new GetCustomerGroupRs()
+            {
+                Group = CustomerGroup.MapTo<CustomerGroupDTO>()
+            };
         }
 
         public async Task<CreateCustomerGroupRs> CreateGroup(CreateCustomerGroupRq rq)
         {
             try
             {
-                CustomerGroup insertCustomerGroup = rq.Group.MapTo<CustomerGroup>();
-                insertCustomerGroup = await _customerGroupRepository.InsertAsync(insertCustomerGroup);
+                rq.Group.CreateDate = DateTime.Now;
+                CustomerGroup insertGroup = rq.Group.MapTo<CustomerGroup>();
+                rq.Group.Id = await _CustomerGroupRepository.InsertAndGetIdAsync(insertGroup);
 
                 return new CreateCustomerGroupRs()
                 {
-                    Group = insertCustomerGroup.MapTo<CustomerGroupDTO>()
+                    Group = rq.Group
                 };
             }
             catch (Exception ex)
@@ -74,12 +84,13 @@ namespace WebShop.Application
         {
             try
             {
-                CustomerGroup updateCustomerGroup = rq.Group.MapTo<CustomerGroup>();
-                updateCustomerGroup = await _customerGroupRepository.UpdateAsync(updateCustomerGroup);
+                rq.Group.UpdateDate = DateTime.Now;
+                CustomerGroup updateGroup = rq.Group.MapTo<CustomerGroup>();
+                updateGroup = await _CustomerGroupRepository.UpdateAsync(updateGroup);
 
                 return new UpdateCustomerGroupRs()
                 {
-                    Group = updateCustomerGroup.MapTo<CustomerGroupDTO>()
+                    Group = updateGroup.MapTo<CustomerGroupDTO>()
                 };
             }
             catch (Exception ex)
@@ -92,10 +103,13 @@ namespace WebShop.Application
         {
             try
             {
-                CustomerGroup deleteCustomerGroup = rq.Group.MapTo<CustomerGroup>();
-                await _customerGroupRepository.DeleteAsync(deleteCustomerGroup);
+                CustomerGroup deleteGroup = rq.Group.MapTo<CustomerGroup>();
+                await _CustomerGroupRepository.DeleteAsync(deleteGroup);
 
-                return new DeleteCustomerGroupRs();
+                return new DeleteCustomerGroupRs()
+                {
+                    Group = deleteGroup.MapTo<CustomerGroupDTO>()
+                };
             }
             catch (Exception ex)
             {

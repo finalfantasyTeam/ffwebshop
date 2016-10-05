@@ -4,6 +4,7 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
@@ -12,21 +13,26 @@ namespace WebShop.Application
     {
         private readonly IProductStatusRepository _productStatusRepository;
 
-        public ProductStatusAppService(IProductStatusRepository productStatusRepository)
+        private static string SetDefaultImage(string value)
         {
-            _productStatusRepository = productStatusRepository;
-            Mapper.CreateMap<ProductStatus, ProductStatusDTO>();
-            Mapper.CreateMap<ProductStatusDTO, ProductStatus>();
+            return "";
         }
 
-        public async Task<ListProductStatusRs> GetAllProductStatus()
+        public ProductStatusAppService(IProductStatusRepository productStatusRepository)
+        {
+            _productStatusRepository = productStatusRepository;            
+            Mapper.CreateMap<ProductStatusDTO, ProductStatus>();
+            Mapper.CreateMap<ProductStatus, ProductStatusDTO>();
+        }
+
+        public async Task<ListProductStatusRs> GetAllStatus()
         {
             try
             {
-                List<ProductStatus> productStatus = await _productStatusRepository.GetAllListAsync();
+                List<ProductStatus> productStatuses = await _productStatusRepository.GetAllListAsync();
                 return new ListProductStatusRs()
                 {
-                    ProductStatus = productStatus.MapTo<List<ProductStatusDTO>>()
+                    Statuses = productStatuses.MapTo<List<ProductStatusDTO>>()
                 };
             }
             catch (Exception ex)
@@ -35,26 +41,36 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<GetProductStatusRs> GetProductStatus(GetProductStatusRq rq)
+        public async Task<GetProductStatusRs> GetStatusById(GetProductStatusRq rq)
         {
-            ProductStatus ProductStatus = await _productStatusRepository.GetAsync(rq.Id);
+            ProductStatus productStatus = await _productStatusRepository.GetAsync(rq.Id);
 
             return new GetProductStatusRs()
             {
-                ProductStatus = ProductStatus.MapTo<ProductStatusDTO>()
+                Status = productStatus.MapTo<ProductStatusDTO>()
             };
         }
 
-        public async Task<CreateProductStatusRs> CreateProductStatus(CreateProductStatusRq rq)
+        public async Task<GetProductStatusRs> GetStatusByName(GetProductStatusRq rq)
+        {
+            ProductStatus productStatus = await _productStatusRepository.GetStatusByNameAsync(rq.Name);
+
+            return new GetProductStatusRs()
+            {
+                Status = productStatus.MapTo<ProductStatusDTO>()
+            };
+        }
+
+        public async Task<CreateProductStatusRs> CreateStatus(CreateProductStatusRq rq)
         {
             try
             {
-                ProductStatus insertProductStatus = rq.ProductStatus.MapTo<ProductStatus>();
-                insertProductStatus = await _productStatusRepository.InsertAsync(insertProductStatus);
+                ProductStatus insertStatus = rq.Status.MapTo<ProductStatus>();
+                rq.Status.Id = await _productStatusRepository.InsertAndGetIdAsync(insertStatus);
 
                 return new CreateProductStatusRs()
                 {
-                    ProductStatus = insertProductStatus.MapTo<ProductStatusDTO>()
+                    Status = rq.Status
                 };
             }
             catch (Exception ex)
@@ -63,16 +79,16 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<UpdateProductStatusRs> UpdateProductStatus(UpdateProductStatusRq rq)
+        public async Task<UpdateProductStatusRs> UpdateStatus(UpdateProductStatusRq rq)
         {
             try
             {
-                ProductStatus updateProductStatus = rq.ProductStatus.MapTo<ProductStatus>();
-                updateProductStatus = await _productStatusRepository.UpdateAsync(updateProductStatus);
+                ProductStatus updateStatus = rq.Status.MapTo<ProductStatus>();
+                updateStatus = await _productStatusRepository.UpdateAsync(updateStatus);
 
                 return new UpdateProductStatusRs()
                 {
-                    ProductStatus = updateProductStatus.MapTo<ProductStatusDTO>()
+                    Status = updateStatus.MapTo<ProductStatusDTO>()
                 };
             }
             catch (Exception ex)
@@ -81,14 +97,17 @@ namespace WebShop.Application
             }
         }
 
-        public async Task<DeleteProductStatusRs> DeleteProductStatus(DeleteProductStatusRq rq)
+        public async Task<DeleteProductStatusRs> DeleteStatus(DeleteProductStatusRq rq)
         {
             try
             {
-                ProductStatus deleteProductStatus = rq.ProductStatus.MapTo<ProductStatus>();
-                await _productStatusRepository.DeleteAsync(deleteProductStatus);
+                ProductStatus deleteStatus = rq.Status.MapTo<ProductStatus>();
+                await _productStatusRepository.DeleteAsync(deleteStatus);
 
-                return new DeleteProductStatusRs();
+                return new DeleteProductStatusRs()
+                {
+                    Status = deleteStatus.MapTo<ProductStatusDTO>()
+                };
             }
             catch (Exception ex)
             {

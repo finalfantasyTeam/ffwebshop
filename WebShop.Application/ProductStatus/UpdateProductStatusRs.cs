@@ -5,6 +5,6 @@ namespace WebShop.Application
 {
     public class UpdateProductStatusRs : BaseResponse<ProductStatusDTO>
     {
-        public ProductStatusDTO ProductStatus { get; set; }
+        public ProductStatusDTO Status { get; set; }
     }
 }

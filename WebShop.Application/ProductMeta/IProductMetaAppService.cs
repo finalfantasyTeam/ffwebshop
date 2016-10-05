@@ -7,6 +7,7 @@ namespace WebShop.Application
     {
         Task<ListProductMetaRs> GetAllMeta();
         Task<GetProductMetaRs> GetMetaById(GetProductMetaRq rq);
+        Task<GetProductMetaRs> GetMetaByKey(GetProductMetaRq rq);
         Task<CreateProductMetaRs> CreateMeta(CreateProductMetaRq rq);
         Task<UpdateProductMetaRs> UpdateMeta(UpdateProductMetaRq rq);
         Task<DeleteProductMetaRs> DeleteMeta(DeleteProductMetaRq rq);

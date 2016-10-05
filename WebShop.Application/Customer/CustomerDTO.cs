@@ -24,7 +24,7 @@ namespace WebShop.Application
         public DateTime? JoinDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public DateTime? BirthDate { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
         public string Notes { get; set; }
         public Guid? UserId { get; set; }
     }

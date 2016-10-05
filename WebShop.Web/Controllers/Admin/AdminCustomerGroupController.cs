@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebShop.Application;
 using WebShop.Web.Models;
@@ -52,18 +53,43 @@ namespace WebShop.Web.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public async Task<ActionResult> Delete(int id)
+        {
+            CustomerGroupViewModel viewModel = new CustomerGroupViewModel(_GroupAppService);
+            await viewModel.GetCustomerGroup(id);
+            return View(viewModel);
+        }
         [HttpPost]
         public async Task<ActionResult> Create(CustomerGroupViewModel viewModel)
         {
-            await viewModel.CreateNewCustomerGroup();
-            return RedirectToAction("Details", new { id = viewModel.CustomerGroup.Id });
+            CreateCustomerGroupRq rq = new CreateCustomerGroupRq()
+            {
+                Group = viewModel.CustomerGroup,
+
+            };
+            viewModel.CustomerGroup = (await _GroupAppService.CreateGroup(rq)).Group;
+            return RedirectToAction("List", new { id = viewModel.CustomerGroup.Id });
         }
 
         [HttpPost]
         public async Task<ActionResult> Update(CustomerGroupViewModel viewModel)
         {
-            await viewModel.UpdateCustomerGroup();
-            return RedirectToAction("Details", new { id = viewModel.CustomerGroup.Id });
+            UpdateCustomerGroupRq rq = new UpdateCustomerGroupRq()
+            {
+                Group = viewModel.CustomerGroup
+            };
+            viewModel.CustomerGroup = (await _GroupAppService.UpdateGroup(rq)).Group;
+            return RedirectToAction("List", new { id = viewModel.CustomerGroup.Id });
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(CustomerGroupViewModel viewModel)
+        {
+            DeleteCustomerGroupRq rq = new DeleteCustomerGroupRq()
+            { Group = viewModel.CustomerGroup };
+            viewModel.CustomerGroup = (await _GroupAppService.DeleteGroup(rq)).Group;
+            return RedirectToAction("List", new { id = viewModel.CustomerGroup.Id });
         }
     }
 }
