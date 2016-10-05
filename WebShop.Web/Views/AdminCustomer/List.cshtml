@@ -1,0 +1,71 @@
+﻿<div class="row">
+  <div class="col-xs-12">
+    <div class="box">
+      <div class="box-header">
+        <h3 class="box-title">Customer List</h3>
+      </div>
+      <div class="box-header">
+        <a href='@Url.Action("Create")'>@L("AddNewLabel")</a>
+      </div>
+      <div class="box-body">
+        <table id="tblCustomer" class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Address</th>
+              <th>Phone Number</th>
+              <th>Cart</th>
+              <th>Wish List</th>
+              <th>Newsletter</th>
+              <th>Customer Group</th>
+              <th>Ip Address</th>
+              <th>Status</th>
+              <th>BirthDate</th>
+              <th>User Id</th>
+              <th>Notes</th>
+              <th>Active</th>
+            </tr>
+          </thead>
+          <tbody>
+            @{
+                if (Model.ListCustomer != null)
+                {
+                  foreach (var data in Model.ListCustomer)
+                  {
+                        <tr>
+                          <td>
+                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.Id</a>
+                          </td>
+                          <td>
+                            <a href='@Url.Action("Details", new { id = data.Id })'>@data.FirstName</a>
+                          </td>
+                          <td>@data.LastName</td>
+                          <td>@data.Address</td>
+                          <td>@data.PhoneNumber</td>
+                          <td>@data.Cart</td>
+                          <td>@data.WishList</td>
+                          <td>@data.Newsletter</td>
+                          <td>@data.CustomerGroup</td>
+                          <td>@data.IpAddress</td>
+                          <td>@data.Status</td>
+                          <td>@data.BirthDate</td>
+                          <td>@data.UserId</td>
+                          <td>@data.Notes</td>
+                          <td>@data.IsActive</td>
+                        </tr>
+                  }
+                }
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $("#tblCustomer").DataTable();
+  });
+</script>

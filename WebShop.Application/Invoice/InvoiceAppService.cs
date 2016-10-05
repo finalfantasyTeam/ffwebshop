@@ -4,29 +4,35 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
 {
     public class InvoiceAppService : IInvoiceAppService
     {
-        private readonly IInvoiceRepository _configOptionsRepository;
+        private readonly IInvoiceRepository _InvoiceRepository;
 
-        public InvoiceAppService(IInvoiceRepository configOptionsRepository)
+        private static string SetDefaultImage(string value)
         {
-            _configOptionsRepository = configOptionsRepository;
-            Mapper.CreateMap<Invoice, InvoiceDTO>();
+            return "";
+        }
+
+        public InvoiceAppService(IInvoiceRepository InvoiceRepository)
+        {
+            _InvoiceRepository = InvoiceRepository;
             Mapper.CreateMap<InvoiceDTO, Invoice>();
+            Mapper.CreateMap<Invoice, InvoiceDTO>();
         }
 
         public async Task<ListInvoiceRs> GetAllInvoices()
         {
             try
             {
-                List<Invoice> configOptions = await _configOptionsRepository.GetAllListAsync();
+                List<Invoice> Invoices = await _InvoiceRepository.GetAllListAsync();
                 return new ListInvoiceRs()
                 {
-                    Invoices = configOptions.MapTo<List<InvoiceDTO>>()
+                    Invoices = Invoices.MapTo<List<InvoiceDTO>>()
                 };
             }
             catch (Exception ex)
@@ -37,31 +43,25 @@ namespace WebShop.Application
 
         public async Task<GetInvoiceRs> GetInvoiceById(GetInvoiceRq rq)
         {
-            try
-            {
-                Invoice configOption = await _configOptionsRepository.GetAsync(rq.Id);
+            Invoice Invoice = await _InvoiceRepository.GetAsync(rq.Id);
 
-                return new GetInvoiceRs()
-                {
-                    Invoice = configOption.MapTo<InvoiceDTO>()
-                };
-            }
-            catch (Exception ex)
+            return new GetInvoiceRs()
             {
-                throw new Exception(ex.Message);
-            }
+                Invoice = Invoice.MapTo<InvoiceDTO>()
+            };
         }
 
         public async Task<CreateInvoiceRs> CreateInvoice(CreateInvoiceRq rq)
         {
             try
             {
+                rq.Invoice.CreateDate = DateTime.Now;
                 Invoice insertInvoice = rq.Invoice.MapTo<Invoice>();
-                insertInvoice = await _configOptionsRepository.InsertAsync(insertInvoice);
+                rq.Invoice.Id = await _InvoiceRepository.InsertAndGetIdAsync(insertInvoice);
 
                 return new CreateInvoiceRs()
                 {
-                    Invoice = insertInvoice.MapTo<InvoiceDTO>()
+                    Invoice = rq.Invoice
                 };
             }
             catch (Exception ex)
@@ -74,8 +74,9 @@ namespace WebShop.Application
         {
             try
             {
+                rq.Invoice.UpdateDate = DateTime.Now;
                 Invoice updateInvoice = rq.Invoice.MapTo<Invoice>();
-                updateInvoice = await _configOptionsRepository.UpdateAsync(updateInvoice);
+                updateInvoice = await _InvoiceRepository.UpdateAsync(updateInvoice);
 
                 return new UpdateInvoiceRs()
                 {
@@ -93,9 +94,12 @@ namespace WebShop.Application
             try
             {
                 Invoice deleteInvoice = rq.Invoice.MapTo<Invoice>();
-                await _configOptionsRepository.DeleteAsync(deleteInvoice);
+                await _InvoiceRepository.DeleteAsync(deleteInvoice);
 
-                return new DeleteInvoiceRs();
+                return new DeleteInvoiceRs()
+                {
+                    Invoice = deleteInvoice.MapTo<InvoiceDTO>()
+                };
             }
             catch (Exception ex)
             {

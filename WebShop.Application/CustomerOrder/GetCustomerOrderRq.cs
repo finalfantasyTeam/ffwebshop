@@ -4,5 +4,6 @@ namespace WebShop.Application
 {
     public class GetCustomerOrderRq : BaseRequest
     {
+        public int CustomerId { get; set; }
     }
 }

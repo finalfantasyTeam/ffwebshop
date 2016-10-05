@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.Web;
 using WebShop.Application;
 
 namespace WebShop.Web.Models
@@ -7,6 +9,10 @@ namespace WebShop.Web.Models
     public class ProductBranchViewModel
     {
         private readonly IProductBranchAppService _BranchAppService;
+
+        public ProductBranchViewModel()
+        {
+        }
 
         public ProductBranchViewModel(IProductBranchAppService BranchAppService)
         {
@@ -45,7 +51,6 @@ namespace WebShop.Web.Models
             { Branch = ProductBranch };
             await _BranchAppService.DeleteBranch(rq);
         }
-
         public IList<ProductBranchDTO> ListProductBranch { get; set; }
         public ProductBranchDTO ProductBranch { get; set; }
     }

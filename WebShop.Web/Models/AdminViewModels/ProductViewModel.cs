@@ -11,11 +11,13 @@ namespace WebShop.Web.Models
         public ProductViewModel(IProductAppService ProductAppService)
         {
             _ProductAppService = ProductAppService;
+            Product = new ProductDTO();
+            ListProduct = new List<ProductDTO>();
         }
 
-        public async Task FillDataForModel()
+        public void FillDataForModel()
         {
-            ListProduct = (await _ProductAppService.GetAllProducts()).Products;
+            ListProduct = _ProductAppService.GetAllProducts().Products;
         }
 
         public async Task GetProduct(int id)

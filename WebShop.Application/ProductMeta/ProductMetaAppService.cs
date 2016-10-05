@@ -4,6 +4,7 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
@@ -12,21 +13,26 @@ namespace WebShop.Application
     {
         private readonly IProductMetaRepository _productMetaRepository;
 
+        private static string SetDefaultImage(string value)
+        {
+            return "";
+        }
+
         public ProductMetaAppService(IProductMetaRepository productMetaRepository)
         {
             _productMetaRepository = productMetaRepository;
-            Mapper.CreateMap<ProductMeta, ProductMetaDTO>();
             Mapper.CreateMap<ProductMetaDTO, ProductMeta>();
+            Mapper.CreateMap<ProductMeta, ProductMetaDTO>();
         }
 
         public async Task<ListProductMetaRs> GetAllMeta()
         {
             try
             {
-                List<ProductMeta> productMeta = await _productMetaRepository.GetAllListAsync();
+                List<ProductMeta> productMetas = await _productMetaRepository.GetAllListAsync();
                 return new ListProductMetaRs()
                 {
-                    Metas = productMeta.MapTo<List<ProductMetaDTO>>()
+                    Metas = productMetas.MapTo<List<ProductMetaDTO>>()
                 };
             }
             catch (Exception ex)
@@ -45,16 +51,26 @@ namespace WebShop.Application
             };
         }
 
+        public async Task<GetProductMetaRs> GetMetaByKey(GetProductMetaRq rq)
+        {
+            ProductMeta productMeta = await _productMetaRepository.GetMetaByKeyAsync(rq.Key);
+
+            return new GetProductMetaRs()
+            {
+                Meta = productMeta.MapTo<ProductMetaDTO>()
+            };
+        }
+
         public async Task<CreateProductMetaRs> CreateMeta(CreateProductMetaRq rq)
         {
             try
             {
-                ProductMeta insertProductMeta = rq.Meta.MapTo<ProductMeta>();
-                insertProductMeta = await _productMetaRepository.InsertAsync(insertProductMeta);
+                ProductMeta insertMeta = rq.Meta.MapTo<ProductMeta>();
+                rq.Meta.Id = await _productMetaRepository.InsertAndGetIdAsync(insertMeta);
 
                 return new CreateProductMetaRs()
                 {
-                    Meta = insertProductMeta.MapTo<ProductMetaDTO>()
+                    Meta = rq.Meta
                 };
             }
             catch (Exception ex)
@@ -67,12 +83,12 @@ namespace WebShop.Application
         {
             try
             {
-                ProductMeta updateProductMeta = rq.Meta.MapTo<ProductMeta>();
-                updateProductMeta = await _productMetaRepository.UpdateAsync(updateProductMeta);
+                ProductMeta updateMeta = rq.Meta.MapTo<ProductMeta>();
+                updateMeta = await _productMetaRepository.UpdateAsync(updateMeta);
 
                 return new UpdateProductMetaRs()
                 {
-                    Meta = updateProductMeta.MapTo<ProductMetaDTO>()
+                    Meta = updateMeta.MapTo<ProductMetaDTO>()
                 };
             }
             catch (Exception ex)
@@ -85,10 +101,13 @@ namespace WebShop.Application
         {
             try
             {
-                ProductMeta deleteProductMeta = rq.Meta.MapTo<ProductMeta>();
-                await _productMetaRepository.DeleteAsync(deleteProductMeta);
+                ProductMeta deleteMeta = rq.Meta.MapTo<ProductMeta>();
+                await _productMetaRepository.DeleteAsync(deleteMeta);
 
-                return new DeleteProductMetaRs();
+                return new DeleteProductMetaRs()
+                {
+                    Meta = deleteMeta.MapTo<ProductMetaDTO>()
+                };
             }
             catch (Exception ex)
             {

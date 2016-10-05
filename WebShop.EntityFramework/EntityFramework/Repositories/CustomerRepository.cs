@@ -13,5 +13,11 @@ namespace WebShop.EntityFramework.Repositories
         public CustomerRepository(IDbContextProvider<WebShopDbContext> dbContextProvider) 
             : base(dbContextProvider)
         { }
+
+        // Implement custom data access function here
+        public async Task<Core.Customer> GetCustomerByFirstNameAsync(string GroupName)
+        {
+            return await SingleAsync(m => m.FirstName.Contains(GroupName));
+        }
     }
 }

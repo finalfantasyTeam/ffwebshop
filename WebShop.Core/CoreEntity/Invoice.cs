@@ -10,7 +10,7 @@ namespace WebShop.Core
     {
         public Invoice()
         {
-            this.InvoiceDetails = new HashSet<InvoiceDetail>();
+            Customer = new HashSet<Customer>();
         }
 
         public int CustomerId { get; set; }
@@ -23,7 +23,8 @@ namespace WebShop.Core
         public bool? IsActive { get; set; }
         public string Notes { get; set; }
 
-        public virtual Customer Customer { get; set; }
-        public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
+        public virtual ICollection<Customer> Customer { get; set; }
+        //public virtual Customer Customer { get; set; }
+        //public virtual ICollection<InvoiceDetail> InvoiceDetails { get; set; }
     }
 }

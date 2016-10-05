@@ -1,0 +1,31 @@
+﻿@model WebShop.Web.Models.InvoiceViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h3 class="box-title">Delete Invoice</h3>
+<div class="box-header">
+  <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+</div>
+<h4>Are you sure you want to delete this?</h4>
+<div>
+  <dl class="dl-horizontal"></dl>
+
+  @using (Html.BeginForm())
+  {
+      @Html.AntiForgeryToken()
+      @Html.HiddenFor(@model => @model.Invoice.Id)
+      @Html.HiddenFor(@model => @model.Invoice.CustomerId)
+      @Html.HiddenFor(@model => @model.Invoice.CreateDate)
+      @Html.HiddenFor(@model => @model.Invoice.UpdateDate)
+      @Html.HiddenFor(@model => @model.Invoice.CreateBy)
+      @Html.HiddenFor(@model => @model.Invoice.UpdateBy)
+      @Html.HiddenFor(@model => @model.Invoice.IsActive)
+      @Html.HiddenFor(@model => @model.Invoice.InvoiceTotal)
+      @Html.HiddenFor(@model => @model.Invoice.Status)
+      @Html.HiddenFor(@model => @model.Invoice.Notes)
+      <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-primary" />
+      </div>
+  }
+</div>

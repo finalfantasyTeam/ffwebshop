@@ -4,5 +4,7 @@ using System.Collections.Generic;
 namespace WebShop.Application
 {
     public class DeleteProductMetaRs : BaseResponse<ProductMetaDTO>
-    { }
+    {
+        public ProductMetaDTO Meta { get; set; }
+    }
 }

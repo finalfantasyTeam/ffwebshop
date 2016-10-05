@@ -4,6 +4,7 @@ using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
@@ -12,11 +13,20 @@ namespace WebShop.Application
     {
         private readonly IProductCategoryRepository _productCategoryRepository;
 
-        public ProductCategoryAppService(IProductCategoryRepository productManufatocryRepository)
+        private static string SetDefaultImage(string value)
         {
-            _productCategoryRepository = productManufatocryRepository;
-            Mapper.CreateMap<ProductCategory, ProductCategoryDTO>();
+            return "";
+        }
+
+        public ProductCategoryAppService(IProductCategoryRepository productCategoryRepository)
+        {
+            _productCategoryRepository = productCategoryRepository;
+            Mapper.CreateMap<ProductCategory, ProductCategoryDTO>()
+                .ForMember(dest => dest.ImageToShow, opt => opt
+                .MapFrom(src => string.IsNullOrEmpty(src.ImageToShow) ? Constants.PLACEHOLDER_IMAGE_PATH : src.ImageToShow));
+
             Mapper.CreateMap<ProductCategoryDTO, ProductCategory>();
+            Mapper.CreateMap<ProductCategory, ProductCategoryDTO>();
         }
 
         public async Task<ListProductCategoryRs> GetAllCategory()
@@ -54,7 +64,7 @@ namespace WebShop.Application
                 Category = productCategory.MapTo<ProductCategoryDTO>()
             };
         }
-
+        
         public async Task<CreateProductCategoryRs> CreateCategory(CreateProductCategoryRq rq)
         {
             try
@@ -98,12 +108,25 @@ namespace WebShop.Application
             try
             {
                 ProductCategory deleteCategory = rq.Category.MapTo<ProductCategory>();
-                await _productCategoryRepository.DeleteAsync(deleteCategory);
 
-                return new DeleteProductCategoryRs()
+                // if co product 
+                ProductCategory child = _productCategoryRepository.FirstOrDefault(c => c.ParentCat == deleteCategory.Id);
+                if(child != null)
                 {
-                    Category = deleteCategory.MapTo<ProductCategoryDTO>()
-                };
+                    return new DeleteProductCategoryRs()
+                    {
+                        Category = null
+                    };
+                }
+                else
+                {
+                    await _productCategoryRepository.DeleteAsync(deleteCategory);
+
+                    return new DeleteProductCategoryRs()
+                    {
+                        Category = deleteCategory.MapTo<ProductCategoryDTO>()
+                    };
+                }                
             }
             catch (Exception ex)
             {

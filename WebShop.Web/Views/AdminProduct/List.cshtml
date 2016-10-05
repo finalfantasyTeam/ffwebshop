@@ -11,18 +11,13 @@
               <th>#</th>
               <th>Name</th>
               <th>Code</th>
-              <th>CategoryId</th>
+              <th>Feature Image</th>
+              <th>Category</th>
               <th>Origin Price</th>
               <th>Sell Price</th>
               <th>Quantity</th>
               <th>Status</th>
-              <th>ManufactoryId</th>
-              <th>BranchId</th>
-              <th>Create Date</th>
-              <th>Update Date</th>
               <th>Import Date</th>
-              <th>Feature Image</th>
-              <th>Image List</th>
               <th>Discount</th>
               <th>Active</th>
             </tr>
@@ -41,23 +36,16 @@
                             <a href="@Url.Action("Details", new { id = data.Id })">@data.Name</a>
                           </td>
                           <td>@data.Code</td>
-                          <td>@data.CategoryId</td>
+                          <td>
+                            <img width="50" height="50" src='@Url.Content("~")' alt="@data.FeatureImage" />
+                          </td>
+                          <td>@data.ProductCategory.Name</td>
                           <td>@data.OriginPrice</td>
                           <td>@data.SellPrice</td>
                           <td>@data.Quantity</td>
+                          <td>@data.ProductStatus.Name | @data.ProductStatus.Notes</td>
+                          <td>@data.ImportDate.ToShortDateString()</td>
                           <td>@data.Discount</td>
-                          <td>@data.Status</td>
-                          <td>@data.ManufactoryId</td>
-                          <td>@data.BranchId</td>
-                          <td>@data.CreateDate</td>
-                          <td>@data.UpdateDate</td>
-                          <td>@data.ImportDate</td>
-                          <td>
-                            <img src='@Url.Content("~")' alt="@data.FeatureImage" />
-                          </td>
-                          <td>
-                            <img src='@Url.Content("~")' alt="@data.ImageList" />
-                          </td>
                           <td>@data.IsActive</td>
                         </tr>
                   }

@@ -3,6 +3,7 @@ using Abp.Domain.Uow;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using WebShop.Core;
 
@@ -19,11 +20,34 @@ namespace WebShop.Application
             Mapper.CreateMap<ProductDTO, Product>();
         }
 
-        public async Task<ListProductRs> GetAllProducts()
+        public ListProductRs GetAllProducts()
+        {
+            try
+            {
+                IQueryable<Product> query = _productsRepository.GetAllIncluding(
+                                                        p => p.ProductCategory, 
+                                                        p => p.ProductBranch, 
+                                                        p => p.ProductStatus);
+
+                List<Product> products = query.ToList();
+                
+                return new ListProductRs()
+                {
+                    Products = products.MapTo<List<ProductDTO>>()
+                };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<ListProductRs> GetAllProductsAsync()
         {
             try
             {
                 List<Product> products = await _productsRepository.GetAllListAsync();
+
                 return new ListProductRs()
                 {
                     Products = products.MapTo<List<ProductDTO>>()

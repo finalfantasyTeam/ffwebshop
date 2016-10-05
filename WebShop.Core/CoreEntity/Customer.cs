@@ -10,8 +10,9 @@ namespace WebShop.Core
     {
         public Customer()
         {
-            CustomerOrders = new HashSet<CustomerOrder>();
-            Invoices = new HashSet<Invoice>();
+            CustomerGroups = new HashSet<CustomerGroup>();
+            CustomerStatus = new HashSet<CustomerStatus>();
+            Users = new HashSet<Users>();
         }
 
         public string FirstName { get; set; }
@@ -31,10 +32,18 @@ namespace WebShop.Core
         public string Notes { get; set; }
         public Guid? UserId { get; set; }
 
-        public virtual Users User { get; set; }
-        public virtual CustomerGroup CustomerGroupEntity { get; set; }
-        public virtual CustomerStatus CustomerStatus { get; set; }
-        public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
-        public virtual ICollection<Invoice> Invoices { get; set; }
+        //public virtual Users User { get; set; }
+        //public virtual CustomerGroup CustomerGroupEntity { get; set; }
+        //public virtual CustomerStatus CustomerStatus { get; set; }
+
+        [ForeignKey("CustomerGroup")]
+        public virtual CustomerGroup CustomerGroupId { get; set; }
+        [ForeignKey("Status")]
+        public virtual CustomerStatus CustomerStatusId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual Users UsersId { get; set; }
+        public virtual ICollection<CustomerGroup> CustomerGroups { get; set; }
+        public virtual ICollection<CustomerStatus> CustomerStatus { get; set; }
+        public virtual ICollection<Users> Users { get; set; }
     }
 }

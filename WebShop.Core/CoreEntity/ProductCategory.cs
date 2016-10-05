@@ -10,20 +10,23 @@ namespace WebShop.Core
     {
         public ProductCategory()
         {
-            Products = new HashSet<Product>();
-            //ProductCategoryChild = new HashSet<ProductCategory>();
+            ProductCategoryChild = new HashSet<ProductCategory>();
         }
 
         public string Name { get; set; }
         public string Description { get; set; }
         public string ImageToShow { get; set; }
+
         public int ParentCat { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public bool? IsActive { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
-        //public virtual ICollection<ProductCategory> ProductCategoryChild { get; set; }
+        [ForeignKey("ParentCat")]
+        public virtual ProductCategory ProductCategoryParent { get; set; }
+
+        //public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<ProductCategory> ProductCategoryChild { get; set; }
         //public virtual ProductCategory ProductCategoryParent { get; set; }
     }
 }

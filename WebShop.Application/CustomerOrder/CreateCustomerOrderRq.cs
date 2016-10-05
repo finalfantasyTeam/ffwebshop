@@ -4,6 +4,6 @@ namespace WebShop.Application
 {
     public class CreateCustomerOrderRq : BaseRequest
     {
-        public CustomerOrderDTO CustomerOrder { get; set; }
+        public CustomerOrderDTO Order { get; set; }
     }
 }

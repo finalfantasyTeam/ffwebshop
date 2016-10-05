@@ -10,10 +10,9 @@ namespace WebShop.Core
     {
         public ProductBranch()
         {
-            Products = new HashSet<Product>();
+            //Products = new HashSet<Product>();
         }
-
-        //public int Id { get; set; }
+        
         public string Name { get; set; }
         public string Description { get; set; }
         public string BranchLogo { get; set; }
@@ -21,6 +20,6 @@ namespace WebShop.Core
         public DateTime? UpdateDate { get; set; }
         public bool? IsActive { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        //public virtual ICollection<Product> Products { get; set; }
     }
 }

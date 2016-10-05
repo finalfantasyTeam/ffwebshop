@@ -1,0 +1,39 @@
+﻿@model WebShop.Web.Models.CustomerViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h3 class="box-title">Delete Customer </h3>
+<div class="box-header">
+  <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+</div>
+<h4>Are you sure you want to delete this?</h4>
+<div>
+  <dl class="dl-horizontal"></dl>
+
+  @using (Html.BeginForm())
+  {
+      @Html.AntiForgeryToken()
+      @Html.HiddenFor(@model => @model.Customer.Id)
+      @Html.HiddenFor(@model => @model.Customer.FirstName)
+      @Html.HiddenFor(@model => @model.Customer.LastName)
+      @Html.HiddenFor(@model => @model.Customer.Address)
+      @Html.HiddenFor(@model => @model.Customer.PhoneNumber)
+      @Html.HiddenFor(@model => @model.Customer.Cart)
+      @Html.HiddenFor(@model => @model.Customer.WishList)
+      @Html.HiddenFor(@model => @model.Customer.Newsletter)
+      @Html.HiddenFor(@model => @model.Customer.Notes)
+      @Html.HiddenFor(@model => @model.Customer.CustomerGroup)
+      @Html.HiddenFor(@model => @model.Customer.IpAddress)
+      @Html.HiddenFor(@model => @model.Customer.Status)
+      @Html.HiddenFor(@model => @model.Customer.JoinDate)
+      @Html.HiddenFor(@model => @model.Customer.UpdateDate)
+      @Html.HiddenFor(@model => @model.Customer.BirthDate)
+      @Html.HiddenFor(@model => @model.Customer.UserId)
+      @Html.HiddenFor(@model => @model.Customer.Status)
+      @Html.HiddenFor(@model => @model.Customer.Notes)
+      <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-primary" />
+      </div>
+  }
+</div>

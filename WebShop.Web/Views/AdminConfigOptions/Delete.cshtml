@@ -1,0 +1,31 @@
+﻿@model WebShop.Web.Models.ConfigOptionsViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+<h3 class="box-title">Delete Config Option</h3>
+<div class="box-header">
+  <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+</div>
+<h4>Are you sure you want to delete this?</h4>
+<div>
+  <dl class="dl-horizontal"></dl>
+
+  @using (Html.BeginForm())
+  {
+      @Html.AntiForgeryToken()
+      @Html.HiddenFor(@model => @model.ConfigOptions.AppId)
+      @Html.HiddenFor(@model => @model.ConfigOptions.OptionKey)
+      @Html.HiddenFor(@model => @model.ConfigOptions.CreateDate)
+      @Html.HiddenFor(@model => @model.ConfigOptions.IsActive)
+      @Html.HiddenFor(@model => @model.ConfigOptions.UpdateDate)
+      @Html.HiddenFor(@model => @model.ConfigOptions.OptionValue)
+      @Html.HiddenFor(@model => @model.ConfigOptions.CreateBy)
+      @Html.HiddenFor(@model => @model.ConfigOptions.UpdateBy)
+      @Html.HiddenFor(@model => @model.ConfigOptions.Id)
+      @Html.HiddenFor(@model => @model.ConfigOptions.Notes)
+      <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-primary" />
+      </div>
+  }
+</div>

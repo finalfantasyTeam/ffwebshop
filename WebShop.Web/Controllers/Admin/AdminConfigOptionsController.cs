@@ -23,7 +23,6 @@ namespace WebShop.Web.Controllers
         {
             ConfigOptionsViewModel viewModel = new ConfigOptionsViewModel(_configOptionAppService);
             await viewModel.FillDataForModel();
-
             return View(viewModel);
         }
 

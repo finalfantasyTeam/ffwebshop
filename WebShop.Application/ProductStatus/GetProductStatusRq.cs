@@ -4,5 +4,6 @@ namespace WebShop.Application
 {
     public class GetProductStatusRq : BaseRequest
     {
+        public string Name { get; set; }
     }
 }

@@ -9,5 +9,10 @@ namespace WebShop.Web.Controllers
             ViewBag.ControllerName = "Sales";
             return View();
         }
+
+        public ActionResult SendOrder()
+        {
+            return View();
+        }
     }
 }

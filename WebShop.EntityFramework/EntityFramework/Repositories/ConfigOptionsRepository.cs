@@ -13,5 +13,11 @@ namespace WebShop.EntityFramework.Repositories
         public ConfigOptionsRepository(IDbContextProvider<WebShopDbContext> dbContextProvider) 
             : base(dbContextProvider)
         { }
+
+        // Implement custom data access function here
+        public async Task<Core.ConfigOptions> GetOptionByKeyAsync(string OptionKey)
+        {
+            return await SingleAsync(m => m.OptionKey.Contains(OptionKey));
+        }
     }
 }

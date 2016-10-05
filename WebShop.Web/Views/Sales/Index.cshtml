@@ -156,7 +156,7 @@
               </tbody>
             </table>
             <div>
-              <a href="#" class="btn checkout btn-default btn-lg">Proceed to Checkout</a>
+              @Html.ActionLink("Make an order", "SendOrder", null, new { @class = "btn checkout btn-default btn-lg" })
             </div>
             <a href="" class="multiple no-border">Checkout with Multiple Addresses</a>
           </div>

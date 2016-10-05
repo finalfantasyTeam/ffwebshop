@@ -4,6 +4,6 @@ namespace WebShop.Application
 {
     public class DeleteConfigOptionsRq : BaseRequest
     {
-        public ConfigOptionsDTO ConfigOption { get; set; }
+        public ConfigOptionsDTO Option { get; set; }
     }
 }

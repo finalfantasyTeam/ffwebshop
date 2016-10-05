@@ -1,0 +1,115 @@
+﻿@model WebShop.Web.Models.CustomerViewModel
+
+@using (Html.BeginForm("Update", "AdminCustomer", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="box box-primary">
+          <div class="box-header with-border">
+            <h3 class="box-title">@Model.Customer.Id - @Model.Customer.Id</h3>
+          </div>
+          <div class="box-header">
+            <a href='@Url.Action("List")'>@L("BackButtonLabel")</a>
+          </div>
+          @Html.AntiForgeryToken()
+          @Html.HiddenFor(@model => @model.Customer.Id);
+          <div class="box-body">
+            <div class="form-group">
+              <label for="txtFirstName">@L("FirstNameLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.FirstName, new { @id = "txtFirstName", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtLastName">@L("LastNameLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.LastName, new { @id = "txtLastName", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtAddress">@L("AddressLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.Address, new { @id = "txtAddress", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtPhoneNumber">@L("PhoneNumberLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.PhoneNumber, new { @id = "txtPhoneNumber", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtCart">@L("CartLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.Cart, new { @id = "txtCart", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtWishList">@L("WishListLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.WishList, new { @id = "txtWishList", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtNewsletter">@L("NewsletterLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.Newsletter, new { @id = "txtNewsletter", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtCustomerGroup">@L("CustomerGroupLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.CustomerGroup, new { @id = "txtCustomerGroup", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtIpAddress">@L("IpAddressLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.IpAddress, new { @id = "txtIpAddress", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtStatus">@L("StatusLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.Status, new { @id = "txtStatus", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtBirthDate">@L("BirthDateLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.BirthDate, new { @id = "txtBirthDate", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtNotes">@L("NotesLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.Notes, new { @id = "txtNotes", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtUserId">@L("UserIdLabel")</label>
+              @Html.TextBoxFor(@model => @model.Customer.UserId, new { @id = "txtUserId", @class = "form-control" })
+            </div>
+            <div class="form-group">
+              <label for="txtJoinDate">@L("JoinDateLabel")</label>
+              <p class="readonly-text">@Model.Customer.JoinDate</p>
+              @Html.HiddenFor(@model => @model.Customer.JoinDate)
+            </div>
+            <div class="form-group">
+              <label for="txtUpdateDate">@L("UpdateDateLabel")</label>
+              <p class="readonly-text">@Model.Customer.UpdateDate</p>
+            </div>
+            <div class="checkbox">
+              <label>
+                @Html.CheckBoxFor(@model => @model.Customer.IsActive) @L("IsActiveLabel")
+              </label>
+            </div>
+          </div>
+          <div class="box-footer">
+            <input type="submit" class="btn btn-primary" value="@L("EditButtonLabel")" />
+            @Html.ActionLink(L("DeleteButtonLabel"), "Delete", new { @id = Model.Customer.Id }, new { @class = "btn btn-primary" })
+          </div>
+
+        </div>
+      </div>
+    </div>
+}
+<script type="text/javascript">
+  $("#btnDelete").click(function (e) {
+    console.log(e);
+  });
+</script>
+<div class="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal Default</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
