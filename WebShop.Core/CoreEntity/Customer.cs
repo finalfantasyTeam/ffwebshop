@@ -10,8 +10,11 @@ namespace WebShop.Core
     {
         public Customer()
         {
-            CustomerGroups = new HashSet<CustomerGroup>();
-            CustomerStatus = new HashSet<CustomerStatus>();
+            //CustomerGroups = new HashSet<CustomerGroup>();
+            //CustomerStatus = new HashSet<CustomerStatus>();
+            Users = new HashSet<Users>();
+            CustomerOrders = new HashSet<CustomerOrder>();
+            Invoices = new HashSet<Invoice>();
             Users = new HashSet<Users>();
         }
 
@@ -31,19 +34,12 @@ namespace WebShop.Core
         public bool? IsActive { get; set; }
         public string Notes { get; set; }
         public Guid? UserId { get; set; }
-
-        //public virtual Users User { get; set; }
-        //public virtual CustomerGroup CustomerGroupEntity { get; set; }
-        //public virtual CustomerStatus CustomerStatus { get; set; }
-
-        [ForeignKey("CustomerGroup")]
-        public virtual CustomerGroup CustomerGroupId { get; set; }
-        [ForeignKey("Status")]
-        public virtual CustomerStatus CustomerStatusId { get; set; }
-        [ForeignKey("UserId")]
-        public virtual Users UsersId { get; set; }
-        public virtual ICollection<CustomerGroup> CustomerGroups { get; set; }
-        public virtual ICollection<CustomerStatus> CustomerStatus { get; set; }
+                
+        
+        //public virtual ICollection<CustomerGroup> CustomerGroups { get; set; }
+        //public virtual ICollection<CustomerStatus> CustomerStatus { get; set; }
         public virtual ICollection<Users> Users { get; set; }
+        public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
+        public virtual ICollection<Invoice> Invoices { get; set; }
     }
 }

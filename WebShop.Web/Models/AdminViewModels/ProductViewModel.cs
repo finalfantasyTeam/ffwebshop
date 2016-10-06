@@ -8,6 +8,10 @@ namespace WebShop.Web.Models
     {
         private readonly IProductAppService _ProductAppService;
 
+        public ProductViewModel()
+        {
+        }
+
         public ProductViewModel(IProductAppService ProductAppService)
         {
             _ProductAppService = ProductAppService;

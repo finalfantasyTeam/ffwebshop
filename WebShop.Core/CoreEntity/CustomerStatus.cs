@@ -16,6 +16,5 @@ namespace WebShop.Core
         public string Name { get; set; }
         public string Notes { get; set; }
 
-        //public virtual ICollection<Customer> Customers { get; set; }
     }
 }

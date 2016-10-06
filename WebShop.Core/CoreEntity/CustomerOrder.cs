@@ -11,7 +11,7 @@ namespace WebShop.Core
     {
         public CustomerOrder()
         {
-            Customers = new HashSet<Customer>();
+            //Customers = new HashSet<Customer>();
         }
 
         public int? CustomerId { get; set; }
@@ -24,9 +24,9 @@ namespace WebShop.Core
         public bool? IsActive { get; set; }
         public string Notes { get; set; }
 
-        public virtual ICollection<Customer> Customers { get; set; }
+        //public virtual ICollection<Customer> Customers { get; set; }
 
-        //public virtual Customer Customers { get; set; }
-        //public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        [ForeignKey("CustomerId")]
+        public virtual Customer Customers { get; set; }
     }
 }

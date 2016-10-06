@@ -1,19 +1,31 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebShop.Application;
 using WebShop.Web.Models;
-
+using System.Linq;
 namespace WebShop.Web.Controllers
 {
     public class AdminProductController : AdminControllerBase
     {
         private readonly IProductAppService _ProductAppService;
+        private readonly IProductCategoryAppService productCategoryAppService;
+        private readonly IProductStatusAppService productStatusAppService;
+        private readonly IProductManufactoryAppService productManufactoryAppService;
+        private readonly IProductBranchAppService productBranchAppService;
 
-        public AdminProductController(IProductAppService ProductAppService)
+        public AdminProductController(IProductAppService ProductAppService, IProductCategoryAppService productCategoryAppService,
+            IProductStatusAppService productStatusAppService, IProductManufactoryAppService productManufactoryAppService,
+            IProductBranchAppService productBranchAppService)
         {
             _ProductAppService = ProductAppService;
+            this.productCategoryAppService = productCategoryAppService;
+            this.productStatusAppService = productStatusAppService;
+            this.productManufactoryAppService = productManufactoryAppService;
+            this.productBranchAppService = productBranchAppService;
         }
+
 
         [HttpGet]
         public ActionResult Index()
@@ -34,6 +46,10 @@ namespace WebShop.Web.Controllers
         public async Task<ActionResult> Details(int id)
         {
             ProductViewModel viewModel = new ProductViewModel(_ProductAppService);
+            ViewBag.Categories = (await productCategoryAppService.GetAllCategory()).Categories.Select(x =>  new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList();
+            ViewBag.Status = (await productStatusAppService.GetAllStatus()).Statuses.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList(); ;
+            ViewBag.Manufactories = (await productManufactoryAppService.GetAllManufactory()).Manufactories.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList(); ;
+            ViewBag.Branchs = (await productBranchAppService.GetAllBranch()).Branches.Select(x => new SelectListItem { Value = x.Id.ToString(), Text = x.Name }).ToList(); ;
             await viewModel.GetProduct(id);
             return View(viewModel);
         }

@@ -10,10 +10,11 @@ namespace WebShop.Core
     {
         public Product()
         {
-            ProductBranch = new HashSet<ProductBranch>();
-            ProductCategory = new HashSet<ProductCategory>();
-            ProductManufactory = new HashSet<ProductManufactory>();
-            ProductStatus = new HashSet<ProductStatus>();
+            //ProductBranch = new HashSet<ProductBranch>();
+            //ProductCategory = new HashSet<ProductCategory>();
+            //ProductManufactory = new HashSet<ProductManufactory>();
+            //ProductStatus = new HashSet<ProductStatus>();
+            ProductMetas = new HashSet<ProductMeta>();
         }
 
         public string Name { get; set; }
@@ -32,16 +33,11 @@ namespace WebShop.Core
         public string ImageList { get; set; }
         public bool? IsActive { get; set; }
         public decimal? Discount { get; set; }
-
-        //[ForeignKey("BranchId")]
-        //public virtual ProductBranch ProductBranch { get; set; }
-        //[ForeignKey("CategoryId")]
-        //public virtual ProductCategory ProductCategory { get; set; }
-        //[ForeignKey("Status")]
-        //public virtual ProductStatus ProductStatus { get; set; }        
-        public virtual ICollection<ProductBranch> ProductBranch { get; set; }
-        public virtual ICollection<ProductCategory> ProductCategory { get; set; }
-        public virtual ICollection<ProductManufactory> ProductManufactory { get; set; }
-        public virtual ICollection<ProductStatus> ProductStatus { get; set; }
+               
+        //public virtual ICollection<ProductBranch> ProductBranch { get; set; }
+        //public virtual ICollection<ProductCategory> ProductCategory { get; set; }
+        //public virtual ICollection<ProductManufactory> ProductManufactory { get; set; }
+        //public virtual ICollection<ProductStatus> ProductStatus { get; set; }
+        public virtual ICollection<ProductMeta> ProductMetas { get; set; }
     }
 }

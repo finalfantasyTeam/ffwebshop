@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebShop.Core
 {
@@ -10,7 +11,6 @@ namespace WebShop.Core
     {
         public ProductMeta()
         {
-            Products = new HashSet<Product>();
         }
 
         public int? ProductId { get; set; }
@@ -19,8 +19,8 @@ namespace WebShop.Core
         public bool? IsActive { get; set; }
         public string Notes { get; set; }
 
-        //[ForeignKey("ProductId")]
-        //public virtual Product ProductParent { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+
+        [ForeignKey("ProductId")]
+        public virtual Product Product { get; set; }
     }
 }

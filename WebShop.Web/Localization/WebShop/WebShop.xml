@@ -41,6 +41,7 @@
     <text name="DeliveryDateLabel" value="Delivery Date" />
     <text name="OrderTotalLabel" value="Order Total" />
     <text name="StatusLabel" value="Status" />
+    
     <!--customer-->
     <text name="FirstNameLabel" value="First Name" />
     <text name="LastNameLabel" value="Last Name" />
@@ -53,7 +54,8 @@
     <text name="IpAddressLabel" value="Ip Address" />
     <text name="BirthDateLabel" value="BirthDate" />
     <text name="UserIdLabel" value="User Id" />
-    
+    <text name="JoindateLabel" value="Join Date" />
+
     <!--Invoice-->
     <text name="CreateByLabel" value="Created By" />
     <text name="UpdateByLabel" value="Updated By" />
@@ -64,5 +66,17 @@
     <text name="OptionKeyLabel" value="Option Key" />
     <text name="OptionValueLabel" value="Option Value" />
     
+    <!--Product page-->
+    <text name="CodeLabel" value="Code" />
+    <text name="CategoryNameLabel" value="Category Name" />
+    <text name="OriginPriceLabel" value="Origin Price" />
+    <text name="SellPriceLabel" value="Sell Price" />
+    <text name="QuantityLabel" value="Quantity" />
+    <text name="ManufactoryIdLabel" value="Manufactory" />
+    <text name="BranchIdLabel" value="Branch" />
+    <text name="ImportDateLabel" value="Import Date" />
+    <text name="FeatureImageLabel" value="Feature Image" />
+    <text name="ImageListLabel" value="Image List" />
+    <text name="DiscountLabel" value="Discount" />
   </texts>
 </localizationDictionary>
