@@ -18,7 +18,7 @@ namespace WebShop.Web.Controllers
 
         public async Task<ActionResult> Index()
         {
-            HomeViewModel viewModel = new HomeViewModel(_productAppService);
+            HomeViewModel viewModel = new HomeViewModel(_productAppService, _configAppService);
             ViewBag.ControllerName = ControllerName.HOME;
 
             await viewModel.GetDataToModel();
