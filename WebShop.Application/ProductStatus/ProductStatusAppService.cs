@@ -20,7 +20,7 @@ namespace WebShop.Application
 
         public ProductStatusAppService(IProductStatusRepository productStatusRepository)
         {
-            _productStatusRepository = productStatusRepository;            
+            _productStatusRepository = productStatusRepository;
             Mapper.CreateMap<ProductStatusDTO, ProductStatus>();
             Mapper.CreateMap<ProductStatus, ProductStatusDTO>();
         }

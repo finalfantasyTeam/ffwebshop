@@ -48,10 +48,10 @@
         string controllerName = ViewBag.ControllerName;
         switch (controllerName)
         {
-          case "Home":
+          case ControllerName.HOME:
             @Html.Partial("_PageSlider");
             break;
-          case "Category":
+          case ControllerName.CATEGORY:
             @Html.Partial("_PageBanner");
             break;
           default:

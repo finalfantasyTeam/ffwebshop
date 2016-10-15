@@ -1431,19 +1431,21 @@
     <Content Include="Upload\img\single-1.jpg" />
     <Content Include="Upload\img\single-2.jpg" />
     <Content Include="Upload\img\single-3.jpg" />
+    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Views\Admin\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\WebShopNavigationProvider.cs" />
     <Compile Include="App_Start\WebShopWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin\AdminCustomerController.cs" />
     <Compile Include="Controllers\Admin\AdminCustomerGroupController.cs" />
+    <Compile Include="Controllers\Admin\AdminCustomerOrderController.cs" />
     <Compile Include="Controllers\Admin\AdminCustomerStatusController.cs" />
     <Compile Include="Controllers\Admin\AdminInvoiceController.cs" />
     <Compile Include="Controllers\Admin\AdminProductBranchController.cs" />
@@ -1455,13 +1457,18 @@
     <Compile Include="Controllers\Admin\AdminProductManufactoryController.cs" />
     <Compile Include="Controllers\Admin\AdminProductMetaController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Admin\AdminProductStatusController.cs" />
     <Compile Include="Controllers\Admin\AdminUsersController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Helpers\Constant.cs" />
     <Compile Include="Helpers\FileUploadHelpers.cs" />
+    <Compile Include="Models\AdminViewModels\CustomerOrderViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\CustomerViewModel.cs" />
+    <Compile Include="Models\AdminViewModels\ProductStatusViewModel.cs" />
     <Compile Include="Models\AdminViewModels\UsersViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ConfigOptionsViewModel.cs" />
     <Compile Include="Models\AdminViewModels\CustomerGroupViewModel.cs" />
@@ -1472,6 +1479,7 @@
     <Compile Include="Models\AdminViewModels\ProductManufactoryViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductMetaViewModel.cs" />
     <Compile Include="Models\AccountViewModel.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\Layout\LanguageSelectionViewModel.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\WebShopControllerBase.cs" />
@@ -1480,7 +1488,7 @@
     </Compile>
     <Compile Include="Models\Layout\TopMenuViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductViewModel.cs" />
-    <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\ProductPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\WebShopWebViewPageBase.cs" />
     <Compile Include="Views\UrlChecker.cs" />
@@ -1572,6 +1580,11 @@
     <Content Include="Views\AdminUsers\Details.cshtml" />
     <Content Include="Views\AdminUsers\List.cshtml" />
     <Content Include="Views\AdminUsers\Update.cshtml" />
+    <Content Include="Views\AdminProductStatus\Create.cshtml" />
+    <Content Include="Views\AdminProductStatus\Delete.cshtml" />
+    <Content Include="Views\AdminProductStatus\Details.cshtml" />
+    <Content Include="Views\AdminProductStatus\List.cshtml" />
+    <Content Include="Views\AdminProductStatus\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

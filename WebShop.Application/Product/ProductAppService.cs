@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebShop.Common;
 using WebShop.Core;
 
 namespace WebShop.Application
@@ -16,21 +17,31 @@ namespace WebShop.Application
         public ProductAppService(IProductRepository productsRepository)
         {
             _productsRepository = productsRepository;
-            Mapper.CreateMap<Product, ProductDTO>();
+            Mapper.CreateMap<Product, ProductDTO>()
+                .ForMember(dest => dest.FeatureImage, opt => opt
+                .MapFrom(src => string.IsNullOrEmpty(src.FeatureImage) ? Constants.PLACEHOLDER_IMAGE_PATH : src.FeatureImage));
             Mapper.CreateMap<ProductDTO, Product>();
+
+            Mapper.CreateMap<ProductCategory, ProductCategoryDTO>();
+            Mapper.CreateMap<ProductBranch, ProductBranchDTO>();
+            Mapper.CreateMap<ProductMeta, ProductMetaDTO>();
+            Mapper.CreateMap<ProductStatus, ProductStatusDTO>();
+            Mapper.CreateMap<ProductManufactory, ProductManufactoryDTO>();
+
         }
 
         public ListProductRs GetAllProducts()
         {
             try
             {
-                IQueryable<Product> query = _productsRepository.GetAllIncluding(
-                                                        p => p.ProductCategory, 
-                                                        p => p.ProductBranch, 
-                                                        p => p.ProductStatus);
+                IQueryable<Product> query = _productsRepository.GetAllIncluding(p => p.ProdCategory,
+                                                                                    p => p.ProdBranch,
+                                                                                    p => p.ProdStatus,
+                                                                                    p => p.ProdManufactory,
+                                                                                    p => p.ProductFields);
 
                 List<Product> products = query.ToList();
-                
+
                 return new ListProductRs()
                 {
                     Products = products.MapTo<List<ProductDTO>>()

@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using System;
+using System.Collections.Generic;
 using WebShop.Core;
 
 namespace WebShop.Application
@@ -18,5 +19,7 @@ namespace WebShop.Application
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public bool IsActive { get; set; }
+
+        public List<ProductCategoryDTO> ProductCategoryChild { get; set; }
     }
 }

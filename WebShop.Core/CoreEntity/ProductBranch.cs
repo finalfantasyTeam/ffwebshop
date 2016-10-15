@@ -19,7 +19,5 @@ namespace WebShop.Core
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public bool? IsActive { get; set; }
-
-        //public virtual ICollection<Product> Products { get; set; }
     }
 }

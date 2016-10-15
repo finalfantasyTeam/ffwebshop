@@ -13,11 +13,6 @@ namespace WebShop.Application
     {
         private readonly IProductCategoryRepository _productCategoryRepository;
 
-        private static string SetDefaultImage(string value)
-        {
-            return "";
-        }
-
         public ProductCategoryAppService(IProductCategoryRepository productCategoryRepository)
         {
             _productCategoryRepository = productCategoryRepository;
@@ -26,7 +21,6 @@ namespace WebShop.Application
                 .MapFrom(src => string.IsNullOrEmpty(src.ImageToShow) ? Constants.PLACEHOLDER_IMAGE_PATH : src.ImageToShow));
 
             Mapper.CreateMap<ProductCategoryDTO, ProductCategory>();
-            Mapper.CreateMap<ProductCategory, ProductCategoryDTO>();
         }
 
         public async Task<ListProductCategoryRs> GetAllCategory()
