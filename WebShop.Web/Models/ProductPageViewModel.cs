@@ -10,28 +10,44 @@ namespace WebShop.Web.Models
     {
         private readonly IProductAppService _productApp;
         private readonly IConfigOptionsAppService _optionApp;
+        private readonly IProductCategoryAppService _productCatApp;
+        private readonly IProductManufactoryAppService _productManuApp;
 
-        public ProductPageViewModel(IProductAppService productApp, IConfigOptionsAppService optionApp)
+        public ProductPageViewModel(IProductAppService productApp, 
+            IProductCategoryAppService productCatApp,
+            IProductManufactoryAppService productManuApp,
+            IConfigOptionsAppService optionApp)
         {
             _productApp = productApp;
             _optionApp = optionApp;
+            _productCatApp = productCatApp;
+            _productManuApp = productManuApp;
         }
 
         public async Task GetDataToModel()
         {
-            this.ListProduct = _productApp.GetAllProducts().Products;
             ConfigOptions = (await _optionApp.GetAllConfigOptions()).Options;
+            ProductCategories = (await _productCatApp.GetAllCategory()).Categories;
+            ProductManufatories = (await _productManuApp.GetAllManufactory()).Manufactories;
+        }
 
-            BestSellProducts = ListProduct.Take(8).ToList();
-            NewProducts = ListProduct.Skip(2).Take(8).ToList();
-            SaleOffProducts = ListProduct.Skip(4).Take(8).ToList(); 
+        public async Task GetProduct(int id)
+        {
+            GetProductRq rq = new GetProductRq()
+            { Id = id };
+            Product = (await _productApp.GetProductById(rq)).Product;
+
+            List<ProductDTO> products = (await _productApp.GetAllProductsAsync()).Products;
+            RelatedProducts = products.Where(p => p.CategoryId == Product.CategoryId).ToList();
+            SaleOffProducts = products.Where(p => p.Discount.Value > 0).ToList();
         }
 
         public MembershipUser User { get; set; }
-        public List<ProductDTO> ListProduct { get; set; }
+        public ProductDTO Product { get; set; }
         public List<ConfigOptionsDTO> ConfigOptions { get; set; }
-        public List<ProductDTO> BestSellProducts { get; set; }
-        public List<ProductDTO> NewProducts { get; set; }
+        public List<ProductCategoryDTO> ProductCategories { get; set; }
+        public List<ProductManufactoryDTO> ProductManufatories { get; set; }
+        public List<ProductDTO> RelatedProducts { get; set; }
         public List<ProductDTO> SaleOffProducts { get; set; }
     }
 }

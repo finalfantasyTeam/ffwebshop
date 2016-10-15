@@ -57,5 +57,15 @@
     <text name="ThirdTabLabel" value="Sale-Off Products" />
     <text name="PromoSectionTitle" value="Promo Section"/>
     <!--End Home Page-->
+    
+    <!--Product Page-->
+    <text name="AddToCartLabel" value="Add to Cart" />
+    <text name="QuantityLabel" value="Quantity" />
+    <text name="ReviewsLabel" value="Reviews" />
+    <text name="RelatedProductLabel" value="Related Product" />
+    <text name="CategoryLabel" value="Categoies" />
+    <text name="ManufacturerLabel" value="Manufacturers" />
+    <text name="SpecialLabel" value="Specials" />
+    <!--End Product Page-->
   </texts>
 </localizationDictionary>

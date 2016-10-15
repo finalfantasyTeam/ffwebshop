@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using WebShop.Application;
 using WebShop.Web.Models;
@@ -19,9 +20,11 @@ namespace WebShop.Web.Controllers
         public async Task<ActionResult> Index()
         {
             HomeViewModel viewModel = new HomeViewModel(_productAppService, _configAppService);
-            ViewBag.ControllerName = ControllerName.HOME;
-
             await viewModel.GetDataToModel();
+
+            ViewBag.ControllerName = ControllerName.HOME;
+            ViewBag.Title = viewModel.ConfigOptions.Where(o => o.OptionKey == "SiteName").SingleOrDefault();
+
             return View(viewModel);
         }
     }

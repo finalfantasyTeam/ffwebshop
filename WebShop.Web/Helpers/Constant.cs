@@ -15,5 +15,6 @@ namespace WebShop.Web
     public class UploadUtility
     {
         public const string IMAGE_CATEGORY = "upload/img/{0}";
+        public const char IMAGE_LIST_SEPERATOR = ';';
     }
 }
