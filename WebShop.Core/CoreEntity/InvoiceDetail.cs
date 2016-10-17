@@ -19,7 +19,7 @@ namespace WebShop.Core
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
 
-        public virtual Invoice Invoice { get; set; }
-        public virtual Product Product { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual Product ProductPurchase { get; set; }
     }
 }

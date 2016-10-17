@@ -10,7 +10,6 @@ namespace WebShop.Core
     {
         public Users()
         {
-            Customers = new HashSet<Customer>();
         }
 
         public Guid ApplicationId { get; set; }
@@ -19,7 +18,5 @@ namespace WebShop.Core
         public string MobileAlias { get; set; }
         public bool IsAnonymous { get; set; }
         public DateTime LastActivityDate { get; set; }
-
-        public virtual ICollection<Customer> Customers { get; set; }
     }
 }

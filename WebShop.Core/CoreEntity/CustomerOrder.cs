@@ -11,11 +11,9 @@ namespace WebShop.Core
     {
         public CustomerOrder()
         {
-            Customers = new HashSet<Customer>();
         }
 
         public int? CustomerId { get; set; }
-        //[DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{dd-MM-yyyy}")]
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public DateTime? DeliveryDate { get; set; }
@@ -24,9 +22,7 @@ namespace WebShop.Core
         public bool? IsActive { get; set; }
         public string Notes { get; set; }
 
-        public virtual ICollection<Customer> Customers { get; set; }
-
-        //public virtual Customer Customers { get; set; }
-        //public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        [ForeignKey("OrderId")]
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

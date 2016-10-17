@@ -41,18 +41,17 @@
 <body class="fixed-header hidden-top">
   <div class="page-box">
     <div class="page-box-content">
-      @Html.Partial("_TopBox")
-      @Html.Partial("_TopBar")
-
+      @Html.Action("TopBox", "Layout", null)
+      @Html.Action("TopBar", "Layout", null)
       @{
         string controllerName = ViewBag.ControllerName;
         switch (controllerName)
         {
           case ControllerName.HOME:
-            @Html.Partial("_PageSlider");
+            Html.Partial("_PageSlider");
             break;
           case ControllerName.CATEGORY:
-            @Html.Partial("_PageBanner");
+            Html.Partial("_PageBanner");
             break;
           default:
             break;
@@ -63,7 +62,7 @@
       </section>
     </div>
   </div>
-  @Html.Partial("_Footer")
+  @Html.Action("Footer", "Layout", null)
 
   @Scripts.Render("~/Bundles/vendor/js/bottom")
   @Scripts.Render("~/Bundles/js")
@@ -79,6 +78,15 @@
 
   <!-- View specific scripts -->
   @RenderSection("scripts", required: false)
+
+  <script type="text/javascript">
+      ShoppingCart.InitCart();
+
+      @if (ViewBag.ControllerName == ControllerName.SALES)
+      {
+         @Html.Raw("ShoppingCart.SendCartToServer();");
+      }
+  </script>
 
 </body>
 </html>

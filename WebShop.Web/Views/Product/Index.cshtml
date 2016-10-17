@@ -55,8 +55,8 @@
             }
           </div>
 
-          <form class="form-inline add-cart-form">
-            <button class="btn add-cart btn-default btn-lg">@L("AddToCartLabel")</button>
+          <div class="form-inline add-cart-form">
+            <button data-product="@Json.Encode(new { Id = Model.Product.Id, Name = Model.Product.Name, Price = Model.Product.SellPrice, FeatureImage = string.Format(UploadUtility.IMAGE_CATEGORY, Model.Product.FeatureImage) })" class="btn add-cart btn-default btn-lg">@L("AddToCartLabel")</button>
             <div class="number">
               <label>@L("QuantityLabel"):</label>
               <input id="txtProductQuatity" name="txtProductQuatity" type="text" value="1" class="form-control">
@@ -65,7 +65,7 @@
                 <a href="#" class="number-down"><i class="fa fa-angle-down"></i></a>
               </div>
             </div>
-          </form>
+          </div>
 
           <div class="actions">
             <a href="#" class="add-wishlist">
@@ -177,7 +177,7 @@
                   <li>@product.ProdStatus.Name</li>
                 </ul>
                 <div class="actions">
-                  <a href="@Url.Action("Index", ControllerName.PRODUCT, new { productId = product.Id })" class="add-cart">
+                  <a data-product="@Json.Encode(new { Id = product.Id, Name = product.Name, Price = product.SellPrice, FeatureImage = string.Format(UploadUtility.IMAGE_CATEGORY, product.FeatureImage) })" class="add-cart">
                     <svg x="0" y="0" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
                     <g>
                     <path fill="#1e1e1e" d="M15.001,4h-0.57l-3.707-3.707c-0.391-0.391-1.023-0.391-1.414,0c-0.391,0.391-0.391,1.023,0,1.414L11.603,4

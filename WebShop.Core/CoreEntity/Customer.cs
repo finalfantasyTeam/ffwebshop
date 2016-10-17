@@ -9,11 +9,7 @@ namespace WebShop.Core
     public class Customer : Entity<int>
     {
         public Customer()
-        {
-            CustomerGroups = new HashSet<CustomerGroup>();
-            CustomerStatus = new HashSet<CustomerStatus>();
-            Users = new HashSet<Users>();
-        }
+        { }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -22,9 +18,9 @@ namespace WebShop.Core
         public string Cart { get; set; }
         public string WishList { get; set; }
         public bool? Newsletter { get; set; }
-        public int? CustomerGroup { get; set; }
         public string IpAddress { get; set; }
         public int? Status { get; set; }
+        public int CustomerGroupId { get; set; }
         public DateTime? JoinDate { get; set; }
         public DateTime? UpdateDate { get; set; }
         public DateTime? BirthDate { get; set; }
@@ -32,18 +28,19 @@ namespace WebShop.Core
         public string Notes { get; set; }
         public Guid? UserId { get; set; }
 
-        //public virtual Users User { get; set; }
-        //public virtual CustomerGroup CustomerGroupEntity { get; set; }
-        //public virtual CustomerStatus CustomerStatus { get; set; }
-
-        [ForeignKey("CustomerGroup")]
-        public virtual CustomerGroup CustomerGroupId { get; set; }
-        [ForeignKey("Status")]
-        public virtual CustomerStatus CustomerStatusId { get; set; }
         [ForeignKey("UserId")]
-        public virtual Users UsersId { get; set; }
-        public virtual ICollection<CustomerGroup> CustomerGroups { get; set; }
-        public virtual ICollection<CustomerStatus> CustomerStatus { get; set; }
-        public virtual ICollection<Users> Users { get; set; }
+        public virtual Users User { get; set; }
+
+        [ForeignKey("CustomerGroupId")]
+        public virtual CustomerGroup CustomerGroup { get; set; }
+
+        [ForeignKey("Status")]
+        public virtual CustomerStatus CustomerStatus { get; set; }
+
+        [ForeignKey("CustomerId")]
+        public virtual ICollection<Invoice> Invoices { get; set; }
+
+        [ForeignKey("CustomerId")]
+        public virtual ICollection<CustomerOrder> CustomerOrders { get; set; }
     }
 }

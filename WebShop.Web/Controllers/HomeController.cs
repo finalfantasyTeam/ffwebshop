@@ -23,7 +23,9 @@ namespace WebShop.Web.Controllers
             await viewModel.GetDataToModel();
 
             ViewBag.ControllerName = ControllerName.HOME;
-            ViewBag.Title = viewModel.ConfigOptions.Where(o => o.OptionKey == "SiteName").SingleOrDefault();
+            ViewBag.Title = viewModel.ConfigOptions.Where(o => o.OptionKey == "SiteName")
+                                                    .Select(o => o.OptionValue)
+                                                    .SingleOrDefault();
 
             return View(viewModel);
         }

@@ -15,7 +15,7 @@ namespace WebShop.Core
         public bool? IsActive { get; set; }
         public string Notes { get; set; }
 
-        public virtual CustomerOrder CustomerOrder { get; set; }
-        public virtual Product Product { get; set; }
+        [ForeignKey("ProductId")]
+        public virtual Product ProductOrder { get; set; }
     }
 }
