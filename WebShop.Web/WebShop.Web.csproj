@@ -1389,6 +1389,7 @@
     <Content Include="Scripts\price-regulator\jshashtable-2.1_src.js" />
     <Content Include="Scripts\price-regulator\tmpl.js" />
     <Content Include="Scripts\raphael.min.js" />
+    <Content Include="js\shopping-cart.js" />
     <Content Include="Scripts\SmoothScroll.js" />
     <Content Include="Scripts\spin.min.js" />
     <Content Include="Scripts\sweetalert\ie9.css" />
@@ -1488,6 +1489,7 @@
     </Compile>
     <Compile Include="Models\Layout\TopMenuViewModel.cs" />
     <Compile Include="Models\AdminViewModels\ProductViewModel.cs" />
+    <Compile Include="Models\SalesViewModel.cs" />
     <Compile Include="Models\ProductPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\WebShopWebViewPageBase.cs" />
@@ -1498,7 +1500,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
-    <Content Include="Views\Shared\_TopBar.cshtml" />
+    <Content Include="Views\Layout\_TopBar.cshtml" />
     <Content Include="Views\Layout\_LanguageSelection.cshtml" />
     <Content Include="Views\Layout\_TopMenu.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -1540,8 +1542,8 @@
     <Content Include="Views\AdminProductBranch\List.cshtml" />
     <Content Include="Views\AdminProductBranch\Create.cshtml" />
     <Content Include="Views\AdminProductBranch\Details.cshtml" />
-    <Content Include="Views\Shared\_TopBox.cshtml" />
-    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Layout\_TopBox.cshtml" />
+    <Content Include="Views\Layout\_Footer.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
@@ -1585,6 +1587,7 @@
     <Content Include="Views\AdminProductStatus\Details.cshtml" />
     <Content Include="Views\AdminProductStatus\List.cshtml" />
     <Content Include="Views\AdminProductStatus\_ViewStart.cshtml" />
+    <Content Include="Views\Sales\_OrdersList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

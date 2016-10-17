@@ -42,5 +42,23 @@ namespace WebShop.Web.Controllers
 
             return PartialView("_LanguageSelection", model);
         }
+
+        [ChildActionOnly]
+        public PartialViewResult TopBar()
+        {
+            return PartialView("_TopBar", null);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult TopBox()
+        {
+            return PartialView("_TopBox", null);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult Footer()
+        {
+            return PartialView("_Footer", null);
+        }
     }
 }

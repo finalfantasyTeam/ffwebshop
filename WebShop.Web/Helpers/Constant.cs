@@ -10,6 +10,7 @@ namespace WebShop.Web
         public const string HOME = "Home";
         public const string CATEGORY = "Category";
         public const string PRODUCT = "Product";
+        public const string SALES = "Sales";
     }
 
     public class UploadUtility

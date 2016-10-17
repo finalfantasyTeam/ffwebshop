@@ -165,6 +165,7 @@ namespace WebShop.Web
             bundles.Add(
                 new ScriptBundle("~/Bundles/js")
                     .Include("~/js/main.js")
+                    .Include("~/js/shopping-cart.js")
                 );
         }
     }

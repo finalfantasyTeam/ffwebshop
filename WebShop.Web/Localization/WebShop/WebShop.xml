@@ -60,12 +60,17 @@
     
     <!--Product Page-->
     <text name="AddToCartLabel" value="Add to Cart" />
+    <text name="CartLabel" value="Cart" />
+    <text name="CategoryLabel" value="Categoies" />
     <text name="QuantityLabel" value="Quantity" />
     <text name="ReviewsLabel" value="Reviews" />
     <text name="RelatedProductLabel" value="Related Product" />
-    <text name="CategoryLabel" value="Categoies" />
-    <text name="ManufacturerLabel" value="Manufacturers" />
+    <text name="ShoppingCartLabel" value="Shopping Cart" />
     <text name="SpecialLabel" value="Specials" />
+    <text name="SubtotalLabel" value="Subtotal" />
+    <text name="ManufacturerLabel" value="Manufacturers" />
+    <text name="ProductNameLabel" value="Product Name" />
+    <text name="UnitPriceLabel" value="Unit Price" />
     <!--End Product Page-->
   </texts>
 </localizationDictionary>
