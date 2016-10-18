@@ -62,6 +62,8 @@
     <text name="AddToCartLabel" value="Add to Cart" />
     <text name="CartLabel" value="Cart" />
     <text name="CategoryLabel" value="Categoies" />
+    <text name="ContinueShoppingLabel" value="Continue Shopping" />
+    <text name="GrandTotalLabel" value="Grand Total" />
     <text name="QuantityLabel" value="Quantity" />
     <text name="ReviewsLabel" value="Reviews" />
     <text name="RelatedProductLabel" value="Related Product" />
@@ -70,7 +72,9 @@
     <text name="SubtotalLabel" value="Subtotal" />
     <text name="ManufacturerLabel" value="Manufacturers" />
     <text name="ProductNameLabel" value="Product Name" />
+    <text name="ProductCategoryTitle" value="Product Category" />
     <text name="UnitPriceLabel" value="Unit Price" />
+    <text name="DiscountLabel" value="Discount" />
     <!--End Product Page-->
   </texts>
 </localizationDictionary>

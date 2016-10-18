@@ -42,12 +42,24 @@ namespace WebShop.Web.Models
             SaleOffProducts = products.Where(p => p.Discount.Value > 0).ToList();
         }
 
+        public async Task GetProductByCategory(int id)
+        {
+            GetProductCategoryRq rq = new GetProductCategoryRq()
+            { Id = id };
+            CurrentCategory = (await _productCatApp.GetCategoryById(rq)).Category;
+
+            List<ProductDTO> products = (await _productApp.GetAllProductsAsync()).Products;
+            ProductInCategory = products.Where(p => p.CategoryId == id).ToList();
+        }
+
         public MembershipUser User { get; set; }
         public ProductDTO Product { get; set; }
+        public ProductCategoryDTO CurrentCategory { get; set; }
         public List<ConfigOptionsDTO> ConfigOptions { get; set; }
         public List<ProductCategoryDTO> ProductCategories { get; set; }
         public List<ProductManufactoryDTO> ProductManufatories { get; set; }
         public List<ProductDTO> RelatedProducts { get; set; }
         public List<ProductDTO> SaleOffProducts { get; set; }
+        public List<ProductDTO> ProductInCategory { get; set; }
     }
 }

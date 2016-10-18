@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Web.Security;
 using WebShop.Application;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace WebShop.Web.Models
 {
@@ -27,6 +28,18 @@ namespace WebShop.Web.Models
             ProductCategories = (await _productCatApp.GetAllCategory()).Categories;
             List<ProductDTO> products = (await _productApp.GetAllProductsAsync()).Products;
             RelatedProducts = products.Where(p => p.CategoryId == 1).ToList();
+        }
+
+        public async Task GetProductInCarts(string shoppingCart)
+        {
+            List<ProductDTO> cartFromClient = JsonConvert.DeserializeObject<List<ProductDTO>>(shoppingCart);
+            InCartProducts = (await _productApp.GetAllProductsAsync()).Products
+                                                                    .Where(p => cartFromClient.Any(pic => pic.Id == p.Id))
+                                                                    .ToList();
+            for (int i = 0; i < cartFromClient.Count; i++)
+            {
+                InCartProducts[i].Quantity = cartFromClient[i].Quantity;
+            }
         }
 
         public MembershipUser User { get; set; }

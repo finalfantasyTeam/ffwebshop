@@ -6,70 +6,43 @@
 <div class="container">
   <div class="row">
     <article class="content col-sm-12 col-md-12">
-      <div class="table-box">
-          @Html.Action("OrdersList")
+      <div id="tblOrderList" class="table-box">
+          <!--Ajax render table here-->
       </div>
       <table class="shopping-cart-table shopping-cart-table-button table">
         <tbody>
           <tr>
             <td class="action no-border">
-              <a href="#"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-              <a href="#" class="update"><i class="fa fa-rotate-right"></i> Update Shopping Cart</a>
+              <a href="@Url.Content("~")"><i class="fa fa-angle-left"></i> @L("ContinueShoppingLabel")</a>
             </td>
           </tr>
         </tbody>
       </table>
 
       <div id="car-bottom" class="row">
-        <div class="col-sm-12 col-md-4">
-          <div class="car-bottom-box bg">
-            <h5>Estimate Shipping and Tax</h5>
-            <p>Enter your destination to get a shipping estimate.</p>
-            <label>Country: <span class="required">*</span></label>
-            <select name="" class="form-control">
-              <option value="">United States</option>
-              <option value="">United States</option>
-              <option value="">United States</option>
-            </select>
-            <label>State/Province: <span class="required">*</span></label>
-            <select name="" class="form-control">
-              <option value="">Please select region, state or province</option>
-              <option value="">Please select region, state or province</option>
-              <option value="">Please select region, state or province</option>
-            </select>
-            <label>Zip/Postal Code: <span class="required">*</span></label>
-            <input class="form-control" type="text">
-            <button class="btn btn-default">Get a Quote</button>
-          </div>
-        </div>
-
-        <div class="col-sm-12 col-md-4">
-          <div class="car-bottom-box bg">
-            <h5>Discount Codes</h5>
-            <p>Enter your coupon code if you have one.</p>
-            <input class="form-control" type="text" placeholder="Please select region, state or province">
-            <button class="btn btn-default">Apply Coupon</button>
-          </div>
-        </div>
-
-        <div class="col-sm-12 col-md-4">
+        <div class="col-sm-12 col-md-4 pull-right">
           <div class="car-bottom-box bg total">
             <table>
               <tbody>
                 <tr>
-                  <td>Subtotal</td>
-                  <td><span class="price">$1,500.00</span></td>
+                  <td>@L("SubtotalLabel")</td>
+                  <td>
+                    <span id="txtSubtotal" class="price">
+                    </span>
+                  </td>
                 </tr>
                 <tr class="tr-total">
-                  <td>Grand Total</td>
-                  <td><span class="price">$1,500.00</span></td>
+                  <td>@L("GrandTotalLabel")</td>
+                  <td>
+                    <span id="txtGrandTotal" class="price">
+                    </span>
+                  </td>
                 </tr>
               </tbody>
             </table>
             <div>
               @Html.ActionLink("Make an order", "SendOrder", null, new { @class = "btn checkout btn-default btn-lg" })
             </div>
-            <a href="" class="multiple no-border">Checkout with Multiple Addresses</a>
           </div>
         </div>
       </div>
@@ -136,7 +109,7 @@
                                   <li>@product.ProdStatus.Name</li>
                               </ul>
                               <div class="actions">
-                                  <a data-product="@Json.Encode(new { Id = product.Id, Name = product.Name, Price = product.SellPrice, FeatureImage = string.Format(UploadUtility.IMAGE_CATEGORY, product.FeatureImage) })" class="add-cart">
+                                  <a data-product="@Json.Encode(new { Id = product.Id, Name = product.Name, SellPrice = product.SellPrice, FeatureImage = string.Format(UploadUtility.IMAGE_CATEGORY, product.FeatureImage) })" class="add-cart">
                                       <svg x="0" y="0" width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
                                       <g>
                                       <path fill="#1e1e1e" d="M15.001,4h-0.57l-3.707-3.707c-0.391-0.391-1.023-0.391-1.414,0c-0.391,0.391-0.391,1.023,0,1.414L11.603,4
