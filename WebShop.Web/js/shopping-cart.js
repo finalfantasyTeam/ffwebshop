@@ -59,6 +59,9 @@ var ShoppingCart = (function (jQuery) {
                         '</li>';
             boxCart.append(boxItem);
         });
+
+        var itemCount = '(' + cart.length + ')';
+        $('#itemCountLabel').html(itemCount);
     }
 
     function removeCartItem(productId, isCheckoutPage) {
