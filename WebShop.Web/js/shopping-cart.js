@@ -1,6 +1,7 @@
 ﻿'use strict';
 var ShoppingCart = (function (jQuery) {
     var $ = jQuery;
+    var cartTotal = 0;
 
     if ($ === undefined) {
         throw new Error('Shopping Cart requires jQuery');
@@ -25,7 +26,7 @@ var ShoppingCart = (function (jQuery) {
             var cartItem = {
                 Id: product.Id,
                 Name: product.Name,
-                Price: product.Price,
+                SellPrice: product.SellPrice,
                 FeatureImage: product.FeatureImage,
                 Quantity: productQuantity
             };
@@ -53,15 +54,16 @@ var ShoppingCart = (function (jQuery) {
                             '<a href="Product/productId=' + item.Id + '" class="product-image"><img class="replace-2x" src="' + item.FeatureImage + '" width="70" height="70" alt=""></a>' +
                             '<a onclick="ShoppingCart.RemoveCartItem(' + item.Id + ')" href="#" class="product-remove">X</a>' +
                             '<h4 class="product-name"><a href="Product/productId=' + item.Id + '" title="">' + item.Name + '</a></h4>' +
-                            '<div class="product-price">' + item.Quantity + ' x <span class="price">' + $.formatNumber(item.Price, { format: "₹ #,###.00", locale: "in" }) + '</span></div>' +
+                            '<div class="product-price">' + item.Quantity + ' x <span class="price">' + $.formatNumber(item.SellPrice, { format: "₹ #,###.00", locale: "in" }) + '</span></div>' +
                             '<div class="clearfix"></div>' +
                         '</li>';
             boxCart.append(boxItem);
         });
     }
 
-    function removeCartItem(productId) {
+    function removeCartItem(productId, isCheckoutPage) {
         var currentCart = JSON.parse(localStorage.getItem("GemShopCart")) || [];
+        isCheckoutPage = isCheckoutPage || false;
 
         currentCart.forEach(function (item, index) {
             if (item.Id === productId) {
@@ -74,15 +76,25 @@ var ShoppingCart = (function (jQuery) {
 
         localStorage.setItem('GemShopCart', JSON.stringify(currentCart));
         UpdateShoppingCartBox(currentCart);
+
+        if (isCheckoutPage) {
+            sendCart();
+        }
     }
 
     function sendCart() {
+        var shoppingCart = localStorage.getItem("GemShopCart");
+
         $.ajax({
             url: 'Sales/ReceiveCartBox',
             type: 'post',
-            data: localStorage.getItem("GemShopCart"),
+            dataType: 'html',
+            data: { shoppingCart: shoppingCart },
             success: function (data) {
-                console.log(data);
+                if ($('#tblOrderList')) {
+                    $('#tblOrderList').empty();
+                    $('#tblOrderList').html(data);
+                }
             }
         });
     }
@@ -90,7 +102,8 @@ var ShoppingCart = (function (jQuery) {
     return {
         RemoveCartItem: removeCartItem,
         SendCartToServer: sendCart,
-        InitCart: initCart
+        InitCart: initCart,
+        Subtotal: cartTotal
     };
 
 }(this.jQuery));

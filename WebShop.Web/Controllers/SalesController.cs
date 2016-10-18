@@ -36,17 +36,16 @@ namespace WebShop.Web.Controllers
         [ChildActionOnly]
         public PartialViewResult OrdersList()
         {
-
-
             return PartialView("_OrdersList", null);
         }
 
         [HttpPost]
-        public JsonResult ReceiveCartBox(string shoppingCart)
+        public async Task<ActionResult> ReceiveCartBox(string shoppingCart)
         {
+            SalesViewModel viewModel = new SalesViewModel(_productApp, _productCatApp, _optionApp);
+            await viewModel.GetProductInCarts(shoppingCart);
 
-
-            return Json("Ok");
+            return PartialView("_OrdersList", viewModel);
         }
 
         public ActionResult SendOrder()
